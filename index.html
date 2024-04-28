@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vite + Vue + TS</title>
+    </head>
+    <body>
+        <div id="app"></div>
+        <div id="popup-container fixed taz select-none">
+            <div
+                class="PopUpToastArea transition fixed w-full m-2 text-center bottom-0 pb-3"
+                id="pa">
+                <!-- -->
+            </div>
+            <style>
+                .taz {
+                    z-index: 999 !important;
+                }
+                :root {
+                    --toast-span: 0.58s;
+                    --toast-pos: 12vh;
+                    /* POPUP TOAST CONFIGURATION */
+                }
+
+                .shine {
+                    background-color: rgba(
+                        255,
+                        255,
+                        233,
+                        0.3555555555555555514
+                    ) !important;
+                }
+
+                input {
+                    outline: 0;
+                }
+
+                .toast-initial {
+                    transform: translateY(var(--toast-pos));
+                    animation: cubic-bezier(0.075, 0.82, 0.165, 1) popupAnimate
+                        var(--toast-span) forwards;
+                    z-index: 1000 !important;
+                }
+
+                .toast-leave {
+                    animation: cubic-bezier(0.075, 0.82, 0.165, 1) popupLeave
+                        var(--toast-span) forwards;
+                }
+
+                @keyframes popupAnimate {
+                    0% {
+                        transform: translateY(var(--toast-pos));
+                    }
+                    100% {
+                        transform: translateY(calc(-1 * var(--toast-pos)));
+                    }
+                }
+
+                @keyframes popupLeave {
+                    0% {
+                        transform: translateY(calc(-1 * var(--toast-pos)));
+                    }
+                    100% {
+                        transform: translateY(calc(var(--toast-pos) * 2));
+                    }
+                }
+                .lini {
+                    line-height: 0.88rem;
+                }
+
+                .a {
+                    color: rgb(54, 161, 255);
+                    transition-property: all;
+                    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                    transition-duration: 150ms;
+                    font-weight: 539;
+                }
+                .a:hover {
+                    color: rgba(49, 128, 255, 0.888);
+                    text-decoration: underline;
+                }
+                .a:active {
+                    color: rgb(23, 83, 195, 0.9);
+                }
+                .a:visited {
+                    color: rgb(66, 85, 233);
+                    text-decoration: line-through;
+                }
+                .force-baseline {
+                    vertical-align: baseline !important;
+                }
+            </style>
+        </div>
+        <link rel="stylesheet" href="/fonts/style.css" />
+        <link rel="stylesheet" href="./output.css" type="text/css" />
+        <script type="module" src="/src/main.ts"></script>
+    </body>
+</html>

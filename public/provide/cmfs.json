@@ -1,0 +1,34 @@
+{
+    "fileInfo": "CMFS Server Info",
+    "updateTime": "2024-1-21",
+    "contentType": "ServerItem",
+    "contentList": [
+        {
+            "isAd": false,
+            "stat": "alpha",
+            "name": "CMFS-Pure",
+            "desc": "CMFS-Pure是CraftMineFun Server的根基, 最基本的群组原版游戏服务器. 经过我们的调试和优化, 可以带来能完全发挥服务器硬件性能的优良体验. 目前已经开放纯净生存服, 多线程服、创造服和建筑团队审核服仍在规划中.",
+            "addr": ["主线#cmfs.kami.su", "备用#pure.cmfs.kami.su"],
+            "cont": ["Q群#419902868"],
+            "tags": ["原版", "1.20.1", "正版登陆", "有限跨版本", "无白名单"]
+        },
+        {
+            "isAd": false,
+            "stat": "WIP",
+            "name": "LappLand",
+            "desc": "LappLand脱胎于CMFS-Aura(Mod服务器)计划，并在玩法上继承了已经夭折的CMFS-Fairy(RPG服务器)计划。结合我们甄选的Mod搭配，在方块世界的社会中建立自己的一隅天地。",
+            "addr": ["主线#lapp.kami.su", "备用#lapp.cmfs.kami.su"],
+            "cont": ["Q群#419902868"],
+            "tags": ["Forge", "1.16.5", "正版登陆", "单版本", "无白名单"]
+        },
+        {
+            "isAd": true,
+            "stat": "pause",
+            "name": "SquareCraft Pokémon CN",
+            "desc": "[推广] 枘方世界中国宝可梦是面向中国(大陆)玩家的精灵宝可梦玩法的Mod服务器. ",
+            "addr": ["[请加群获取]#246220188"],
+            "cont": ["@@官网#https://www.pokemonmc.cn/", "Q群#246220188"],
+            "tags": ["Forge", "1.16.5", "专有/离线登陆", "单版本", "无白名单"]
+        }
+    ]
+}
