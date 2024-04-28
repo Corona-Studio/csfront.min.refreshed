@@ -1,11 +1,12 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+
 import ContactInfo from '../components/ContactInfo.vue';
 import PageTitle from '../components/Feature/PageTitle.vue';
 import Paper from '../components/Fragments/Paper.vue';
-import HelpBlock from '../components/HelpBlock.vue';
 import Pressable from '../components/Fragments/Pressable.vue';
-import { useI18n } from 'vue-i18n';
-import { ref } from 'vue';
+import HelpBlock from '../components/HelpBlock.vue';
 
 const { t } = useI18n();
 

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue';
-import 'vue3-carousel/dist/carousel.css';
+import { onMounted, ref, watch } from 'vue';
 import { Carousel, Pagination, Slide } from 'vue3-carousel';
+import 'vue3-carousel/dist/carousel.css';
+
 import Title from './Title.vue';
 
 function play() {

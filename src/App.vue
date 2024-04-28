@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { SpeedInsights } from '@vercel/speed-insights/vue';
 import { ref } from 'vue';
-import Navbar from '../src/components/Navbar.vue';
-import Pressable from '../src/components/Fragments/Pressable.vue';
 import { useI18n } from 'vue-i18n';
+
+import Pressable from '../src/components/Fragments/Pressable.vue';
+import Navbar from '../src/components/Navbar.vue';
 import Modal from './components/Fragments/Modal.vue';
 
 const { t } = useI18n();

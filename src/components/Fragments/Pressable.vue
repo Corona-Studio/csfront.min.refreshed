@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { ref, computed, useSlots, onMounted, onBeforeUnmount } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref, useSlots } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
+
 import { useLinkHandler } from '../../utils/linkHandler.ts';
 import { pushToast } from '../../utils/toast.ts';
-import { useRouter } from 'vue-router';
-import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 const iconRef = ref<HTMLElement | null>(null);

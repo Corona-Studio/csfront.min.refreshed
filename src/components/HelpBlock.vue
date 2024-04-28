@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import Modal from './Fragments/Modal.vue';
 import { useI18n } from 'vue-i18n';
-import ListItemPressablePreset from './Feature/ListItemPressablePreset.vue';
+
 import ContactInfo from './ContactInfo.vue';
+import ListItemPressablePreset from './Feature/ListItemPressablePreset.vue';
+import Modal from './Fragments/Modal.vue';
 import Pressable from './Fragments/Pressable.vue';
 
 const { t } = useI18n();

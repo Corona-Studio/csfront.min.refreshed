@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { ref, watch, onUpdated, onMounted, onBeforeUnmount } from 'vue';
+import { onBeforeUnmount, onMounted, onUpdated, ref, watch } from 'vue';
+
 import { doScroll } from '../../utils/scroll.ts';
 import Footer from '../Footer.vue';
+
 const PMC = ref<HTMLElement | null>(null);
 const heightFix = ref(0);
 const timer = ref(false);

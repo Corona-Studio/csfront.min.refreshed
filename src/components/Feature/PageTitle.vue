@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch, onMounted, useSlots } from 'vue';
+import { onMounted, useSlots, watch } from 'vue';
 
 const props = defineProps<{
     update?: string;

@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+
 import Pressable from './Fragments/Pressable.vue';
 
 const { t } = useI18n();

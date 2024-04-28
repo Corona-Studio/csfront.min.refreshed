@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { baseInvokeHeightFix } from '../utils/viewport.ts';
-import { updateCache } from '../utils/cache.ts';
 import { useI18n } from 'vue-i18n';
+
+import { updateCache } from '../utils/cache.ts';
+import { baseInvokeHeightFix } from '../utils/viewport.ts';
 import Corner from './Feature/Corner.vue';
 
 const { t } = useI18n();

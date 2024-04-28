@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { ref, computed, getCurrentInstance } from 'vue';
-import Modal from './Fragments/Modal.vue';
-import Pressable from './Fragments/Pressable.vue';
+import { computed, getCurrentInstance, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+
 import { i18n } from '../plugins/i18n.ts';
 import ListItemPressablePreset from './Feature/ListItemPressablePreset.vue';
+import Modal from './Fragments/Modal.vue';
+import Pressable from './Fragments/Pressable.vue';
 
 const { t } = useI18n();
 

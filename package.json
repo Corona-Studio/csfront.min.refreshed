@@ -16,8 +16,10 @@
         "vue3-carousel": "^0.3.3"
     },
     "devDependencies": {
+        "@trivago/prettier-plugin-sort-imports": "^4.3.0",
         "@types/node": "^20.12.7",
         "@vitejs/plugin-vue": "^5.0.4",
+        "@vue/compiler-sfc": "^3.4.25",
         "prettier": "3.2.5",
         "tailwindcss": "^3.4.3",
         "typescript": "^5.2.2",

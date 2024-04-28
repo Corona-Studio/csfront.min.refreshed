@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+
 import { ContentList } from '../models/server.ts';
 import { doScroll } from '../utils/scroll.ts';
 import ListItemPressablePreset from './Feature/ListItemPressablePreset.vue';
 import Chip from './Fragments/Chip.vue';
-import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 

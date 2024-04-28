@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+
 import Carousel from '../components/Carousel.vue';
 import PageTitle from '../components/Feature/PageTitle.vue';
 import Paper from '../components/Fragments/Paper.vue';
-import { ref } from 'vue';
-import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 

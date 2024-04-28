@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import { onMounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useRoute } from 'vue-router';
+
 import PageTitle from '../components/Feature/PageTitle.vue';
 import Paper from '../components/Fragments/Paper.vue';
-import { onMounted, ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
 
 const { t } = useI18n();
 const router = useRoute();

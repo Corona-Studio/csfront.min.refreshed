@@ -1,11 +1,12 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+
 import ContactInfo from '../components/ContactInfo.vue';
 import Corner from '../components/Feature/Corner.vue';
 import PageTitle from '../components/Feature/PageTitle.vue';
 import Paper from '../components/Fragments/Paper.vue';
 import Pressable from '../components/Fragments/Pressable.vue';
-import { useI18n } from 'vue-i18n';
-import { onMounted, ref } from 'vue';
 import { doScroll } from '../utils/scroll.ts';
 
 const { t } = useI18n();

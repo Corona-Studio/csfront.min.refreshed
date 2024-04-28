@@ -1,7 +1,8 @@
 import { createI18n } from 'vue-i18n';
-import { zhHans } from '../langs/zh_hans.ts';
-import { usEng } from '../langs/us_eng.ts';
+
 import { roRus } from '../langs/ro_rus.ts';
+import { usEng } from '../langs/us_eng.ts';
+import { zhHans } from '../langs/zh_hans.ts';
 
 // Type-define 'en-US' as the master schema for the resource
 type MessageSchema = typeof zhHans | typeof usEng | typeof roRus;

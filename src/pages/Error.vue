@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import Paper from '../components/Fragments/Paper.vue';
-import PageTitle from '../components/Feature/PageTitle.vue';
 import { useI18n } from 'vue-i18n';
+
+import PageTitle from '../components/Feature/PageTitle.vue';
+import Paper from '../components/Fragments/Paper.vue';
 
 const { t } = useI18n();
 </script>
