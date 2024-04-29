@@ -44,7 +44,6 @@ const langs = ref<Language[]>([
 ]);
 const dicon = ref(localStorage.theme == 'dark' ? '\ue708' : '\ue706');
 
-const logoPath = computed(() => '../assets/logo.png');
 const isSafari = computed(() => {
     return (
         window.navigator.userAgent.toString().includes('afari') &&
@@ -58,7 +57,7 @@ function switchDrawer() {
 
 function closeDrawer() {
     setTimeout(() => {
-        drawerModal.value!.Kill();
+        drawerModal.value!.kill();
     }, 100);
 }
 
@@ -90,10 +89,10 @@ function changeLang(lang: 'zh_hans' | 'us_eng' | 'ro_rus') {
 <template>
     <div
         id="Navbar"
-        class="fixed flex gap-1.5 top-0 w-full p-2 bg-zinc-200 dark:bg-zinc-800 lg:pr-5 px-1 backdrop-blur-sm rounded-lg rounded-b shadow-md hover:shadow-lg active:shadow rounded-t-none bg-opacity-80 hover:bg-opacity-90 active:bg-opacity-95 z-30 dark:bg-opacity-80 dark:hover:bg-opacity-90 dark:active:bg-opacity-95 transition">
+        class="fixed flex gap-1.5 top-0 w-full p-2 bg-zinc-200 dark:bg-zinc-800 lg:pr-5 px-1 backdrop-blur-sm rounded-lg rounded-b shadow-md hover:shadow-lg active:shadow rounded-t-none bg-opacity-90 hover:bg-opacity-95 active:bg-opacity-100 z-30 dark:bg-opacity-80 dark:hover:bg-opacity-90 dark:active:bg-opacity-95 transition">
         <div
             id="logo"
-            :style="`background-image: url('${logoPath}')`"
+            :style="`background-image: url('/logo.png')`"
             onclick="window.location.replace('/')"></div>
 
         <Pressable
@@ -166,7 +165,7 @@ function changeLang(lang: 'zh_hans' | 'us_eng' | 'ro_rus') {
             <span class="">MAIN</span>
         </Pressable>
 
-        <Modal position="right" ref="drawerModal">
+        <Modal position="right" ref="drawerModal" :shut-by-ground="true">
             <div
                 class="p-3 rounded-lg bg-zinc-200 dark:bg-zinc-800 shadow right-0 min-h-screen bg-opacity-85 dark:bg-opacity-85 backdrop-blur-md"
                 style="min-width: 300px">
@@ -226,7 +225,7 @@ function changeLang(lang: 'zh_hans' | 'us_eng' | 'ro_rus') {
             </div>
         </Modal>
 
-        <Modal ref="langModal">
+        <Modal ref="langModal" :shut-by-ground="true">
             <div
                 class="p-3 rounded-lg bg-zinc-200 dark:bg-zinc-800 shadow hover:shadow-lg mx-auto">
                 <h4 class="px-3 mb-2 use-icon text-base lg:text-xl">

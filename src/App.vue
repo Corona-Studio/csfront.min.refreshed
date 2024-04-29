@@ -6,12 +6,27 @@ import { useI18n } from 'vue-i18n';
 import Pressable from '../src/components/Fragments/Pressable.vue';
 import Navbar from '../src/components/Navbar.vue';
 import Modal from './components/Fragments/Modal.vue';
+import { onMounted } from 'vue';
 
 const { t } = useI18n();
 
 const needWarnCookie = ref(false);
 const DateRef = ref(new Date());
 const RENDERHEIGHT = ref(0);
+const cookieWarn = ref<typeof Modal | null>(null);
+
+const ShutCookieWarningBanner = () => {
+    localStorage.readWarnBefore = true;
+    cookieWarn.value!.kill()
+}
+
+onMounted(() => {
+    if(localStorage.readWarnBefore != 'true'){
+        needWarnCookie.value! = true;
+        cookieWarn.value!.open();
+    }
+});
+
 </script>
 
 <template>
@@ -30,10 +45,10 @@ const RENDERHEIGHT = ref(0);
             <!-- </transition> -->
         </div>
 
-        <Modal ref="cookieWarn" position="bottom">
+        <Modal ref="cookieWarn" position="bottom" :shut-by-ground="false">
             <div
                 id="cookie-warning"
-                :class="`transition ${needWarnCookie ? 'fixed' : 'hidden'} border rounded-t shadow drop-shadow bg-zinc-100 dark:bg-zinc-700`">
+                :class="`transition ${needWarnCookie ? 'fixed' : 'hidden'} w-full bottom-0 border rounded-t shadow drop-shadow bg-zinc-100 dark:bg-zinc-700`">
                 <div class="m-2">
                     <p class="text-sm lg:text-lg mb-1.5 pb-1.5 p-2 use-icon">
                         {{ t('privacy.info') }}
@@ -46,21 +61,6 @@ const RENDERHEIGHT = ref(0);
                             v-html="t('privacy.warning')"></span>
                         <br />
                     </p>
-                    <span class="hidden">
-                        <span
-                            class="font-semibold text-amber-500 text-lg lg:text-2xl">
-                            请注意
-                        </span>
-                        ：您正在访问的是
-                        <span class="font-semibold">【最小实现】</span>
-                        网站，请访问
-                        <a
-                            class="text-blue-400 mx-0.5 hover:text-blue-500 active:text-blue-700 transition no-underline hover:underline active:underline"
-                            href="https://corona.studio">
-                            https://corona.studio
-                        </a>
-                        获得完整体验。
-                    </span>
                     <p
                         class="text-base lg:text-lg mt-1.5 py-3 pt-4 w-full"
                         style="text-align: right; padding: 0.1rem">
