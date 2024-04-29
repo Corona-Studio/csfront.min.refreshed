@@ -9,11 +9,11 @@ const adjusted = ref(false);
 const w = ref('w-min');
 
 const props = defineProps<{
-    form: 'top' | 'left' | 'right' | 'hide';
-    avatar: string | null;
-    title: string | null;
-    static: boolean | null;
-    inGrid: boolean | null;
+    form?: 'top' | 'left' | 'right' | 'hide';
+    avatar?: string;
+    title?: string;
+    static?: boolean;
+    inGrid?: boolean;
 }>();
 
 onMounted(() => {

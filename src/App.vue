@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { SpeedInsights } from '@vercel/speed-insights/vue';
 import { ref } from 'vue';
+import { onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 import Pressable from '../src/components/Fragments/Pressable.vue';
 import Navbar from '../src/components/Navbar.vue';
 import Modal from './components/Fragments/Modal.vue';
-import { onMounted } from 'vue';
 
 const { t } = useI18n();
 
@@ -17,16 +17,15 @@ const cookieWarn = ref<typeof Modal | null>(null);
 
 const ShutCookieWarningBanner = () => {
     localStorage.readWarnBefore = true;
-    cookieWarn.value!.kill()
-}
+    cookieWarn.value!.kill();
+};
 
 onMounted(() => {
-    if(localStorage.readWarnBefore != 'true'){
+    if (localStorage.readWarnBefore != 'true') {
         needWarnCookie.value! = true;
         cookieWarn.value!.open();
     }
 });
-
 </script>
 
 <template>
@@ -82,6 +81,4 @@ onMounted(() => {
     </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

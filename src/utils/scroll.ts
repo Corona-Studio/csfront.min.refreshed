@@ -1,5 +1,5 @@
 export function doScroll(id: string, shine = true, precise = false) {
-    if (id != '.PAGETOP') {
+    if (id !== '.PAGETOP') {
         const to = document.getElementById(id.replace('#', ''))!;
         window.scrollTo({
             top: to.offsetTop - (precise ? -1 : 50),

@@ -63,7 +63,7 @@ function killModal() {
             :no-shadow="true" />
         <i class="hidden p-0 px-0 py-0"></i>
 
-        <Modal ref="notset" :shut-by-ground="true" >
+        <Modal ref="notset" :shut-by-ground="true">
             <div
                 class="p-3 rounded-lg bg-zinc-200 dark:bg-zinc-800 shadow hover:shadow-lg mx-auto grid">
                 <h4 class="text-xl text-center p-3">

@@ -12,7 +12,9 @@ const props = defineProps<{
 }>();
 
 function mount(target: string) {
-    console.log('located modal: with its shutByGround value: ' + props.shutByGround)
+    console.log(
+        'located modal: with its shutByGround value: ' + props.shutByGround,
+    );
     if (target === 'ground') {
         switch (props.position ?? 'center') {
             case 'center':
@@ -32,24 +34,23 @@ function mount(target: string) {
     }
 }
 
-function open(){
+function open() {
     if (!isKilled.value) return;
     openStatus.value = true;
     isKilled.value = false;
-
 }
 
 function kill() {
     if (isKilled.value) return;
     openStatus.value = false;
-    
+
     setTimeout(() => {
         isKilled.value = true;
     }, 800);
 }
 
 const listener: EventListenerOrEventListenerObject = (e) => {
-    if(!(props.shutByGround)) return;
+    if (!props.shutByGround) return;
     if (!e.target || (e.target as Element).id != 'HugeModalGround') return;
     kill();
 };
@@ -69,28 +70,25 @@ onBeforeUnmount(() => {
     (modalground.value as Element).removeEventListener('click', listener);
 });
 
-defineExpose(
-    {
-        open,
-        kill
-    }
-)
+defineExpose({
+    open,
+    kill,
+});
 </script>
 
 <template>
     <div
         id="HugeModalGround"
         style="pointer-events: fill"
-        ref="modalground" :title="`stat: ${openStatus}`"
+        ref="modalground"
+        :title="`stat: ${openStatus}`"
         :class="`bg-opacity-35 bg-zinc-950 min-w-full min-h-screen fixed   
         ${openStatus ? 'xxx' : 'fade-au'} ${isKilled ? 'hidden' : 'fade-in'}
            grid ${mount('ground')}
-           top-0 left-0 right-0 bottom-0  `"
-        >
+           top-0 left-0 right-0 bottom-0  `">
         <div
             :class="`${(position ?? 'center') == 'bottom' ? 'w-full' : 'w-auto'} h-auto inner-border fixed     
-            ${openStatus ? 'xxx' : 'fade-au'} ${isKilled ? 'hidden' : 'fade-in'}   ${mount('frame')}  fn  `"
-            >
+            ${openStatus ? 'xxx' : 'fade-au'} ${isKilled ? 'hidden' : 'fade-in'}   ${mount('frame')}  fn  `">
             <slot></slot>
             <p v-if="isSafari" style="text-align: center" class="m-1">
                 <span
@@ -112,5 +110,4 @@ defineExpose(
     transition-timing-function: cubic-bezier(0.3, 0, 0.1, 1);
     transition-duration: 1.14ms;
 }
-
 </style>
