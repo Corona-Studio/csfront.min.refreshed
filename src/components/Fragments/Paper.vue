@@ -77,13 +77,12 @@ watch(screenHeight, (val) => {
             ref="PMC"
             id="PMC"
             :class="
-                ` shadow-xl h-full w-full  ${noBackdrop ?? false ? 'forcenobg' : 'backoff'}   z-10 bg-zinc-200 dark:bg-zinc-800 bg-opacity-55 dark:bg-opacity-55
+                ` shadow-xl h-full w-full  ${noBackdrop ?? false ? 'forcenobg' : 'backoff'}   z-10 bg-zinc-100 dark:bg-zinc-900 bg-opacity-55 dark:bg-opacity-55
             ${noTopWrap ?? false ? ' mt-0 ' : ' mt-16 '}
             ${presetPadding ?? false ? ' px-1.5 ' : ' px-0 '}
             ${noHeightWrap ?? false ? '  ' : ' min-h-screen '} ` + overClass
             "
             style="z-index: 8; pointer-events: fill">
-            <!-- :style="((this.fix ?? 'false') == 'true' ? `height: ${this.heightFix}px` : '')" -->
             <div
                 style="z-index: 8"
                 :class="

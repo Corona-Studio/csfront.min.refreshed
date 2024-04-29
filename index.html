@@ -1,100 +1,441 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Vite + Vue + TS</title>
-    </head>
-    <body>
-        <div id="app"></div>
-        <div id="popup-container fixed taz select-none">
-            <div
-                class="PopUpToastArea transition fixed w-full m-2 text-center bottom-0 pb-3"
-                id="pa">
-                <!-- -->
-            </div>
-            <style>
-                .taz {
-                    z-index: 999 !important;
-                }
-                :root {
-                    --toast-span: 0.58s;
-                    --toast-pos: 12vh;
-                    /* POPUP TOAST CONFIGURATION */
-                }
+<!DOCTYPE html>
+<html lang="" id="ROOT" >
+  <head>
+    <meta name="theme-color" content="#E4E4E7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#23272A" media="(prefers-color-scheme: dark)">
+    <meta name="keywords" content="日冕,corona,coronastudio,日冕工作室,launcherx,projbobcat,minecraft,第三方,third-party,opensource,minimal,min,min-page,<%= htmlWebpackPlugin.options.title %>">
+    <meta name="description" content="Corona Studio is a third-party certain-game-related software service and development studio. Corona Studio（日冕工作室）是以特定游戏第三方服务为业务核心的、由专业人士和爱好者组成的团队">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- <link rel="icon" href="<%= BASE_URL %>favicon.ico"> -->
+    <!-- <link rel="shortcut icon" href="<%= BASE_URL %>favicon.ico" type="image/x-icon"> -->
+    <link rel="stylesheet" href="/fonts/style.css">
+    <link rel="stylesheet" href="/output.css" type="text/css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkmode: 'class'
+        }
+    </script>
+    <title>无法加载请刷新</title>
+    <script> 
+                        const CURRENT_VERSION = 109200; 
+    </script>
+    <style>
+        *{
+            user-select: none;
+            transition: all;
+        }
+        .s{
+            user-select: auto !important;
+        }
+        .centr, .center{
+            top: auto !important;
+            bottom: auto !important;
+            left: auto !important;
+            right: auto !important;
+            margin: auto;
+        }
+        .use-icon{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, icomoon, 'fluent-icon';
+            /* vertical-align: middle; */
+        }
 
-                .shine {
-                    background-color: rgba(
-                        255,
-                        255,
-                        233,
-                        0.3555555555555555514
-                    ) !important;
-                }
+        @font-face {
+            font-family: 'fluent-icon';
+            src: url(/fonts/segoe-fluent-icon.ttf);
+        }
 
-                input {
-                    outline: 0;
-                }
+        @media(prefers-color-scheme: dark) {
+            .reduce-pic{
+                mix-blend-mode: difference;
+            }
+        }
+        @media(prefers-color-scheme: light) {
+            .reduce-pic{
+                mix-blend-mode: normal;
+            }
+        }
+        .pressable{
+            user-select: none;
+            margin-top: auto;
+            margin-bottom: auto;
+            height: fit-content;
+        }
+        .pressable > * {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        .tense, .tense > * {
+            vertical-align: bottom !important;
+            display: inline-block;
+        }
+        .hide-text {
+            background-color: black !important;
+            color: black;
+            padding-left: 3px;
+            padding-right: 3px;
+            margin-left: 1px;
+            margin-right: 1px;
+            user-select: none !important;
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.5, 0, 0.3, 0.9);
+            transition-duration: 150ms;
+        }
 
-                .toast-initial {
-                    transform: translateY(var(--toast-pos));
-                    animation: cubic-bezier(0.075, 0.82, 0.165, 1) popupAnimate
-                        var(--toast-span) forwards;
-                    z-index: 1000 !important;
-                }
+        .hide-text:hover {
+            color: white !important;
+            /*need to add title for the span items*/
+        }
+        
+        .mourn{
+            animation: mourn 35s ease forwards;
+        }
 
-                .toast-leave {
-                    animation: cubic-bezier(0.075, 0.82, 0.165, 1) popupLeave
-                        var(--toast-span) forwards;
-                }
+        @keyframes mourn {
+            0%{
+                filter: grayscale(100%);
+                -webkit-filter: grayscale(100%);
+            }
+            75%{
+                filter: grayscale(100%);
+                -webkit-filter: grayscale(100%);
+            }
+            100%{
+                -webkit-filter: grayscale(0%);
+                filter: grayscale(0%);
+            }
+            
+        }
+        .x{
+            color: rgb(255, 220, 0);
+            background-clip: text !important;
+            -webkit-background-clip: text !important;
+            color:transparent !important;
+            background: linear-gradient(to right, rgb(255, 208, 89), rgb(249, 170, 60))
+        }
+        .shine{
+            background-color: rgba(250, 250, 233, 0.5555555555555555514) !important;
+        }
+        .title-str{
+            z-index: 1;
+            position: relative;
+        }
+        .title-str::before{
+            height: .59rem;
+            width: 3.69rem;
+            background: rgba(231, 193, 41, 0.814);
+            content: '';
+            display: block;
+            float: left;
+            z-index: -1;
+            position: absolute;
+            bottom: 5.5px;
+            transform: translateX(-2.5px);
+            
+        }
+        .title-str-reverse::after{
+            height: .59rem;
+            width: 3.69rem;
+            background: rgba(231, 193, 41, 0.814);
+            content: '';
+            display: block;
+            float: right;
+            z-index: -1;
+            position: absolute;
+            top: 5.5px;
+            right: 3px;
+            transform: translateX(-2.5px);
 
-                @keyframes popupAnimate {
-                    0% {
-                        transform: translateY(var(--toast-pos));
-                    }
-                    100% {
-                        transform: translateY(calc(-1 * var(--toast-pos)));
-                    }
-                }
+        }
 
-                @keyframes popupLeave {
-                    0% {
-                        transform: translateY(calc(-1 * var(--toast-pos)));
-                    }
-                    100% {
-                        transform: translateY(calc(var(--toast-pos) * 2));
-                    }
-                }
-                .lini {
-                    line-height: 0.88rem;
-                }
+    </style>
+  </head> 
+<body class="font-sans dark:text-zinc-50 text-zinc-950 bg-zinc-100 dark:bg-zinc-900 transition" id="BODY" style="pointer-events: none;">
+    <!-- TRY OVERRIDE -->
+    <meta name="theme-color" content="#E4E4E7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#23272A" media="(prefers-color-scheme: dark)">
+    <!-- OVERRIDE -->
+    <noscript>
+        <div style="padding: 1.6rem; height: 100vh ; background: #000">
+            <h3 style="color: #36b1f6; font-size: 39px;  margin: 1rem">Cannot load this page</h3>
+            <p style="color: whitesmoke; margin: 1.5rem; width: 64% ">
+                Since your browser is not enabled Javascript for webpages as modern browsers as Firefox or anything else, 
+                this page is not abled to be rendered. Please try to make your browser enable Javascript running on webpage, 
+                or download a compatible browser with at least CSS3 support and JS(ES5) support. If there's not, please try 
+                to use another newer device.<br>
 
-                .a {
-                    color: rgb(54, 161, 255);
-                    transition-property: all;
-                    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-                    transition-duration: 150ms;
-                    font-weight: 539;
-                }
-                .a:hover {
-                    color: rgba(49, 128, 255, 0.888);
-                    text-decoration: underline;
-                }
-                .a:active {
-                    color: rgb(23, 83, 195, 0.9);
-                }
-                .a:visited {
-                    color: rgb(66, 85, 233);
-                    text-decoration: line-through;
-                }
-                .force-baseline {
-                    vertical-align: baseline !important;
-                }
-            </style>
+            </p>
+            <br>
+            <h3 style="color: #36b1f6; font-size: 39px; margin: 1rem">无法载入页面</h3>
+            <p style="color: whitesmoke; margin: 1.5rem; width: 64% ">
+                由于您的浏览器没有像现代主流浏览器（比如火狐）那样启用对Javascript的支持，这个页面无法展示。请尝试允许浏览器运行Javascript，
+                或下载对于您的设备最兼容的并且起码支持CSS3和JS(ES5)的浏览器。如果这种浏览器不存在，请尝试换一个设备访问。<br>
+
+            </p>
+            <br>
+            <h3 style="color: #36b1f6; font-size: 39px; margin: 1rem">Не может загружать этот сайт</h3>
+            <p style="color: whitesmoke; margin: 1.5rem; width: 64% ">
+                Ваш браузер не включен Javascript для вебсайтов... возможно, 
+                у него нет такая функция? Эта функция современная, и без той, этот сайт не может загружать. 
+                Пожалуйста, включите функцию «Javascript для вебсайтов», если у вашего браузера есть такая функция. 
+                Или, загрузите совместимый браузер как минимум с поддержкой CSS3 и JS(ES5). 
+                Если в этом мире нет такого браузера, пожалуйста, попробуйте использовать другое более новое устройство. <br>
+
+            </p>
+            <br>
+          </div>
+    </noscript>
+    <div id="app">
+    </div>
+    <!-- built files will be auto injected -->
+    <a id="ahandler" class="hidden"></a>
+    <!-- POPUP TOAST -->
+    <div id="popup-container fixed taz select-none">
+        <div class="PopUpToastArea transition fixed w-full m-2 text-center bottom-0 pb-3 " id="pa">
+            <!-- -->
         </div>
-        <link rel="stylesheet" href="/fonts/style.css" />
-        <link rel="stylesheet" href="./output.css" type="text/css" />
-        <script type="module" src="/src/main.ts"></script>
-    </body>
+        <style>
+            .taz{z-index: 999 !important;}
+            :root{
+                --toast-span: .58s;
+                --toast-pos: 12vh;
+                /* POPUP TOAST CONFIGURATION */
+            }
+
+            .shine{
+                background-color: rgba(255, 255, 233, 0.3555555555555555514) !important;
+            }
+
+            .hidden{
+                /* display: none; */
+            }
+        
+            input{
+                outline: 0;
+            }
+        
+            .toast-initial{
+                transform: translateY(var(--toast-pos));
+                animation: cubic-bezier(0.075, 0.82, 0.165, 1) popupAnimate var(--toast-span) forwards;
+                z-index: 1000 !important;
+            }
+
+            .toast-leave{
+                animation: cubic-bezier(0.075, 0.82, 0.165, 1) popupLeave var(--toast-span) forwards;
+
+            }
+        
+            @keyframes popupAnimate {
+                0%{
+                    transform: translateY(var(--toast-pos));
+                }
+                100%{
+                    transform: translateY(calc(-1 * var(--toast-pos)));
+                }
+            }
+
+            @keyframes popupLeave{
+                0%{
+                    transform: translateY(calc(-1 * var(--toast-pos)));
+                }
+                100%{
+                    transform: translateY(calc(var(--toast-pos) * 2));
+                }
+            }
+            .lini{
+                line-height: .88rem;
+            }
+
+            .a{
+                color: rgb(54, 161, 255);
+                transition-property: all;
+                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                transition-duration: 150ms;
+                font-weight: 539;
+            }
+            .a:hover{
+                color: rgba(49, 128, 255, 0.888);
+                text-decoration: underline;
+            }
+            .a:active{
+                color: rgb(23, 83, 195, .9);
+            }
+            .a:visited{
+                color: rgb(66, 85, 233);
+                text-decoration: line-through;
+            }
+            .force-baseline{
+                vertical-align: baseline !important;
+            }
+        </style>
+        <script>
+            const PopUpToastContainerClass = "toast-initial fixed p-3 use-icon #COLOR# border opacity-95 shadow-xl hover:shadow-2xl rounded-lg mx-auto max-w-max left-0 right-0 inline-block z-100";
+            const PopUpToastInnerClass = "use-icon force-baseline inline-block px-2.5 mx-auto lini";
+            var PopupArea = document.getElementById('pa');
+        
+            function PushToast(str, ucolor = "bg-emerald-400", later = 0, disappear = 3200){
+                let color = ucolor;
+                setTimeout(() => {
+                    switch(color){
+                        case "normal":
+                            // do nothing on the color
+                            break;
+                        case "warn":
+                            color = "bg-yellow-400";
+                            break;
+                        case "err":
+                            color = "bg-rose-400";
+                            break;
+                        case 'blur':
+                            color = 'backdrop-blur-md'
+                        default:
+                            break;
+                    }
+                    let containerC = PopUpToastContainerClass.replace('#COLOR#', color);
+                    let nPopToast = document.createElement('div');
+                    let nPopToastText = document.createElement('p');
+                    nPopToastText.innerHTML = str;
+                    nPopToast.appendChild(nPopToastText);
+                    for(let ii of containerC.split(" ")){
+                        nPopToast.classList.add(ii);
+                    }
+                    for(let ii of PopUpToastInnerClass.split(" ")){
+                        nPopToastText.classList.add(ii);
+                    }
+                    PopupArea.appendChild(nPopToast);
+        
+                    setTimeout(() => {
+                        nPopToast.classList.replace('toast-initial', 'toast-leave')
+                    }, disappear);
+                    setTimeout(() => {
+                        PopupArea.removeChild(nPopToast);
+                        delete nPopToast;
+                    }, 787 + disappear);
+        
+                }, later);
+            };
+            
+        </script>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+
+</body>
+    <script>
+        var LINKHANDLER = document.getElementById('ahandler'),
+            CURR_DATE = new Date(),
+            ORIGIN = window.location.origin;
+        const DarkSw = (turn = false) => {
+            let need = (window.matchMedia('(prefers-color-scheme: dark)').matches)
+            // let need = localStorage.theme == 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+            if (need) {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+                
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+                
+            }
+            //  (localStorage.theme == 'dark' ?  : );
+        }
+
+        DarkSw();
+        
+        let listeners = {
+            dark:(mediaQueryList ) => {
+                if(mediaQueryList.matches){
+                    document.documentElement.classList.add('dark');
+                    localStorage.theme = 'dark';
+                    console.log(0);
+                }
+            },
+            light:(mediaQueryList) => {
+                if(mediaQueryList.matches){
+                    document.documentElement.classList.remove('dark');
+                    localStorage.theme = 'light';
+                    console.log(1);
+                }
+            }
+        }
+
+        const Scroll = (id, shine = true, precise = false) => {
+            if(id != '.PAGETOP')
+            {            
+                var to = document.getElementById(id.replace('#', ''));
+                window.scrollTo({top: (to.offsetTop - (precise ? -1 : 50)), behavior: "smooth"});
+                if(shine){
+                    to.classList.add('transition');
+                    setTimeout(() => {
+                        to.classList.add('shine');
+                    }, 810);
+                    setTimeout(() => {
+                        to.classList.remove('shine');
+                    }, 1145);
+                }
+                delete to;
+                return;
+            }else window.scrollTo({top: 0, behavior: "smooth"});
+        }
+
+        let timer = false, _timeout;
+        const BaseInvokeHeightFix = (x = true) => {
+            if(timer & x) return;
+            else {
+                if(document.getElementById('PMC')){
+                    timer = true;
+                    document.getElementById('PMC').style.height = document.getElementById('aspan').offsetTop + 'px';
+                    console.log('Invoked: reform of window size (root)');
+                    _timeout = setTimeout(() => {
+                        timer = false;
+                        ResetBaseTimer();
+                    }, 890);
+                }
+            }
+        }
+        const ResetBaseTimer = () => {
+            setTimeout(() => {
+                _timeout = null;
+            }, 123);
+        }
+
+        const UPDATE = () => {
+            let _token = Math.ceil(Math.random()*10000);
+            caches.keys().then(function(names) {
+                for (let name of names)
+                    {
+                        caches.delete(name);
+                        console.log(`removed: ${name}`)
+                    }
+            });
+            window.location.replace(`/?renew=${_token}`);
+        }
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', listeners.dark);
+        window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', listeners.light);
+
+        window.addEventListener('resize', () => { BaseInvokeHeightFix() } );
+        window.addEventListener('touchstart', () => { BaseInvokeHeightFix() } );
+        window.addEventListener('scroll', () => { BaseInvokeHeightFix() } );
+        document.addEventListener('scroll', () => { BaseInvokeHeightFix() } );
+
+
+        // window.onclick = (e) => {console.log(e)} // debug
+  </script>
+  <style>
+    .changing{
+        transition: all cubic-bezier(0.075, 0.82, 0.165, 1)  8s;
+        animation: blazing forwards 3.7s;
+    }
+    @keyframes blazing {
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
+  </style>
 </html>

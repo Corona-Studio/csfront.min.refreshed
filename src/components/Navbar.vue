@@ -53,7 +53,7 @@ const isSafari = computed(() => {
 });
 
 function switchDrawer() {
-    drawerModal.value!.Open();
+    drawerModal.value!.open();
 }
 
 function closeDrawer() {
@@ -78,7 +78,7 @@ function switchDark() {
 }
 
 function invokeChooseLang() {
-    langModal.value!.Open();
+    langModal.value!.open();
 }
 
 function changeLang(lang: 'zh_hans' | 'us_eng' | 'ro_rus') {

@@ -39,13 +39,13 @@ function emitChange() {
     openStatus.value = true;
 }
 
-/*
+
   function open(){
     openStatus.value = true;
     fade(0, 119);
     isKilling.value = false;
   }
-  */
+
 
 function fade(from: number, to: number, speed = 1, pace = 1) {
     opacity.value = from;

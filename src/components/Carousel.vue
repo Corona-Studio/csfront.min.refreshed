@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue';
-import { Carousel, Pagination, Slide } from 'vue3-carousel';
-import 'vue3-carousel/dist/carousel.css';
 
 import Title from './Title.vue';
+import exp from 'constants';
 
 function play() {
     playing.value = true;
@@ -40,44 +39,56 @@ watch(
 <template>
     <div
         :class="`h-screen block ${frameClassList} transition bg-zinc-400 dark:bg-zinc-700 `">
-        <Carousel
-            :autoplay="playing ? 1230 : 0"
-            :style="`opacity: calc(${opacity ?? '100'} * 0.01) `">
-            <Slide v-for="img of imagePaths" :key="img">
-                <div class="carousel__item">
-                    <img :src="img" :alt="img" />
-                </div>
-            </Slide>
-
-            <template #addons>
-                <Pagination />
-            </template>
-        </Carousel>
-
+        <div class="w-full h-full">
+            <div class="carousels bg-center bg-no-repeat bg-cover opacity-30 absolute top-0 bottom-0 left-0 right-0" v-for="img of imagePaths" :key="img" :style="`background-image: url(${img}) !important; `">
+            </div>
+        </div>
         <Title :hidden="isHomeCarousel" />
     </div>
 </template>
+<script lang="ts">
+
+export default {
+    name: 'Carousel',
+    mounted(){
+        console.log(this.imagePaths);
+        this.Initial();
+    },
+    data(){
+        return {
+            carouselInterval: null,
+            // use another array with custom tuples to record. bind-change.
+        }
+    },
+    methods: {
+        Initial(){
+            this.carouselInterval = setInterval(()=>{
+                this.ChangeCarousel();
+            }, 3690);
+        },
+        ChangeCarousel(){
+
+        }
+    }
+
+}
+</script>
 
 <style scoped>
-.carousel__item {
-    min-height: 200px;
-    width: 100%;
-    background-color: var(--vc-clr-primary);
-    color: var(--vc-clr-white);
-    font-size: 20px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.out{
+    animation: fadelyc 1s cubic-bezier(0.075, 0.82, 0.165, 1) reverse;
+}
+.in{
+    animation: fadelyc 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 }
 
-.carousel__slide {
-    padding: 10px;
+@keyframes fadelyc {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: .1;
+    }
 }
 
-.carousel__prev,
-.carousel__next {
-    box-sizing: content-box;
-    border: 5px solid white;
-}
 </style>

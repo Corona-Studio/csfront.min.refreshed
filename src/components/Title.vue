@@ -25,7 +25,7 @@ defineProps<{
         :class="`${hidden ? ' hidden ' : ' - '}  justify-items-center items-center`">
         <div
             style="--tw-backdrop-blur: blur(1px)"
-            class="h-fit backdrop-blur-0">
+            class="h-fit  ">
             <div class="lg:inline-block hidden mx-auto px-3 rounded-sm my-auto">
                 <h4 class="text-left text-4xl mb-1 -translate-y-2">
                     <span
