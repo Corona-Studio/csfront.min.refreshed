@@ -86,8 +86,8 @@ onMounted(() => {
 <style scoped>
 .avatar {
     background-position: center;
-    background-repeat: no-repeat;
     background-size: contain;
+    background-repeat: no-repeat;
     /*  */
 }
 </style>

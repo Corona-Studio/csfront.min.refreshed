@@ -114,22 +114,22 @@ const footerWrapIndex = ref<FooterWrapIndex[]>([
 <style scoped>
 #Footer,
 #Footerx {
-    width: 100%;
     display: flex;
-    z-index: 0;
-    /* position: relative; */
-    box-sizing: border-box;
     flex-shrink: 0;
     flex-direction: column;
+    z-index: 0;
     transition:
         margin 225ms cubic-bezier(0, 0, 0.2, 1) 0ms,
         width 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    /* position: relative; */
+    box-sizing: border-box;
+    width: 100%;
     line-height: 1.2rem !important;
 }
 #Footer::before {
-    position: relative;
     display: block;
-    width: 88vw;
+    position: relative;
     opacity: 0;
+    width: 88vw;
 }
 </style>

@@ -116,14 +116,14 @@ defineProps<{
 
 <style scoped>
 .title-effect {
-    user-select: none;
     backdrop-filter: blur(12px) !important;
+    user-select: none;
     -webkit-backdrop-filter: blur(12px) !important;
 }
 
 .subtitle-effect {
-    user-select: none;
     backdrop-filter: blur(12px) !important;
+    user-select: none;
 }
 
 .home-wrap {

@@ -103,7 +103,7 @@ watch(screenHeight, (val) => {
     text-shadow: 3px 4px 5px rgba(85, 70, 70, 0.139);
 }
 .forcenobg {
-    background-color: transparent !important;
     box-shadow: none !important;
+    background-color: transparent !important;
 }
 </style>

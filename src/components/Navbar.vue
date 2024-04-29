@@ -257,16 +257,16 @@ function changeLang(lang: 'zh_hans' | 'us_eng' | 'ro_rus') {
 
 <style scoped>
 #logo {
-    width: 147px;
-    height: 39px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
     display: inline-block;
     mix-blend-mode: difference;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 147px;
+    height: 39px;
 }
 .navonly {
-    user-select: none;
     vertical-align: text-top !important;
+    user-select: none;
 }
 </style>

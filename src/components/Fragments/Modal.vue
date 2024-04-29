@@ -106,8 +106,8 @@ defineExpose({
 <style scoped>
 #HugeModalGround {
     z-index: 888;
+    transition-duration: 1.14ms;
     transition-property: all;
     transition-timing-function: cubic-bezier(0.3, 0, 0.1, 1);
-    transition-duration: 1.14ms;
 }
 </style>

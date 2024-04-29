@@ -200,11 +200,11 @@ onMounted(() => {
 
 <style scoped>
 #lxb {
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    background-size: contain !important;
-    background-clip: content-box !important;
     backdrop-filter: blur(1px);
+    background-position: center !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-clip: content-box !important;
 }
 .backoff {
     backdrop-filter: blur(30px);

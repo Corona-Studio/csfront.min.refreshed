@@ -214,16 +214,16 @@ onBeforeUnmount(() => {
 
 <style scoped>
 i {
-    text-transform: none;
+    font-style: normal !important;
+    font-variant: normal;
     text-decoration: none;
     text-emphasis: none;
-    font-variant: normal;
-    font-style: normal !important;
+    text-transform: none;
 }
 .dis {
     cursor: not-allowed !important;
-    pointer-events: none !important;
     background-color: rgba(67, 67, 67, 0.314);
+    pointer-events: none !important;
     color: grey;
 }
 </style>

@@ -119,7 +119,7 @@ function changeDisplay(inte: number) {
 
 <style scoped>
 i {
-    font-size: small;
     font-style: italic;
+    font-size: small;
 }
 </style>
