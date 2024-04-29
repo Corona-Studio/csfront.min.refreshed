@@ -90,7 +90,7 @@ defineExpose({
             :class="`${(position ?? 'center') == 'bottom' ? 'w-full' : 'w-auto'} h-auto inner-border fixed     
             ${openStatus ? 'xxx' : 'fade-au'} ${isKilled ? 'hidden' : 'fade-in'}   ${mount('frame')}  fn  `">
             <slot></slot>
-            <p v-if="isSafari" style="text-align: center" class="m-1">
+            <p class="m-1" v-if="isSafari" style="text-align: center">
                 <span
                     class="m-1 p-1 bg-zinc-100 dark:bg-zinc-800 rounded-lg opacity-80">
                     {{ 'safari' }}

@@ -16,8 +16,10 @@
     "importOrderSeparation": true,
     "importOrderSortSpecifiers": true,
     "cssDeclarationSorterKeepOverrides": false,
+    "attributeGroups": ["^class$", "^(id|name)$", "$DEFAULT", "^aria-"],
     "plugins": [
         "@trivago/prettier-plugin-sort-imports",
-        "prettier-plugin-css-order"
+        "prettier-plugin-css-order",
+        "prettier-plugin-organize-attributes"
     ]
 }

@@ -76,15 +76,15 @@ watch(countdown, (_) => {
     <Paper style="" :no-height-wrap="true">
         <PageTitle>{{ t('jump.jumpTitle') }}-CoronaStudio.min</PageTitle>
         <div
-            style="height: 80vh"
-            class="grid justify-items-center items-center justify-center w-full h-full pb-10 mb-5">
+            class="grid justify-items-center items-center justify-center w-full h-full pb-10 mb-5"
+            style="height: 80vh">
             <div>
                 <h1 class="text-2xl font-semibold text-center opacity-90">
                     {{ t('jump.jumpTitle') }}: {{ countdown }}
                 </h1>
                 <div class="text-center text-lg my-3">
                     <span class="opacity-70">{{ t('jump.jumpingTo') }}</span>
-                    <span ref="targetRef" id="target" class="text-lg p-1">
+                    <span class="text-lg p-1" id="target" ref="targetRef">
                         {{ target }}
                     </span>
                 </div>

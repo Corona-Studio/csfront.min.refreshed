@@ -80,8 +80,8 @@ onMounted(() => {
         :preset-width="false">
         <PageTitle>LauncherX-CoronaStudio.min</PageTitle>
         <div
-            id="lxb"
             class="w-full flex min-h-screen justify-items-center justify-center items-center mt-9 sm:mt-6 md:mt-3 lg:mt-0.5"
+            id="lxb"
             :style="''">
             <!--`background: url('/img/lx-banner.png')`  -->
             <h5
@@ -157,8 +157,8 @@ onMounted(() => {
                                     {{ down.name }}
                                 </Pressable>
                                 <p
-                                    style="font-size: 0.6rem"
-                                    class="col-span-full text-xs opacity-35">
+                                    class="col-span-full text-xs opacity-35"
+                                    style="font-size: 0.6rem">
                                     Last update:
                                     {{
                                         new Date(
@@ -172,9 +172,9 @@ onMounted(() => {
                                     {{ t('LauncherX.knowLauncherX') }}
                                 </p>
                                 <Pressable
+                                    class="h-full"
                                     :no-start-icon="true"
                                     :hide-matched-icon="true"
-                                    class="h-full"
                                     v-for="link of links"
                                     :key="link.title"
                                     type="outer"

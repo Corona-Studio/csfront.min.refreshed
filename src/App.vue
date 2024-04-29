@@ -31,13 +31,13 @@ onMounted(() => {
 <template>
     <SpeedInsights />
     <div
-        id="app"
         class="dark:text-zinc-50 text-zinc-950 bg-transparent transition container min-w-full"
+        id="app"
         style="pointer-events: none">
         <Navbar style="pointer-events: fill" />
         <div
-            id="RENDER"
             class="w-full shadow-2xl"
+            id="RENDER"
             style="z-index: 5; pointer-events: none">
             <!-- <transition name="changing"> -->
             <router-view />

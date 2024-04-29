@@ -9,10 +9,10 @@ const { t } = useI18n();
 
 <template>
     <Paper
+        class="overflow-hidden max-h-screen"
         :no-height-wrap="true"
         :no-top-wrap="true"
-        :no-backdrop="true"
-        class="overflow-hidden max-h-screen">
+        :no-backdrop="true">
         <PageTitle>{{ t('PageNotFound') }}</PageTitle>
         <div
             class="grid items-center justify-items-center justify-center h-screen overflow-hidden">

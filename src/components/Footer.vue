@@ -26,20 +26,20 @@ const footerWrapIndex = ref<FooterWrapIndex[]>([
 <template>
     <div class="footerwrap" style="overflow: hidden; pointer-events: none">
         <div
+            class="opacity-95 bottom-0 top-auto mb-0 w-full p-3 bg-transparent left-0 right-0 mx-auto"
             v-for="i of footerWrapIndex"
             :key="i.name"
             :id="`Footer${i.index === 0 ? 'x' : ''}`"
-            class="opacity-95 bottom-0 top-auto mb-0 w-full p-3 bg-transparent left-0 right-0 mx-auto"
             :style="`z-index: -1;  ${
                 i.index === 0
                     ? 'opacity: 0.6 !important; max-width: fit-content; pointer-events: none !important; display: inline-block !important; transform: translateX(-1000rem)!important;'
                     : 'position: fixed !important; pointer-events: visiblefill !important;'
             }`">
-            <div v-if="i.index === 0" class="h-1"></div>
+            <div class="h-1" v-if="i.index === 0"></div>
             <div
                 class="w-full shadow-xl bg-transparent"
                 style="height: 1px"></div>
-            <div id="footer-cont" class="pb-1">
+            <div class="pb-1" id="footer-cont">
                 <div class="flex pb-1.5" style="font-weight: 500">
                     <div class="grow">
                         <p class="">
@@ -71,9 +71,9 @@ const footerWrapIndex = ref<FooterWrapIndex[]>([
                         </i>
                         <br />
                         <a
+                            class="dark:text-zinc-50 text-zinc-900 opacity-75 hover:opacity-80 active:opacity-95"
                             href="https://www.12377.cn"
-                            target="_blank"
-                            class="dark:text-zinc-50 text-zinc-900 opacity-75 hover:opacity-80 active:opacity-95">
+                            target="_blank">
                             <i
                                 style="
                                     text-decoration: underline;
@@ -98,9 +98,9 @@ const footerWrapIndex = ref<FooterWrapIndex[]>([
                         {{ t('footer.tips3').replace('。', '') }}
                         <br />
                         <a
-                            @click="updateCache"
                             class="p-0.5 rounded"
                             id="REFRESH"
+                            @click="updateCache"
                             style="font-size: 0.67rem">
                             [{{ t('base.force') }}]
                         </a>

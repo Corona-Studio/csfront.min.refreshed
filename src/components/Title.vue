@@ -23,7 +23,7 @@ defineProps<{
             height: 100vh;
         "
         :class="`${hidden ? ' hidden ' : ' - '}  justify-items-center items-center`">
-        <div style="--tw-backdrop-blur: blur(1px)" class="h-fit">
+        <div class="h-fit" style="--tw-backdrop-blur: blur(1px)">
             <div class="lg:inline-block hidden mx-auto px-3 rounded-sm my-auto">
                 <h4 class="text-left text-4xl mb-1 -translate-y-2">
                     <span
@@ -96,8 +96,8 @@ defineProps<{
                                     class="rounded-lg transition font-sans font-semibold bg-yellow-500 dark:bg-yellow-600 bg-opacity-30 dark:bg-opacity-30 hover:bg-opacity-60 dark:hover:bg-opacity-60 active:bg-opacity-80 dark:active:bg-opacity-80 py-2 px-3">
                                     {{ t('index.intro') }}
                                     <span
-                                        style="--tw-translate-y: -0.121rem"
-                                        class="-translate-y-0.5 inline-block">
+                                        class="-translate-y-0.5 inline-block"
+                                        style="--tw-translate-y: -0.121rem">
                                         &RightAngleBracket;
                                     </span>
                                 </span>

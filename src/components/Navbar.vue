@@ -88,8 +88,8 @@ function changeLang(lang: 'zh_hans' | 'us_eng' | 'ro_rus') {
 
 <template>
     <div
-        id="Navbar"
-        class="fixed flex gap-1.5 top-0 w-full p-2 bg-zinc-200 dark:bg-zinc-800 lg:pr-5 px-1 backdrop-blur-sm rounded-lg rounded-b shadow-md hover:shadow-lg active:shadow rounded-t-none bg-opacity-90 hover:bg-opacity-95 active:bg-opacity-100 z-30 dark:bg-opacity-80 dark:hover:bg-opacity-90 dark:active:bg-opacity-95 transition">
+        class="fixed flex gap-1.5 top-0 w-full p-2 bg-zinc-200 dark:bg-zinc-800 lg:pr-5 px-1 backdrop-blur-sm rounded-lg rounded-b shadow-md hover:shadow-lg active:shadow rounded-t-none bg-opacity-90 hover:bg-opacity-95 active:bg-opacity-100 z-30 dark:bg-opacity-80 dark:hover:bg-opacity-90 dark:active:bg-opacity-95 transition"
+        id="Navbar">
         <div
             id="logo"
             :style="`background-image: url('/logo.png')`"
@@ -178,7 +178,7 @@ function changeLang(lang: 'zh_hans' | 'us_eng' | 'ro_rus') {
                     </span>
                 </p>
                 <ul class="w-full">
-                    <li v-for="one of navLinks" :key="one.name" class="my-2">
+                    <li class="my-2" v-for="one of navLinks" :key="one.name">
                         <Pressable
                             overclass="block text-lg px-2"
                             @click.native="closeDrawer()"
@@ -211,6 +211,7 @@ function changeLang(lang: 'zh_hans' | 'us_eng' | 'ro_rus') {
                     </li>
                 </ul>
                 <p
+                    class="m-1"
                     v-if="isSafari"
                     style="
                         text-align: center;
@@ -218,8 +219,7 @@ function changeLang(lang: 'zh_hans' | 'us_eng' | 'ro_rus') {
                         right: 0;
                         position: absolute;
                         width: 97%;
-                    "
-                    class="m-1">
+                    ">
                     <span class="m-1 p-1">{{ t('base.modalBugTips') }}</span>
                 </p>
             </div>
@@ -232,7 +232,7 @@ function changeLang(lang: 'zh_hans' | 'us_eng' | 'ro_rus') {
                     &#xf2b7; &nbsp;Choose Language
                 </h4>
                 <ul class="w-full">
-                    <li v-for="item of langs" :key="item.name" class="my-1.5">
+                    <li class="my-1.5" v-for="item of langs" :key="item.name">
                         <ListItemPressablePreset
                             :showComputedIcon="false"
                             type="bonsai"

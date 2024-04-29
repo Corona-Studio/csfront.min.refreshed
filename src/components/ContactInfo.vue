@@ -90,7 +90,7 @@ onMounted(() => {
             </h5>
         </div>
         <ul class="list-none" id="contact-list" ref="clist">
-            <li :class="hide" id="contact-bilibili">
+            <li id="contact-bilibili" :class="hide">
                 <Pressable
                     :no-tense="true"
                     type="outer"
@@ -100,7 +100,7 @@ onMounted(() => {
                     {{ t('contactInfo.bilibili') }}
                 </Pressable>
             </li>
-            <li :class="hide" id="contact-minebbs">
+            <li id="contact-minebbs" :class="hide">
                 <Pressable
                     :no-tense="true"
                     type="outer"
@@ -110,7 +110,7 @@ onMounted(() => {
                     {{ t('contactInfo.minebbs') }}
                 </Pressable>
             </li>
-            <li :class="hide" id="contact-kook">
+            <li id="contact-kook" :class="hide">
                 <Pressable
                     :no-tense="true"
                     type="outer"
@@ -120,7 +120,7 @@ onMounted(() => {
                     {{ t('contactInfo.kook') }}
                 </Pressable>
             </li>
-            <li :class="hide" id="contact-ca">
+            <li id="contact-ca" :class="hide">
                 <Pressable
                     :no-tense="true"
                     type="outer"
@@ -130,7 +130,7 @@ onMounted(() => {
                     {{ t('contactInfo.coolapk') }}
                 </Pressable>
             </li>
-            <li :class="hide" id="contact-coopqqgroup">
+            <li id="contact-coopqqgroup" :class="hide">
                 <Pressable
                     :no-tense="true"
                     type="outer"
@@ -143,9 +143,9 @@ onMounted(() => {
                 </Pressable>
             </li>
 
-            <hr :class="hide + ' my-3 w-11/12 mx-auto contact-divider'" id="" />
+            <hr id="" :class="hide + ' my-3 w-11/12 mx-auto contact-divider'" />
 
-            <li :class="hide" id="contact-lx1">
+            <li id="contact-lx1" :class="hide">
                 <Pressable
                     :no-tense="true"
                     type="copy"
@@ -154,7 +154,7 @@ onMounted(() => {
                     {{ t('contactInfo.qqLauncherX') }}：
                 </Pressable>
             </li>
-            <li :class="hide" id="contact-projbobcat">
+            <li id="contact-projbobcat" :class="hide">
                 <Pressable
                     :no-tense="true"
                     type="copy"
@@ -163,7 +163,7 @@ onMounted(() => {
                     {{ t('contactInfo.qqProjBobcat') }}：
                 </Pressable>
             </li>
-            <li :class="hide" id="contact-cmfs">
+            <li id="contact-cmfs" :class="hide">
                 <Pressable
                     :no-tense="true"
                     type="copy"
@@ -172,7 +172,7 @@ onMounted(() => {
                     {{ t('contactInfo.qqCMFS') }}：
                 </Pressable>
             </li>
-            <li :class="hide" id="contact-newbee">
+            <li id="contact-newbee" :class="hide">
                 <Pressable
                     :no-tense="true"
                     type="copy"
@@ -183,14 +183,14 @@ onMounted(() => {
             </li>
 
             <hr
-                :class="hide + ' my-3 w-11/12 mx-auto contact-divider '"
                 id=""
+                :class="hide + ' my-3 w-11/12 mx-auto contact-divider '"
                 ref="hrformore" />
 
-            <div ref="evenmore" class="hidden">
+            <div class="hidden" ref="evenmore">
                 <li
-                    :class="hide.replace('hidden', '')"
-                    id="contact-feiron-mail">
+                    id="contact-feiron-mail"
+                    :class="hide.replace('hidden', '')">
                     <Pressable
                         :no-tense="true"
                         title="Feiron Iguista's Working Mail"
@@ -205,7 +205,7 @@ onMounted(() => {
                         frigeso@icloud.com
                     </Pressable>
                 </li>
-                <li :class="hide.replace('hidden', '')" id="contact-lx-vk">
+                <li id="contact-lx-vk" :class="hide.replace('hidden', '')">
                     <Pressable
                         :no-tense="true"
                         type="outer"
@@ -219,7 +219,7 @@ onMounted(() => {
                         Для русских
                     </Pressable>
                 </li>
-                <li :class="hide.replace('hidden', '')" id="contact-who-x">
+                <li id="contact-who-x" :class="hide.replace('hidden', '')">
                     <Pressable
                         :no-tense="true"
                         type="outer"
@@ -234,7 +234,7 @@ onMounted(() => {
                         For EN speakers
                     </Pressable>
                 </li>
-                <li :class="hide.replace('hidden', '')" id="contact-who-wb">
+                <li id="contact-who-wb" :class="hide.replace('hidden', '')">
                     <Pressable
                         :no-tense="true"
                         type="outer"
