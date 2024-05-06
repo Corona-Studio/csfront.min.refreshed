@@ -37,5 +37,6 @@ const preIcon = computed(() => {
         :init-opacity="15"
         overclass="text-lg use-icon">
         {{ showComputedIcon ?? false ? preIcon : '' }}
+        <slot></slot>
     </Pressable>
 </template>

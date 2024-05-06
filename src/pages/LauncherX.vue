@@ -146,7 +146,7 @@ onMounted(() => {
                                     v-for="down of downloads"
                                     :key="down.build"
                                     :overclass="'py-2 my-1 '"
-                                    :type="`download:${down.link.replace('/products/lx/', '').replace('net8.0-', '').replace('.zip', '').replace('%build%', buildId.toString())}`"
+                                    :type="`download:${down.link.replace('/products/lx/', '').replace('net8.0-', '').replace('%build%', buildId.toString())}`"
                                     :link="
                                         '%origin%' +
                                         down.link.replace(

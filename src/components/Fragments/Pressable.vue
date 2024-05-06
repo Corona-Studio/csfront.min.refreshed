@@ -36,12 +36,8 @@ const props = defineProps<{
     title?: string;
 }>();
 
-const ex = computed(() => {
-    if (!slots.default) return;
-
-    return slots.default!()[0].children?.toString()?.includes('：')
-        ? props.copyContent
-        : '';
+let ex = computed(() => {
+    return (props.copyContent == undefined ? '' : ((`${slots.default!()[0].children}`.includes('：')) ? props.copyContent! : (((props.hideProtocol ?? false) && (props.copyContent!.includes('://'))) ? props.copyContent!.split('://')[1] : props.copyContent!)));
 });
 
 function copy(item: string) {
@@ -72,9 +68,10 @@ function runClickEvent(to: string, ty: string) {
             }
 
             copy(props.copyContent);
+            return;
         }
     if (ty == 'outer' || ty == 'outer-link') {
-        if (props.link) {
+        if (!props.link) {
             pushToast(t('base.nolink'), 'blur');
             return;
         }
@@ -83,7 +80,7 @@ function runClickEvent(to: string, ty: string) {
         linkHandler.click();
     } else if (ty == 'bonsai') return;
     else if (ty == 'verified-link') {
-        if (props.link) {
+        if (!props.link) {
             pushToast(t('base.nolink'), 'blur');
             return;
         }
@@ -91,15 +88,17 @@ function runClickEvent(to: string, ty: string) {
         linkHandler.setAttribute('href', to);
         linkHandler.click();
     } else if ((ty ?? '').includes('download:')) {
-        if (props.link) {
+        if (!props.link) {
             pushToast(t('base.nolink'), 'blur');
             return;
         }
+        let _to = '';
         if (to.includes('%origin%'))
-            to = to.replace('%origin%', window.location.origin);
+            _to = to.replace('%origin%', window.location.origin);
         let filename = ty.replace('download:', '');
+        console.log(filename)
         linkHandler.setAttribute('download', filename);
-        linkHandler.setAttribute('href', to);
+        linkHandler.setAttribute('href', _to);
         linkHandler.click();
         linkHandler.removeAttribute('download');
     } else {
@@ -151,10 +150,12 @@ onMounted(() => {
         if (props.isVerified ?? false) endIconRef.value.innerHTML += ' \uea18';
         iconRef.value.innerHTML += ' ';
     }
+
+    // console.log(((props.hideProtocol ?? false) && (((ex ?? '')).includes('://'))) ? ex.split('://')[1] : ex)
 });
 
 onBeforeUnmount(() => {
-    if (!pressableBase.value) return;
+    if (!pressableBase.value) return ;
 
     pressableBase.value.removeEventListener('pointerup', pressableBaseAction);
 });
@@ -190,11 +191,10 @@ onBeforeUnmount(() => {
                     "
                     style="--tw-translate-y: 0.17365rem"></span>
                 <slot></slot>
-                {{
-                    (hideProtocol ?? false) && (ex?.includes('://') ?? false)
-                        ? ex!.split('://')[1]
-                        : ex
-                }}
+                {{ ex }}
+                <!-- 
+                    ((props.hideProtocol ?? false) && (((ex ?? '')).includes('://'))) ? ex.split('://')[1] : ex
+                 -->
             </span>
             <i
                 :class="
