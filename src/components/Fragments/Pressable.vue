@@ -34,10 +34,13 @@ const props = defineProps<{
     noLinkIcon?: boolean;
     noStartIcon?: boolean;
     title?: string;
+    fin?: boolean;
+    noPadding?: boolean;
+    ignoreTextResp?: boolean;
 }>();
 
 let ex = computed(() => {
-    return (props.copyContent == undefined ? '' : ((`${slots.default!()[0].children}`.includes('：')) ? props.copyContent! : (((props.hideProtocol ?? false) && (props.copyContent!.includes('://'))) ? props.copyContent!.split('://')[1] : props.copyContent!)));
+    return (props.copyContent == undefined ? '' : ((`${slots.default!()[0].children}`.includes('：') || `${slots.default!()[0].children}`.includes(': ')) ? props.copyContent! : (((props.hideProtocol ?? false) && (props.copyContent!.includes('://'))) ? props.copyContent!.split('://')[1] : props.copyContent!)));
 });
 
 function copy(item: string) {
@@ -56,6 +59,7 @@ function copy(item: string) {
 }
 
 function runClickEvent(to: string, ty: string) {
+    console.log('invoked a button handle')
     if (props.isFuncButton) return;
 
     const linkHandler = useLinkHandler();
@@ -136,7 +140,7 @@ onMounted(() => {
             0;
     pressableBase.value.addEventListener('pointerup', pressableBaseAction); // @click="RunClickEvent(link, type)"
 
-    if (props.hideMatchedIcon ?? false) {
+    if (!(props.hideMatchedIcon ?? false)) {
         if ((props.type ?? '') == 'copy') iconRef.value.innerHTML = '\ue8c8';
         if (
             (props.type ?? '').includes('outer') ||
@@ -151,7 +155,8 @@ onMounted(() => {
         iconRef.value.innerHTML += ' ';
     }
 
-    // console.log(((props.hideProtocol ?? false) && (((ex ?? '')).includes('://'))) ? ex.split('://')[1] : ex)
+    // console.log(typeof (slots.default!()[0].children))
+    // if((typeof (slots.default!()[0].children)) == 'string') (slots.default!()[0].children as string).replace("：", ": ")
 });
 
 onBeforeUnmount(() => {
@@ -165,36 +170,37 @@ onBeforeUnmount(() => {
     <div
         :title="title ?? link"
         :class="`pressable transition ${unspaced <= 1 || (overclass ?? 'x').includes('text-') ? '' : 'text-sm'} ${(overclass ?? '').includes('bg-') ? '' : 'bg-stone-300 dark:bg-stone-700'}
-          text-stone-950  dark:text-stone-50 shadow${initShadow ?? '-none'}
+          text-stone-950  dark:text-stone-50 shadow${(initShadow ?? '').replace('none', '-none')}
             ${(overclass ?? '').includes('rounded') ? '' : 'rounded-lg'}
-            bg-opacity-${initOpacity ?? 15}
-            dark:bg-opacity-${initOpacity ?? 15}
+            bg-opacity-${initOpacity ?? 30}
+            dark:bg-opacity-${initOpacity ?? 30}
             hover:shadow-md hover:bg-opacity-70   active:shadow-sm active:bg-opacity-100
-            dark:hover:bg-opacity-70 dark:hover:shadow-md   dark:shadow  dark:active:shadow-sm dark:active:bg-opacity-100
-            px-2 py-1 mx-1 select-none 
-            ?text-center sm:text-left? 
+            dark:hover:bg-opacity-70 dark:hover:shadow-md   dark:shadow${(initShadow ?? '').replace('none', '-none')}  dark:active:shadow-sm dark:active:bg-opacity-100
+            px-2 ${(props.fin ?? false) ? ((props.isOnlyIcon ?? false) ? 'py-1' : 'py-1.5') : ((props.isOnlyIcon ?? false) ? 'py-1' : 'py-2')} mx-1 select-none 
             ${disable ?? false ? 'dis' : ''}
             ${overclass}
+ 
         `"
-        :style="`${overstyle} ; cursor: pointer;`"
+        :style="`${overstyle} ; cursor: pointer; ${(props.noPadding ?? false) ? 'padding: 0 !important;' : ''}`"
         ref="pressableBase">
         <span :class="noTense ?? false ? 'untense' : 'tense'">
-            <i :class="iconClass"></i>
+            <i :class="`${iconClass}    use-icon`"></i>
             <span
                 :class="`text-center my-auto mx-0 ml-0 ${isOnlyIcon ?? false ? ' use-icon ' : ' '}`">
                 <span
                     ref="iconRef"
                     :class="
-                        noStartIcon ?? false
+                        (noStartIcon ?? false)
                             ? 'hidden'
                             : 'use-icon inline-block translate-y-1 mr-1'
                     "
                     style="--tw-translate-y: 0.17365rem"></span>
-                <slot></slot>
-                {{ ex }}
-                <!-- 
-                    ((props.hideProtocol ?? false) && (((ex ?? '')).includes('://'))) ? ex.split('://')[1] : ex
-                 -->
+                <span  class="scale-90 px-0.5" style="--tw-scale-x: .79; --tw-scale-y: .79;">
+                    <slot></slot>
+                </span>
+                <span :class="` ${ex == '' ? 'hidden' : ''}       scale-90  ${((props.ignoreTextResp ?? false) && !(props.fin ?? false)) ? 'text-sm' : 'text-sm sm:text-base md:text-lg'}`" style="--tw-scale-x: .79; --tw-scale-y: .79;">
+                    {{ ex }}
+                </span>
             </span>
             <i
                 :class="
@@ -225,5 +231,11 @@ i {
     background-color: rgba(67, 67, 67, 0.314);
     pointer-events: none !important;
     color: grey;
+}
+i.use-icon{
+    font-style: normal !important;
+}
+span{
+    height: min-content !important;
 }
 </style>
