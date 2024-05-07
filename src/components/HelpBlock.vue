@@ -11,7 +11,7 @@ const { t } = useI18n();
 
 const notset = ref<typeof Modal | null>(null);
 
-defineProps<{
+const props = defineProps<{
     main?: string;
     showContacts?: boolean;
 }>();
@@ -46,17 +46,17 @@ function killModal() {
                     type="outer-link"
                     :show-computed-icon="false"
                     :isVerified="true"
-                    link="main">
+                    :link="props.main">
                     {{ t('helpblock.toMainTitle') }}
                 </ListItemPressablePreset>
             </h6>
         </div>
         <!-- contact  -->
         <ContactInfo
-            v-show="showContacts ?? false"
+            
             title-class="text-xl px-0 py-0 mt-1.5 opacity-80"
             :titled="'⟩' + t('helpblock.contactTitle')"
-            head="show"
+            head="show" 
             sub="hide"
             only="@showmoreplats@onlymoreplats"
             style="padding: 0; --tw-bg-opacity: 0; margin: 0"

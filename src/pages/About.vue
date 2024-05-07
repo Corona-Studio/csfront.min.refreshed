@@ -4,6 +4,7 @@
   import Paper from "../components/Fragments/Paper.vue";
   import PageTitle from "../components/Feature/PageTitle.vue";
   import HideText from "../components/Fragments/HideText.vue";
+  import Pressable from '../components/Fragments/Pressable.vue';
   import ACard from "../components/ACard.vue";
   import Corner from "../components/Feature/Corner.vue";
   import ContactInfo from "../components/ContactInfo.vue";
@@ -112,7 +113,7 @@
             <h2 class="title-str pt-1">{{ t('about.intro8') }}</h2>
             <div class="bg-zinc-100 dark:bg-zinc-800 bg-opacity-70 p-1.5 m-0.5 my-2 mb-0 translate-y-1 rounded-xl">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-1.5 justify-center rounded-lg px-1 mb-3">
-                    <div class="transition border border-transparent mt-1 rounded-lg mx-auto p-3.5 lg:p-5 bitter shadow hover:shadow-lg active:shadow-xl" style="height: 100%;">
+                    <div class="transition scale-100 hover:scale-105  border border-transparent mt-1 rounded-lg mx-auto p-3.5 lg:p-5 bitter shadow hover:shadow-lg active:shadow-xl" style="height: 100%;">
                         <div class="text-2xl flex justify-start w-full" style="color: rgb(251 192 45);">
                             <svg class="imp-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><g><rect fill="none" height="24" width="24"></rect></g><g><g></g><g><path d="M21,5c-1.11-0.35-2.33-0.5-3.5-0.5c-1.95,0-4.05,0.4-5.5,1.5c-1.45-1.1-3.55-1.5-5.5-1.5S2.45,4.9,1,6v14.65 c0,0.25,0.25,0.5,0.5,0.5c0.1,0,0.15-0.05,0.25-0.05C3.1,20.45,5.05,20,6.5,20c1.95,0,4.05,0.4,5.5,1.5c1.35-0.85,3.8-1.5,5.5-1.5 c1.65,0,3.35,0.3,4.75,1.05c0.1,0.05,0.15,0.05,0.25,0.05c0.25,0,0.5-0.25,0.5-0.5V6C22.4,5.55,21.75,5.25,21,5z M3,18.5V7 c1.1-0.35,2.3-0.5,3.5-0.5c1.34,0,3.13,0.41,4.5,0.99v11.5C9.63,18.41,7.84,18,6.5,18C5.3,18,4.1,18.15,3,18.5z M21,18.5 c-1.1-0.35-2.3-0.5-3.5-0.5c-1.34,0-3.13,0.41-4.5,0.99V7.49c1.37-0.59,3.16-0.99,4.5-0.99c1.2,0,2.4,0.15,3.5,0.5V18.5z"></path><path d="M11,7.49C9.63,6.91,7.84,6.5,6.5,6.5C5.3,6.5,4.1,6.65,3,7v11.5C4.1,18.15,5.3,18,6.5,18 c1.34,0,3.13,0.41,4.5,0.99V7.49z" opacity=".3"></path></g><g><path d="M17.5,10.5c0.88,0,1.73,0.09,2.5,0.26V9.24C19.21,9.09,18.36,9,17.5,9c-1.28,0-2.46,0.16-3.5,0.47v1.57 C14.99,10.69,16.18,10.5,17.5,10.5z"></path><path d="M17.5,13.16c0.88,0,1.73,0.09,2.5,0.26V11.9c-0.79-0.15-1.64-0.24-2.5-0.24c-1.28,0-2.46,0.16-3.5,0.47v1.57 C14.99,13.36,16.18,13.16,17.5,13.16z"></path><path d="M17.5,15.83c0.88,0,1.73,0.09,2.5,0.26v-1.52c-0.79-0.15-1.64-0.24-2.5-0.24c-1.28,0-2.46,0.16-3.5,0.47v1.57 C14.99,16.02,16.18,15.83,17.5,15.83z"></path></g></g></svg>
                             <span class="mx-1.5">
@@ -124,7 +125,7 @@
                         </p>
                     </div>   
 
-                    <div class="transition border border-transparent mt-1 rounded-lg mx-auto p-3.5 lg:p-5 pezima transition-default shadow hover:shadow-lg active:shadow-xl w-full" style="height: 100%;">
+                    <div class="transition scale-100 hover:scale-105  border border-transparent mt-1 rounded-lg mx-auto p-3.5 lg:p-5 pezima transition-default shadow hover:shadow-lg active:shadow-xl w-full" style="height: 100%;">
                         <div class="text-2xl flex justify-start w-full" style="color: rgb(106, 208, 157);">
                             <svg class="imp-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><g display="none"><rect display="inline" fill="none" height="24" width="24" y="0"></rect></g><g><g><path d="M18,12H6c-1.1,0-2,0.9-2,2c0,0.51,0.2,0.97,0.51,1.32C5.05,14.53,5.97,14,7,14c1.3,0,2.4,0.84,2.82,2h4.37 c0.41-1.16,1.51-2,2.82-2c1.03,0,1.95,0.53,2.49,1.32C19.8,14.97,20,14.51,20,14C20,12.9,19.1,12,18,12z" opacity=".3"></path><path d="M18.75,10.08L17.4,6.05C17,4.82,15.85,4,14.56,4H9.44C8.15,4,7,4.82,6.6,6.05L5.81,8.4L4.41,7l0.29-0.29 c0.39-0.39,0.39-1.02,0-1.41c-0.39-0.39-1.02-0.39-1.41,0l-2,2c-0.39,0.39-0.39,1.02,0,1.41c0.39,0.39,1.02,0.39,1.41,0L3,8.41 l1.79,1.79C3.18,10.72,2,12.22,2,14c0,1.49,0.83,2.78,2.05,3.47C4.27,18.9,5.51,20,7,20c1.3,0,2.4-0.84,2.82-2h4.37 c0.41,1.16,1.51,2,2.82,2c1.49,0,2.73-1.1,2.95-2.53C21.17,16.78,22,15.49,22,14C22,12.05,20.6,10.43,18.75,10.08z M13,6h1.56 c0.43,0,0.81,0.27,0.95,0.68L16.61,10H13V6z M8.49,6.68C8.63,6.27,9.01,6,9.44,6H11v4H7.41L7.39,9.98L8.49,6.68z M7,18 c-0.55,0-1-0.45-1-1s0.45-1,1-1s1,0.45,1,1S7.55,18,7,18z M17,18c-0.55,0-1-0.45-1-1s0.45-1,1-1s1,0.45,1,1S17.55,18,17,18z M19.49,15.32C18.95,14.53,18.03,14,17,14c-1.3,0-2.4,0.84-2.82,2H9.82C9.4,14.84,8.3,14,7,14c-1.03,0-1.95,0.53-2.49,1.32 C4.2,14.97,4,14.51,4,14c0-1.1,0.9-2,2-2h12c1.1,0,2,0.9,2,2C20,14.51,19.8,14.97,19.49,15.32z"></path></g></g></svg>
                             <span class="mx-1.5">
@@ -136,7 +137,7 @@
                         </p>
                     </div>
 
-                    <div class="transition border border-transparent mt-1 rounded-lg mx-auto p-3.5 lg:p-5 azul transition-default shadow hover:shadow-lg active:shadow-xl" style="height: 100%;">
+                    <div class="transition scale-100 hover:scale-105  border border-transparent mt-1 rounded-lg mx-auto p-3.5 lg:p-5 azul transition-default shadow hover:shadow-lg active:shadow-xl" style="height: 100%;">
                         <div class="text-2xl flex justify-start w-full" style="color: rgb(79, 148, 236);">
                             <svg class="imp-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><g><path d="M0,0h24v24H0V0z" fill="none"></path></g><g><g><rect height="2" opacity=".3" width="10" x="7" y="11"></rect><path d="M5,15h14V9H5V15z M7,11h10v2H7V11z"></path><rect height="3" width="2" x="11" y="2"></rect><rect height="2" transform="matrix(0.7046 -0.7096 0.7096 0.7046 1.1814 15.2381)" width="2.54" x="17.62" y="5.2"></rect><rect height="3" width="2" x="11" y="19"></rect><polygon points="17.29,17.71 19.08,19.51 20.5,18.09 18.7,16.3"></polygon><rect height="2.53" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -2.8904 5.4222)" width="1.99" x="4.1" y="4.93"></rect><rect height="2" transform="matrix(0.7096 -0.7046 0.7046 0.7096 -11.1263 8.7897)" width="2.54" x="3.83" y="16.89"></rect></g></g></svg>
                             <span class="mx-1.5">
@@ -164,7 +165,7 @@
                     <span v-for="i of m.desc.split('+')" :key="i" class="text-xs block mx-auto text-center" style="line-height: .863rem !important;">
                         {{ i }}<Corner />
                     </span>
-                    <Pressable no-link-icon="true" no-start-icon="true" type="outer" hide-matched-icon="true" :link="m.link" overclass="mx-auto w-fit mt-2.5 use-icon">&#xe903;</Pressable>
+                    <Pressable :no-link-icon="true" :no-start-icon="true" type="outer" :hide-matched-icon="true" :link="m.link" overclass="mx-auto w-fit mt-2.5 use-icon">&#xe903;</Pressable>
                 </ACard>
             </div>
 

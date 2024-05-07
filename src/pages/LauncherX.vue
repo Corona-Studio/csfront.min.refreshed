@@ -183,7 +183,7 @@ onMounted(() => {
                                     {{ link.title }}
                                 </Pressable>
 
-                                <div class="col-span-full">
+                                <div class="col-span-full mt-0.5">
                                     <ContactInfo only="!lx1" head="false" />
                                 </div>
                             </div>

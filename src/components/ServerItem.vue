@@ -63,7 +63,7 @@ onMounted(() => {
 
 <template>
     <div
-        class="p-1.5 mx-auto bg-zinc-500 bg-opacity-10 dark:bg-opacity-10 hover:bg-opacity-20 dark:hover:bg-opacity-20 active:bg-opacity-15 dark:active:bg-opacity-15 w-full rounded-lg transition">
+        class="p-1.5 mx-auto bg-zinc-400 bg-opacity-10 dark:bg-opacity-10 hover:bg-opacity-20 dark:hover:bg-opacity-20 active:bg-opacity-15 dark:active:bg-opacity-15 w-full rounded-lg transition">
         <!--templ-->
         <h1 class="text-lg lg:servr-xl font-semibold">
             <span
@@ -99,7 +99,7 @@ onMounted(() => {
                     :type="list.isCopy ? 'copy' : 'outer-link'"
                     :esuper="list.with">
                     {{ list.content
-                    }}{{ list.content.includes('[') ? '' : '：' }}
+                    }}{{ list.content.includes('[') ? '' : ': ' }}
                 </ListItemPressablePreset>
             </li>
         </ul>
@@ -111,7 +111,7 @@ onMounted(() => {
                     :show-computed-icon="false"
                     :type="list.isCopy ? 'copy' : 'outer-link'"
                     :esuper="list.with">
-                    {{ list.content }}：
+                    {{ list.content }}: 
                 </ListItemPressablePreset>
             </li>
         </ul>

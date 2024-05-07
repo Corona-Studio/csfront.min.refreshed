@@ -3,12 +3,13 @@ import { SpeedInsights } from '@vercel/speed-insights/vue';
 import { ref } from 'vue';
 import { onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { Match } from './plugins/i18n';
 
 import Pressable from '../src/components/Fragments/Pressable.vue';
 import Navbar from '../src/components/Navbar.vue';
 import Modal from './components/Fragments/Modal.vue';
 
-const { t } = useI18n();
+const { t, locale } = useI18n({useScope: 'global'});
 
 const needWarnCookie = ref(false);
 const DateRef = ref(new Date());
@@ -24,6 +25,12 @@ onMounted(() => {
     if (localStorage.readWarnBefore != 'true') {
         needWarnCookie.value! = true;
         cookieWarn.value!.open();
+    }
+    if(localStorage.lang){
+        locale.value = localStorage.lang;
+    }else{
+        locale.value = Match(navigator.language);
+        localStorage.lang = locale.value;
     }
 });
 </script>

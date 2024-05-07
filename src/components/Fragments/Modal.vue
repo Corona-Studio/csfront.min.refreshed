@@ -12,9 +12,6 @@ const props = defineProps<{
 }>();
 
 function mount(target: string) {
-    console.log(
-        'located modal: with its shutByGround value: ' + props.shutByGround,
-    );
     if (target === 'ground') {
         switch (props.position ?? 'center') {
             case 'center':

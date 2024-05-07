@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 import Pressable from './Fragments/Pressable.vue';
+import ListItemPressablePreset from './Feature/ListItemPressablePreset.vue';
 
 const { t } = useI18n();
 
@@ -67,11 +68,38 @@ onMounted(() => {
         }
     }
 });
+
+const qqGroups = ref([
+{
+        name: 'contact-lx1',
+        groupId: '589798569',
+        translateKey: 'contactInfo.qqLauncherX'
+    },
+    
+    {
+        name: 'contact-projbobcat',
+        groupId: '677872263',
+        translateKey: 'contactInfo.qqProjBobcat'
+    },
+    
+    {
+        name: 'contact-cmfs',
+        groupId: '419902868',
+        translateKey: 'contactInfo.qqCMFS'
+    },
+    
+    {
+        name: 'contact-newbee',
+        groupId: '1040526762',
+        translateKey: 'contactInfo.qqNewCheck'
+    },
+    
+]);
 </script>
 
 <template>
     <div
-        :class="`bg-zinc-200 dark:bg-zinc-800 rounded-lg transition p-3.5 m-1
+        :class="`bg-zinc-200 dark:bg-zinc-800 rounded-lg transition p-3.5 m-1    ROOT_OF_CONTACT_INFO
     bg-opacity-55 
     ${noShadow ?? false ? '' : 'shadow-md hover:shadow dark:hover:shadow dark:shadow-md dark:active:shadow-sm  active:shadow-sm '}
     dark:bg-opacity-55 
@@ -91,52 +119,52 @@ onMounted(() => {
         </div>
         <ul class="list-none" id="contact-list" ref="clist">
             <li id="contact-bilibili" :class="hide">
-                <Pressable
+                <Pressable class="text-sm sm:text-base md:text-lg"
                     :no-tense="true"
                     type="outer"
                     target="_blank"
                     link="https://space.bilibili.com/31267692"
-                    overclass="text-lg">
+                    overclass="">
                     {{ t('contactInfo.bilibili') }}
                 </Pressable>
             </li>
             <li id="contact-minebbs" :class="hide">
-                <Pressable
+                <Pressable class="text-sm sm:text-base md:text-lg"
                     :no-tense="true"
                     type="outer"
                     target="_blank"
                     link="https://www.minebbs.com/members/coronastudio.83949/"
-                    overclass="text-lg">
+                    overclass="">
                     {{ t('contactInfo.minebbs') }}
                 </Pressable>
             </li>
             <li id="contact-kook" :class="hide">
-                <Pressable
+                <Pressable class="text-sm sm:text-base md:text-lg"
                     :no-tense="true"
                     type="outer"
                     target="_blank"
                     link="https://www.kookapp.cn/app/invite/rCdGVn"
-                    overclass="text-lg">
+                    overclass="">
                     {{ t('contactInfo.kook') }}
                 </Pressable>
             </li>
             <li id="contact-ca" :class="hide">
-                <Pressable
+                <Pressable class="text-sm sm:text-base md:text-lg"
                     :no-tense="true"
                     type="outer"
                     target="_blank"
                     link="https://www.coolapk.com/feed/24778166"
-                    overclass="text-lg">
+                    overclass="">
                     {{ t('contactInfo.coolapk') }}
                 </Pressable>
             </li>
             <li id="contact-coopqqgroup" :class="hide">
-                <Pressable
+                <Pressable class="text-sm sm:text-base md:text-lg"
                     :no-tense="true"
                     type="outer"
                     target="_blank"
                     link="https://pd.qq.com/s/1qab65hj3"
-                    overclass="text-lg">
+                    overclass="">
                     <span
                         style="font-style: normal !important"
                         v-html="t('contactInfo.coopQQChannel')"></span>
@@ -145,42 +173,18 @@ onMounted(() => {
 
             <hr id="" :class="hide + ' my-3 w-11/12 mx-auto contact-divider'" />
 
-            <li id="contact-lx1" :class="hide">
-                <Pressable
-                    :no-tense="true"
+            <li v-for="i of qqGroups" 
+                :key="i.name" 
+                :id="i.name" 
+                :class="hide">
+                <ListItemPressablePreset
                     type="copy"
-                    copy-content="589798569"
-                    overclass="text-lg">
-                    {{ t('contactInfo.qqLauncherX') }}：
-                </Pressable>
+                    :esuper="i.groupId"
+                    >
+                    {{ t(i.translateKey).replace("：", ": ") }}：
+                </ListItemPressablePreset>
             </li>
-            <li id="contact-projbobcat" :class="hide">
-                <Pressable
-                    :no-tense="true"
-                    type="copy"
-                    copy-content="677872263"
-                    overclass="text-lg">
-                    {{ t('contactInfo.qqProjBobcat') }}：
-                </Pressable>
-            </li>
-            <li id="contact-cmfs" :class="hide">
-                <Pressable
-                    :no-tense="true"
-                    type="copy"
-                    copy-content="419902868"
-                    overclass="text-lg">
-                    {{ t('contactInfo.qqCMFS') }}：
-                </Pressable>
-            </li>
-            <li id="contact-newbee" :class="hide">
-                <Pressable
-                    :no-tense="true"
-                    type="copy"
-                    copy-content="1040526762"
-                    overclass="text-lg">
-                    {{ t('contactInfo.qqNewCheck') }}：
-                </Pressable>
-            </li>
+            
 
             <hr
                 id=""
@@ -191,14 +195,14 @@ onMounted(() => {
                 <li
                     id="contact-feiron-mail"
                     :class="hide.replace('hidden', '')">
-                    <Pressable
+                    <Pressable class="text-sm sm:text-base md:text-lg"
                         :no-tense="true"
                         title="Feiron Iguista's Working Mail"
                         type="outer"
                         :no-start-icon="true"
                         target="_blank"
                         link="mailto:frigeso@icloud.com"
-                        overclass="text-lg">
+                        overclass="">
                         <i class="use-icon translate-y-0.5 inline-block">
                             &#xe715;
                         </i>
@@ -206,13 +210,13 @@ onMounted(() => {
                     </Pressable>
                 </li>
                 <li id="contact-lx-vk" :class="hide.replace('hidden', '')">
-                    <Pressable
+                    <Pressable class="text-sm sm:text-base md:text-lg"
                         :no-tense="true"
                         type="outer"
                         target="_blank"
                         :no-start-icon="true"
                         link="https://vk.com/launcherx"
-                        overclass="text-lg use-icon">
+                        overclass=" use-icon">
                         <i class="use-icon translate-y-0.5 inline-block">
                             &#xe907;
                         </i>
@@ -220,14 +224,14 @@ onMounted(() => {
                     </Pressable>
                 </li>
                 <li id="contact-who-x" :class="hide.replace('hidden', '')">
-                    <Pressable
+                    <Pressable class="text-sm sm:text-base md:text-lg"
                         :no-tense="true"
                         type="outer"
                         target="_blank"
                         :disable="true"
                         :no-start-icon="true"
                         link="https://x.com/"
-                        overclass="text-lg use-icon">
+                        overclass=" use-icon">
                         <i class="use-icon translate-y-0.5 inline-block">
                             &#xea91;
                         </i>
@@ -235,13 +239,13 @@ onMounted(() => {
                     </Pressable>
                 </li>
                 <li id="contact-who-wb" :class="hide.replace('hidden', '')">
-                    <Pressable
+                    <Pressable class="text-sm sm:text-base md:text-lg"
                         :no-tense="true"
                         type="outer"
                         target="_blank"
                         :no-start-icon="true"
                         link="https://weibo.com/"
-                        overclass="text-lg use-icon"
+                        overclass=" use-icon"
                         :disable="true">
                         &#xea9a; 暂未打算使用新浪微博
                     </Pressable>
@@ -255,5 +259,8 @@ onMounted(() => {
 li {
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
+}
+i.use-icon{
+    font-style: normal !important;
 }
 </style>

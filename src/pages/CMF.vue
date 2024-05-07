@@ -71,7 +71,7 @@
 
         </p>
         <div class="w-full mx-auto bg-zinc-500 bg-opacity-5 mt-3 rounded-lg transition p-1.5 lg:p-3 xl:p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5 xl:gap-2.5" id="CMFS">
-            <h6 v-if="serverList" class="col-span-full text-center text-xl p-3 m-1" >LOADING...</h6>
+            <h6 v-if="!serverList" class="col-span-full text-center text-xl p-3 m-1" >LOADING...</h6>
             <ServerItem v-for="item of serverList" :key="item.name" :server="item" class="m-1" />
         </div>
         <div>
