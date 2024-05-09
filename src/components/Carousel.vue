@@ -72,7 +72,7 @@ watch(
 <template>
     <div
         :class="`h-screen block  overflow-hidden overflow-x-hidden overflow-y-hidden ${frameClassList} transition bg-zinc-400 dark:bg-zinc-700 `">
-        <div
+        <div :title="`${isHomeCarousel}`"
             class="w-full h-screen max-h-screen overflow-hidden overflow-x-hidden overflow-y-hidden">
             <div
                 :class="` ${img.id == current ? 'fade-in' : 'fade-au'}      scale-x-110 max-h-screen carousels bg-center bg-no-repeat bg-cover bg-fill opacity-30 absolute top-0 bottom-0 left-0 right-0 `"
@@ -91,10 +91,17 @@ export default {
 
 <style scoped>
 .bg-fill {
-    /* background-size: 256% !important;
+    background-size: cover;
     background-position: center;
     background-repeat: space;
-    background-origin: border-box; */
+    background-origin: border-box;
     background-position-y: bottom;
+    background-repeat: no-repeat;
+    opacity: .5;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 </style>
