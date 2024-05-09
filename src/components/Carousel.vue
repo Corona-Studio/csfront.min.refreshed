@@ -20,7 +20,7 @@ function stop() {
 const enableHomeCarousel = ref(false);
 const playing = ref(true);
 
-let playlist = ref<Playlist[]>([]);
+let playlist = ref<PlayList[]>([]);
 let current = ref(0);
 // let carouselInterval = ref(Number)
 
