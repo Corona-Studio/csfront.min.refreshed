@@ -105,8 +105,10 @@ function runClickEvent(to: string, ty: string) {
         let _to = '';
         if (to.includes('%origin%'))
             _to = to.replace('%origin%', window.location.origin);
+        else _to = to;
         let filename = ty.replace('download:', '');
         console.log(filename);
+        console.log(_to);
         linkHandler.setAttribute('download', filename);
         linkHandler.setAttribute('href', _to);
         linkHandler.click();

@@ -66,26 +66,25 @@ const allBuilds: LauncherBuildInfo[] = [
         runtime: 'win-x64',
     },
     {
-        name: 'Windows Arm',
-        framework: 'net8.0-windows',
-        runtime: 'win-arm64',
-    },
-
-    {
         name: 'macOS Intel',
         framework: 'net8.0-osx',
         runtime: 'osx-x64',
     },
     {
-        name: 'macOS Apple',
-        framework: 'net8.0-osx',
-        runtime: 'osx-arm64',
-    },
-
-    {
         name: 'Linux X64',
         framework: 'net8.0-linux',
         runtime: 'linux-x64',
+    },
+
+    {
+        name: 'Windows Arm',
+        framework: 'net8.0-windows',
+        runtime: 'win-arm64',
+    },
+    {
+        name: 'macOS Apple',
+        framework: 'net8.0-osx',
+        runtime: 'osx-arm64',
     },
     {
         name: 'Linux Arm',
@@ -114,6 +113,16 @@ async function fetchBuilds(): Promise<void> {
     }
 
     isLoading.value = false;
+}
+
+function runLinkFilter(link: string, custom?: string){
+    let _tmp = link.replace(
+        '%build%',
+        buildId.toString()
+    );
+    if(_tmp.includes('/1')) _tmp = _tmp.substring(0, _tmp.length - 1);
+
+    return `${_tmp}${custom}`;
 }
 
 onMounted(async () => {
@@ -197,19 +206,16 @@ onMounted(async () => {
                                         </span>
                                     </span>
                                 </p>
-                                <div class="grid grid-cols-3 gap-0 col-span-full fade-in" v-if="!isLoading">
+                                <div class="grid grid-rows-2 grid-cols-3 gap-0 col-span-full fade-in" v-if="!isLoading">
                                     <Pressable
                                         :hide-matched-icon="true"
                                         :no-start-icon="true"
                                         v-for="down of downloads"
                                         :key="down.build"
                                         :class="`py-2 my-1  `"
-                                        :type="`download:${down.link}`"
+                                        :type="`download:LauncherX-${down.build}@${down.build}.zip`"
                                         :link="
-                                            down.link.replace(
-                                                '%build%',
-                                                buildId.toString(),
-                                            )
+                                            runLinkFilter(down.link, `download:LauncherX-${down.build}@${down.build}.zip`)
                                         ">
                                         {{ down.name }}
                                     </Pressable>
