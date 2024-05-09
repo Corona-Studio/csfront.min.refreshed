@@ -164,7 +164,7 @@ export const zhHans = {
         joinUs: '加入我们！-CoronaStudio',
         joindoc: '招募文档',
         icanclaim: '加入后可以得到…？',
-        whatweneed: '团队现有什么需求？',
+        whoweneed: '团队现有什么需求？',
         howtojoin: '我可以！如何加入？',
         others: '其他信息...',
 

@@ -14,6 +14,9 @@ function stop() {
 
 const enableHomeCarousel = ref(false);
 const playing = ref(true);
+let playlist = ref([]);
+let current = ref(0);
+let carouselInterval = ref(Number)
 
 const props = defineProps<{
     isHomeCarousel?: boolean;
@@ -25,7 +28,30 @@ const props = defineProps<{
 
 onMounted(() => {
     if (props.isHomeCarousel) enableHomeCarousel.value = true;
+    let index = 0;
+    for(let x of props.imagePaths!){
+        playlist.value.push({
+            id: index,
+            path: x,
+        });
+        index++;
+    }
+
+    Initial();
 });
+
+function Initial() {
+    // carouselInterval.value = 
+    setInterval(() => {
+        // if(!(props.shouldPlay ?? true)) return;
+        ChangeCarousel();
+    }, 3690);
+}
+
+function ChangeCarousel(){
+    if(current.value < playlist.value.length - 1) current.value ++;
+    else current.value = 0;
+}
 
 watch(
     () => props.shouldPlay,
@@ -38,13 +64,13 @@ watch(
 
 <template>
     <div
-        :class="`h-screen block ${frameClassList} transition bg-zinc-400 dark:bg-zinc-700 `">
-        <div class="w-full h-full">
+        :class="`h-screen block  overflow-hidden overflow-x-hidden overflow-y-hidden ${frameClassList} transition bg-zinc-400 dark:bg-zinc-700 `">
+        <div class="w-full h-screen max-h-screen overflow-hidden overflow-x-hidden overflow-y-hidden">
             <div
-                class="carousels bg-center bg-no-repeat bg-cover opacity-30 absolute top-0 bottom-0 left-0 right-0"
-                v-for="img of imagePaths"
-                :key="img"
-                :style="`background-image: url(${img}) !important; `"></div>
+                :class="` ${(img.id == current) ? 'fade-in' : 'fade-au'}      scale-x-110 max-h-screen carousels bg-center bg-no-repeat bg-cover bg-fill opacity-30 absolute top-0 bottom-0 left-0 right-0 `"
+                v-for="img of playlist"
+                :key="img.id"
+                :style="`background-image: url(${img.path}) !important; `"></div>
         </div>
         <Title :hidden="isHomeCarousel" />
     </div>
@@ -52,41 +78,15 @@ watch(
 <script lang="ts">
 export default {
     name: 'Carousel',
-    mounted() {
-        console.log(this.imagePaths);
-        this.Initial();
-    },
-    data() {
-        return {
-            carouselInterval: null,
-            // use another array with custom tuples to record. bind-change.
-        };
-    },
-    methods: {
-        Initial() {
-            this.carouselInterval = setInterval(() => {
-                this.ChangeCarousel();
-            }, 3690);
-        },
-        ChangeCarousel() {},
-    },
 };
 </script>
 
 <style scoped>
-.out {
-    animation: fadelyc 1s cubic-bezier(0.075, 0.82, 0.165, 1) reverse;
-}
-.in {
-    animation: fadelyc 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-}
-
-@keyframes fadelyc {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0.1;
-    }
+.bg-fill{
+    /* background-size: 256% !important;
+    background-position: center;
+    background-repeat: space;
+    background-origin: border-box; */
+    background-position-y: bottom;
 }
 </style>

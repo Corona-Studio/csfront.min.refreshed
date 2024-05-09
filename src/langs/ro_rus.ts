@@ -160,7 +160,7 @@ export const roRus = {
         joinUs: 'присоединяйтесь к нам! -CoronaStudio.min',
         joindoc: 'вербовавший документ',
         icanclaim: 'Что могу получить?',
-        whatweneed: 'Какой нужен?',
+        whoweneed: 'Какой нужен?',
         howtojoin: 'Считай меня! А как?',
         others: 'Ещё...',
 

@@ -6,6 +6,7 @@ import ContactInfo from './ContactInfo.vue';
 import ListItemPressablePreset from './Feature/ListItemPressablePreset.vue';
 import Modal from './Fragments/Modal.vue';
 import Pressable from './Fragments/Pressable.vue';
+import { emit } from 'process';
 
 const { t } = useI18n();
 
@@ -19,11 +20,43 @@ const props = defineProps<{
 function killModal() {
     notset.value!.kill();
 }
+
+function preClickCheck() {
+    if(props.main == undefined || props.main == null) setTimeout(() => {
+        // notset.value!.open();
+        emits('PublicModalOn', `
+            <div
+                class="p-3 rounded-lg bg-zinc-200 dark:bg-zinc-800 shadow hover:shadow-lg mx-auto grid">
+                <h4 class="text-xl text-center p-3">
+                    {{ t('helpblock.unsetyet') }}
+                </h4>
+                <Pressable
+                    :is-func-button="true"
+                    @click.native="killModal()"
+                    overclass="mx-auto text-lg">
+                    {{ t('base.okay') }}
+                </Pressable>
+            </div>
+            `);
+    }, 123);
+    // 他妈的Modal得想办法彻底脱离文档流, 否则这个模态窗就卡在那里
+}
+
+const emits = defineEmits(["AgentHandle", "AgentClear", "PublicModalOn", "PublicModalOff"]);
 </script>
 
 <template>
     <div
-        class="bg-zinc-300 bg-opacity-50 dark:bg-opacity-50 dark:bg-zinc-800 rounded-lg p-3">
+        class="
+            bg-zinc-200 dark:bg-zinc-800 rounded-lg transition p-3.5 m-1    
+            bg-opacity-55 
+            shadow-md hover:shadow dark:hover:shadow dark:shadow-md dark:active:shadow-sm  active:shadow-sm 
+            dark:bg-opacity-55 
+            hover:bg-opacity-65  
+            dark:hover:bg-opacity-65  
+            active:bg-opacity-60
+            dark:active:bg-opacity-60
+        ">
         <div class="titleblock">
             <h3 class="text-2xl text-yellow-500 opacity-90">
                 {{ t('helpblock.titleblock') }}
@@ -46,8 +79,10 @@ function killModal() {
                     type="outer-link"
                     :show-computed-icon="false"
                     :isVerified="true"
-                    :link="props.main">
-                    {{ t('helpblock.toMainTitle') }}
+                    :link="props.main"
+                    @click.native="preClickCheck()"
+                    >
+                    {{ t('helpblock.toMainTitle')}}
                 </ListItemPressablePreset>
             </h6>
         </div>
@@ -63,7 +98,7 @@ function killModal() {
             :no-shadow="true" />
         <i class="hidden p-0 px-0 py-0"></i>
 
-        <Modal ref="notset" :shut-by-ground="true">
+        <Modal ref="notset" :shut-by-ground="true" class=" fixed z-30">
             <div
                 class="p-3 rounded-lg bg-zinc-200 dark:bg-zinc-800 shadow hover:shadow-lg mx-auto grid">
                 <h4 class="text-xl text-center p-3">

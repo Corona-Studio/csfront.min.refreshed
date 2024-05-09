@@ -3,7 +3,6 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 
 const modalground = ref<HTMLElement | null>(null);
 const openStatus = ref(false);
-const speed = ref(800);
 const isKilled = ref(true);
 
 const props = defineProps<{
@@ -78,19 +77,19 @@ defineExpose({
         id="HugeModalGround"
         style="pointer-events: fill"
         ref="modalground"
-        :title="`stat: ${openStatus}`"
+        
         :class="`bg-opacity-35 bg-zinc-950 min-w-full min-h-screen fixed   
         ${openStatus ? 'xxx' : 'fade-au'} ${isKilled ? 'hidden' : 'fade-in'}
            grid ${mount('ground')}
            top-0 left-0 right-0 bottom-0  `">
         <div
-            :class="`${(position ?? 'center') == 'bottom' ? 'w-full' : 'w-auto'} h-auto inner-border fixed     
+            :class="`${(position ?? 'center') == 'bottom' ? 'w-full' : 'w-auto'} h-auto inner-border fixed  top-1 bottom-1   
             ${openStatus ? 'xxx' : 'fade-au'} ${isKilled ? 'hidden' : 'fade-in'}   ${mount('frame')}  fn  `">
             <slot></slot>
             <p class="m-1" v-if="isSafari" style="text-align: center">
                 <span
                     class="m-1 p-1 bg-zinc-100 dark:bg-zinc-800 rounded-lg opacity-80">
-                    {{ 'safari' }}
+                    {{ 'safari' }} 
                 </span>
             </p>
         </div>
@@ -103,6 +102,7 @@ defineExpose({
 <style scoped>
 #HugeModalGround {
     z-index: 888;
+    position: fixed;
     transition-duration: 1.14ms;
     transition-property: all;
     transition-timing-function: cubic-bezier(0.3, 0, 0.1, 1);

@@ -12,6 +12,29 @@ const { t } = useI18n();
 
 const active = ref('part1');
 
+const conts = [
+    {
+        id: 1,
+        translate: 'joinUs.icanclaim',
+        content: 'joinUs.info1'
+    },    
+    {
+        id: 2,
+        translate: 'joinUs.whoweneed',
+        content: 'joinUs.info2'
+    },    
+    {
+        id: 3,
+        translate: 'joinUs.howtojoin',
+        content: 'joinUs.info3'
+    },    
+    {
+        id: 4,
+        translate: 'joinUs.others',
+        content: 'joinUs.info4'
+    },
+];
+
 function changeDisplay(inte: number) {
     active.value = active.value.replace(
         active.value.substring(4, 5),
@@ -41,68 +64,35 @@ function changeDisplay(inte: number) {
                         </h1>
                     </div>
                     <div
-                        class="w-full p-2.5 md:p-3 lg:p-3.5 bg-zinc-200 bg-opacity-50 text-sm md:text-base xl:text-lg dark:bg-zinc-800 dark:bg-opacity-50 rounded-lg m-1 grid grid-cols-2 lg:grid-cols-4 gap-0.5 md:gap-1.5 lg:gap-2.5 xl:gap-3 shadow-lg">
-                        <Pressable
+                        class="w-full p-2.5 md:p-3 lg:p-3.5 bg-zinc-200 bg-opacity-50 text-sm md:text-base xl:text-lg dark:bg-zinc-800 dark:bg-opacity-50 rounded-lg m-1 
+                        grid grid-cols-2 xl:grid-cols-4 gap-0.5 md:gap-1.5 lg:gap-2.5 xl:gap-3 shadow-lg">
+                        <Pressable v-for="v of conts" :key="v.id"
                             class="h-full text-center inline-grid justify-center justify-items-center items-center"
                             overclass="text-sm md:text-base xl:text-lg"
                             :no-start-icon="true"
                             :is-func-button="true"
-                            @click.native="changeDisplay(1)"
-                            :init-opacity="active === 'part1' ? 100 : 10">
-                            <p
-                                :class="'text-center text-sm md:text-base xl:text-lg  '">
-                                {{ t('joinUs.icanclaim') }}
-                            </p>
-                        </Pressable>
-                        <Pressable
-                            class="h-full text-center inline-grid justify-center justify-items-center items-center"
-                            overclass="text-sm md:text-base xl:text-lg"
-                            :no-start-icon="true"
-                            :is-func-button="true"
-                            @click.native="changeDisplay(2)"
-                            :init-opacity="active === 'part2' ? 100 : 10">
-                            <p
-                                :class="'text-center text-sm md:text-base xl:text-lg  '">
-                                {{ t('joinUs.whatweneed') }}
-                            </p>
-                        </Pressable>
-                        <Pressable
-                            class="h-full text-center inline-grid justify-center justify-items-center items-center"
-                            overclass="text-sm md:text-base xl:text-lg"
-                            :no-start-icon="true"
-                            :is-func-button="true"
-                            @click.native="changeDisplay(3)"
-                            :init-opacity="active === 'part3' ? 100 : 10">
-                            <p
-                                :class="'text-center text-sm md:text-base xl:text-lg  '">
-                                {{ t('joinUs.howtojoin') }}
-                            </p>
-                        </Pressable>
-                        <Pressable
-                            class="h-full text-center inline-grid justify-center justify-items-center items-center"
-                            overclass="text-sm md:text-base xl:text-lg"
-                            :no-start-icon="true"
-                            :is-func-button="true"
-                            @click.native="changeDisplay(4)"
-                            :init-opacity="active === 'part4' ? 100 : 10">
-                            <p
-                                :class="'text-center text-sm md:text-base xl:text-lg  '">
-                                {{ t('joinUs.others') }}
-                            </p>
+                            :fin="true"
+                            @click.native="changeDisplay(v.id)"
+                            :init-opacity="active === `part${v.id}` ? 100 : 10">
+                            <span class="text-center text-sm md:text-base xl:text-lg m-1">{{ t(v.translate) }}</span>
                         </Pressable>
                     </div>
-                    <!--div class="m-1 p-2.5 lg:p-8 mt-3.5 w-full  bg-zinc-200 bg-opacity-50 dark:bg-zinc-800 dark:bg-opacity-50 rounded-lg shadow-lg">
-                    <mt-tab-container v-model="active">
-                        <mt-tab-container-item id="part1" v-html="t('joinUs.info1')">
-                        </mt-tab-container-item>
-                        <mt-tab-container-item id="part2" v-html="t('joinUs.info2')">
-                        </mt-tab-container-item>
-                        <mt-tab-container-item id="part3" v-html="t('joinUs.info3')">
-                        </mt-tab-container-item>
-                        <mt-tab-container-item id="part4" v-html="t('joinUs.info4')">
-                        </mt-tab-container-item>
-                    </mt-tab-container>
-                </div-->
+                    <div class="m-1 p-2.5 lg:p-8 mt-3.5 w-full  bg-zinc-200 bg-opacity-50 dark:bg-zinc-800 dark:bg-opacity-50 rounded-lg shadow-lg">
+                        <div v-for="inf of conts" :id="`${inf.id}`" v-html="t(inf.content)" :class="active.includes(`${inf.id}`) ? '' : 'hidden'">
+
+                        </div>
+                        
+                        <!--<mt-tab-container v-model="active">
+                            <mt-tab-container-item id="part1" v-html="t('joinUs.info1')">
+                            </mt-tab-container-item>
+                            <mt-tab-container-item id="part2" v-html="t('joinUs.info2')">
+                            </mt-tab-container-item>
+                            <mt-tab-container-item id="part3" v-html="t('joinUs.info3')">
+                            </mt-tab-container-item>
+                            <mt-tab-container-item id="part4" v-html="t('joinUs.info4')">
+                            </mt-tab-container-item>
+                        </mt-tab-container>-->
+                    </div>
                 </div>
                 <div class="contact else lg:col-span-1 col-span-full">
                     <ContactInfo only="!bilibili,kook,ca,minebbs,newbee" />

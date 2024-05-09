@@ -3,13 +3,14 @@ import type { Config } from 'tailwindcss';
 export default {
     content: [
         './src/*.vue',
-        './src/Components/*.vue',
-        './src/Components/**/*.vue',
-        './src/Components/Feature/*.vue',
-        './src/Components/Fragments/*.vue',
-        './src/Pages/*.vue',
-        './src/Pages/**/*.vue',
+        './src/components/*.vue',
+        './src/components/**/*.vue',
+        './src/components/Feature/*.vue',
+        './src/components/Fragments/*.vue',
+        './src/pages/*.vue',
+        './src/pages/**/*.vue',
         './public/index.html',
+        './index.html',
     ],
     theme: {
         extend: {

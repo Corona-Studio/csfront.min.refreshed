@@ -59,7 +59,6 @@ function copy(item: string) {
 }
 
 function runClickEvent(to: string, ty: string) {
-    console.log('invoked a button handle')
     if (props.isFuncButton) return;
 
     const linkHandler = useLinkHandler();
@@ -75,7 +74,7 @@ function runClickEvent(to: string, ty: string) {
             return;
         }
     if (ty == 'outer' || ty == 'outer-link') {
-        if (!props.link) {
+        if (!props.link || props.link == undefined) {
             pushToast(t('base.nolink'), 'blur');
             return;
         }
@@ -123,9 +122,7 @@ function runClickEvent(to: string, ty: string) {
 }
 
 function pressableBaseAction() {
-    if (!props.link || !props.type) return;
-
-    runClickEvent(props.link, props.type);
+    runClickEvent(props.link!, props.type!);
 }
 
 onMounted(() => {
@@ -200,6 +197,7 @@ onBeforeUnmount(() => {
                 </span>
                 <span :class="` ${ex == '' ? 'hidden' : ''}       scale-90  ${((props.ignoreTextResp ?? false) && !(props.fin ?? false)) ? 'text-sm' : 'text-sm sm:text-base md:text-lg'}`" style="--tw-scale-x: .79; --tw-scale-y: .79;">
                     {{ ex }}
+                    <!-- 可能引发高度异常: ex -->
                 </span>
             </span>
             <i

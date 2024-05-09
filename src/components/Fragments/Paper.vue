@@ -1,13 +1,18 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, onUpdated, ref, watch } from 'vue';
+import { VNodeRef, createVNode, onBeforeUnmount, onMounted, onUpdated, ref, render, watch } from 'vue';
 
 import { doScroll } from '../../utils/scroll.ts';
 import Footer from '../Footer.vue';
+import Modal from './Modal.vue';
+import Pressable from './Pressable.vue';
 
 const PMC = ref<HTMLElement | null>(null);
+const Agent = ref<HTMLElement | Element | null | VNodeRef>(null);
+const GeneralModal = ref<HTMLElement | null | VNodeRef>(null);
 const heightFix = ref(0);
 const timer = ref(false);
 const screenHeight = ref(document.body.clientWidth);
+const messageModal = ref('');
 
 const props = defineProps<{
     noTopWrap?: boolean;
@@ -65,6 +70,40 @@ watch(screenHeight, (val) => {
         }, 600);
     }
 });
+
+
+/// Agent
+function AgentHandle(html: string){
+    let created = createVNode("div", {components: { Modal, Pressable }}, html),
+        puppet = document.createElement('div');
+    puppet.classList.add('fixed');
+    render(created, puppet);
+    Agent.value.appendChild(puppet);
+}
+
+function AgentClear(){
+    Agent.value.innerHTML = '';
+}
+
+/// !Agent
+// 我本来想让Agent代理子组件里的modal的
+
+defineExpose({
+    AgentHandle,
+    AgentClear,
+    PublicModalOn,
+    PublicModalOff
+});
+
+function PublicModalOn(content: string){
+    messageModal.value = content;
+    GeneralModal.value.open();
+    // GeneralModal.value.
+}
+function PublicModalOff(){
+    GeneralModal.value.kill();
+    messageModal.value = '';
+}
 </script>
 
 <template>
@@ -73,11 +112,15 @@ watch(screenHeight, (val) => {
         :class="`home w-full  min-w-full paper             
         ${presetMargin ?? false ? ' mx-1.5 ' : ' mx-0 '}`"
         style="pointer-events: none">
+        <div ref="Agent" class="fixed ?"></div>
+        <Modal v-html="messageModal" :ref="GeneralModal">
+
+        </Modal>
         <div
             id="PMC"
             ref="PMC"
             :class="
-                ` shadow-xl h-full w-full  ${noBackdrop ?? false ? 'forcenobg' : 'backoff'}   z-10 bg-zinc-100 dark:bg-zinc-900 bg-opacity-55 dark:bg-opacity-55
+                ` shadow-xl h-full w-full  ${noBackdrop ?? false ? 'forcenobg' : 'backoff'}   z-10 bg-zinc-100 dark:bg-zinc-700 bg-opacity-55 dark:bg-opacity-65
             ${noTopWrap ?? false ? ' mt-0 ' : ' mt-16 '}
             ${presetPadding ?? false ? ' px-1.5 ' : ' px-0 '}
             ${noHeightWrap ?? false ? '  ' : ' min-h-screen '} ` + overClass
@@ -96,6 +139,9 @@ watch(screenHeight, (val) => {
         <Footer />
     </div>
 </template>
+<script lang="ts">
+
+</script>
 
 <style>
 .backoff {

@@ -102,9 +102,10 @@ onMounted(() => {
                             <Corner />
                             <span
                                 class="no-underline hover:underline active:underline x font-semibold opacity-75 hover:opacity-100 active:opacity-80 transition">
-                                <router-link to="/projbobcat">
-                                    ProjBobcat
-                                </router-link>
+                                <!-- <router-link to="/projbobcat">
+                                    ProjBobcat 纪念被llr残害的ProjBobcat页面
+                                </router-link> -->
+                                <a href="https://github.com/corona-studio/projbobcat" target="_blank">ProjBobcat</a>
                             </span>
                         </p>
                     </span>
