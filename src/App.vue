@@ -43,7 +43,7 @@ onMounted(() => {
         style="pointer-events: none">
         <Navbar style="pointer-events: fill" />
         <div
-            class="w-full shadow-2xl"
+            class="w-screen overflow-x-hidden shadow-2xl"
             id="RENDER"
             style="z-index: 5; pointer-events: none">
             <!-- <transition name="changing"> -->
