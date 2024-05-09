@@ -9,11 +9,9 @@ import Pressable from '../src/components/Fragments/Pressable.vue';
 import Navbar from '../src/components/Navbar.vue';
 import Modal from './components/Fragments/Modal.vue';
 
-const { t, locale } = useI18n({useScope: 'global'});
+const { t, locale } = useI18n({ useScope: 'global' });
 
 const needWarnCookie = ref(false);
-const DateRef = ref(new Date());
-const RENDERHEIGHT = ref(0);
 const cookieWarn = ref<typeof Modal | null>(null);
 
 const ShutCookieWarningBanner = () => {
@@ -26,9 +24,9 @@ onMounted(() => {
         needWarnCookie.value! = true;
         cookieWarn.value!.open();
     }
-    if(localStorage.lang){
+    if (localStorage.lang) {
         locale.value = localStorage.lang;
-    }else{
+    } else {
         locale.value = Match(navigator.language);
         localStorage.lang = locale.value;
     }

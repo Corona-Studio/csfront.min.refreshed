@@ -40,7 +40,14 @@ const props = defineProps<{
 }>();
 
 let ex = computed(() => {
-    return (props.copyContent == undefined ? '' : ((`${slots.default!()[0].children}`.includes('：') || `${slots.default!()[0].children}`.includes(': ')) ? props.copyContent! : (((props.hideProtocol ?? false) && (props.copyContent!.includes('://'))) ? props.copyContent!.split('://')[1] : props.copyContent!)));
+    return props.copyContent == undefined
+        ? ''
+        : `${slots.default!()[0].children}`.includes('：') ||
+            `${slots.default!()[0].children}`.includes(': ')
+          ? props.copyContent!
+          : (props.hideProtocol ?? false) && props.copyContent!.includes('://')
+            ? props.copyContent!.split('://')[1]
+            : props.copyContent!;
 });
 
 function copy(item: string) {
@@ -99,7 +106,7 @@ function runClickEvent(to: string, ty: string) {
         if (to.includes('%origin%'))
             _to = to.replace('%origin%', window.location.origin);
         let filename = ty.replace('download:', '');
-        console.log(filename)
+        console.log(filename);
         linkHandler.setAttribute('download', filename);
         linkHandler.setAttribute('href', _to);
         linkHandler.click();
@@ -157,7 +164,7 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-    if (!pressableBase.value) return ;
+    if (!pressableBase.value) return;
 
     pressableBase.value.removeEventListener('pointerup', pressableBaseAction);
 });
@@ -173,12 +180,12 @@ onBeforeUnmount(() => {
             dark:bg-opacity-${initOpacity ?? 30}
             hover:shadow-md hover:bg-opacity-70   active:shadow-sm active:bg-opacity-100
             dark:hover:bg-opacity-70 dark:hover:shadow-md   dark:shadow${(initShadow ?? '').replace('none', '-none')}  dark:active:shadow-sm dark:active:bg-opacity-100
-            px-2 ${(props.fin ?? false) ? ((props.isOnlyIcon ?? false) ? 'py-1' : 'py-1.5') : ((props.isOnlyIcon ?? false) ? 'py-1' : 'py-2')} mx-1 select-none 
+            px-2 ${props.fin ?? false ? (props.isOnlyIcon ?? false ? 'py-1' : 'py-1.5') : props.isOnlyIcon ?? false ? 'py-1' : 'py-2'} mx-1 select-none 
             ${disable ?? false ? 'dis' : ''}
             ${overclass}
  
         `"
-        :style="`${overstyle} ; cursor: pointer; ${(props.noPadding ?? false) ? 'padding: 0 !important;' : ''}`"
+        :style="`${overstyle} ; cursor: pointer; ${props.noPadding ?? false ? 'padding: 0 !important;' : ''}`"
         ref="pressableBase">
         <span :class="noTense ?? false ? 'untense' : 'tense'">
             <i :class="`${iconClass}    use-icon`"></i>
@@ -187,15 +194,19 @@ onBeforeUnmount(() => {
                 <span
                     ref="iconRef"
                     :class="
-                        (noStartIcon ?? false)
+                        noStartIcon ?? false
                             ? 'hidden'
                             : 'use-icon inline-block translate-y-1 mr-1'
                     "
                     style="--tw-translate-y: 0.17365rem"></span>
-                <span  class="scale-90 px-0.5" style="--tw-scale-x: .79; --tw-scale-y: .79;">
+                <span
+                    class="scale-90 px-0.5"
+                    style="--tw-scale-x: 0.79; --tw-scale-y: 0.79">
                     <slot></slot>
                 </span>
-                <span :class="` ${ex == '' ? 'hidden' : ''}       scale-90  ${((props.ignoreTextResp ?? false) && !(props.fin ?? false)) ? 'text-sm' : 'text-sm sm:text-base md:text-lg'}`" style="--tw-scale-x: .79; --tw-scale-y: .79;">
+                <span
+                    :class="` ${ex == '' ? 'hidden' : ''}       scale-90  ${(props.ignoreTextResp ?? false) && !(props.fin ?? false) ? 'text-sm' : 'text-sm sm:text-base md:text-lg'}`"
+                    style="--tw-scale-x: 0.79; --tw-scale-y: 0.79">
                     {{ ex }}
                     <!-- 可能引发高度异常: ex -->
                 </span>
@@ -230,10 +241,10 @@ i {
     pointer-events: none !important;
     color: grey;
 }
-i.use-icon{
+i.use-icon {
     font-style: normal !important;
 }
-span{
+span {
     height: min-content !important;
 }
 </style>

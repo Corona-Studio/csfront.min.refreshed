@@ -111,7 +111,7 @@ onMounted(() => {
                     :show-computed-icon="false"
                     :type="list.isCopy ? 'copy' : 'outer-link'"
                     :esuper="list.with">
-                    {{ list.content }}: 
+                    {{ list.content }}:
                 </ListItemPressablePreset>
             </li>
         </ul>

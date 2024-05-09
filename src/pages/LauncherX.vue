@@ -105,7 +105,11 @@ onMounted(() => {
                                 <!-- <router-link to="/projbobcat">
                                     ProjBobcat 纪念被llr残害的ProjBobcat页面
                                 </router-link> -->
-                                <a href="https://github.com/corona-studio/projbobcat" target="_blank">ProjBobcat</a>
+                                <a
+                                    href="https://github.com/corona-studio/projbobcat"
+                                    target="_blank">
+                                    ProjBobcat
+                                </a>
                             </span>
                         </p>
                     </span>

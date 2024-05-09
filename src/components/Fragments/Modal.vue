@@ -77,7 +77,6 @@ defineExpose({
         id="HugeModalGround"
         style="pointer-events: fill"
         ref="modalground"
-        
         :class="`bg-opacity-35 bg-zinc-950 min-w-full min-h-screen fixed   
         ${openStatus ? 'xxx' : 'fade-au'} ${isKilled ? 'hidden' : 'fade-in'}
            grid ${mount('ground')}
@@ -89,7 +88,7 @@ defineExpose({
             <p class="m-1" v-if="isSafari" style="text-align: center">
                 <span
                     class="m-1 p-1 bg-zinc-100 dark:bg-zinc-800 rounded-lg opacity-80">
-                    {{ 'safari' }} 
+                    {{ 'safari' }}
                 </span>
             </p>
         </div>
@@ -101,8 +100,8 @@ defineExpose({
 
 <style scoped>
 #HugeModalGround {
-    z-index: 888;
     position: fixed;
+    z-index: 888;
     transition-duration: 1.14ms;
     transition-property: all;
     transition-timing-function: cubic-bezier(0.3, 0, 0.1, 1);

@@ -45,13 +45,13 @@ onMounted(() => {
             }
         }
 
-        if (!props.only?.includes(',') ?? false) {
+        if (!(props.only?.includes(',') ?? false)) {
             if (!(props.only?.includes('@') ?? false))
                 document
                     .getElementById(`contact-${props.only!.replace('#', '')}`)!
                     .classList.remove('hidden');
         } else {
-            for (let it of props.only.split(','))
+            for (let it of props.only?.split(',') ?? [])
                 document
                     .getElementById(`contact-${it.replaceAll(' ', '')}`)!
                     .classList.remove('hidden');
@@ -70,30 +70,29 @@ onMounted(() => {
 });
 
 const qqGroups = ref([
-{
+    {
         name: 'contact-lx1',
         groupId: '589798569',
-        translateKey: 'contactInfo.qqLauncherX'
+        translateKey: 'contactInfo.qqLauncherX',
     },
-    
+
     {
         name: 'contact-projbobcat',
         groupId: '677872263',
-        translateKey: 'contactInfo.qqProjBobcat'
+        translateKey: 'contactInfo.qqProjBobcat',
     },
-    
+
     {
         name: 'contact-cmfs',
         groupId: '419902868',
-        translateKey: 'contactInfo.qqCMFS'
+        translateKey: 'contactInfo.qqCMFS',
     },
-    
+
     {
         name: 'contact-newbee',
         groupId: '1040526762',
-        translateKey: 'contactInfo.qqNewCheck'
+        translateKey: 'contactInfo.qqNewCheck',
     },
-    
 ]);
 </script>
 
@@ -119,7 +118,8 @@ const qqGroups = ref([
         </div>
         <ul class="list-none" id="contact-list" ref="clist">
             <li id="contact-bilibili" :class="hide">
-                <Pressable class="text-sm sm:text-base md:text-lg"
+                <Pressable
+                    class="text-sm sm:text-base md:text-lg"
                     :no-tense="true"
                     type="outer"
                     target="_blank"
@@ -129,7 +129,8 @@ const qqGroups = ref([
                 </Pressable>
             </li>
             <li id="contact-minebbs" :class="hide">
-                <Pressable class="text-sm sm:text-base md:text-lg"
+                <Pressable
+                    class="text-sm sm:text-base md:text-lg"
                     :no-tense="true"
                     type="outer"
                     target="_blank"
@@ -139,7 +140,8 @@ const qqGroups = ref([
                 </Pressable>
             </li>
             <li id="contact-kook" :class="hide">
-                <Pressable class="text-sm sm:text-base md:text-lg"
+                <Pressable
+                    class="text-sm sm:text-base md:text-lg"
                     :no-tense="true"
                     type="outer"
                     target="_blank"
@@ -149,7 +151,8 @@ const qqGroups = ref([
                 </Pressable>
             </li>
             <li id="contact-ca" :class="hide">
-                <Pressable class="text-sm sm:text-base md:text-lg"
+                <Pressable
+                    class="text-sm sm:text-base md:text-lg"
                     :no-tense="true"
                     type="outer"
                     target="_blank"
@@ -159,7 +162,8 @@ const qqGroups = ref([
                 </Pressable>
             </li>
             <li id="contact-coopqqgroup" :class="hide">
-                <Pressable class="text-sm sm:text-base md:text-lg"
+                <Pressable
+                    class="text-sm sm:text-base md:text-lg"
                     :no-tense="true"
                     type="outer"
                     target="_blank"
@@ -173,18 +177,11 @@ const qqGroups = ref([
 
             <hr id="" :class="hide + ' my-3 w-11/12 mx-auto contact-divider'" />
 
-            <li v-for="i of qqGroups" 
-                :key="i.name" 
-                :id="i.name" 
-                :class="hide">
-                <ListItemPressablePreset
-                    type="copy"
-                    :esuper="i.groupId"
-                    >
-                    {{ t(i.translateKey).replace("：", ": ") }}：
+            <li v-for="i of qqGroups" :key="i.name" :id="i.name" :class="hide">
+                <ListItemPressablePreset type="copy" :esuper="i.groupId">
+                    {{ t(i.translateKey).replace('：', ': ') }}：
                 </ListItemPressablePreset>
             </li>
-            
 
             <hr
                 id=""
@@ -195,7 +192,8 @@ const qqGroups = ref([
                 <li
                     id="contact-feiron-mail"
                     :class="hide.replace('hidden', '')">
-                    <Pressable class="text-sm sm:text-base md:text-lg"
+                    <Pressable
+                        class="text-sm sm:text-base md:text-lg"
                         :no-tense="true"
                         title="Feiron Iguista's Working Mail"
                         type="outer"
@@ -210,7 +208,8 @@ const qqGroups = ref([
                     </Pressable>
                 </li>
                 <li id="contact-lx-vk" :class="hide.replace('hidden', '')">
-                    <Pressable class="text-sm sm:text-base md:text-lg"
+                    <Pressable
+                        class="text-sm sm:text-base md:text-lg"
                         :no-tense="true"
                         type="outer"
                         target="_blank"
@@ -224,7 +223,8 @@ const qqGroups = ref([
                     </Pressable>
                 </li>
                 <li id="contact-who-x" :class="hide.replace('hidden', '')">
-                    <Pressable class="text-sm sm:text-base md:text-lg"
+                    <Pressable
+                        class="text-sm sm:text-base md:text-lg"
                         :no-tense="true"
                         type="outer"
                         target="_blank"
@@ -239,7 +239,8 @@ const qqGroups = ref([
                     </Pressable>
                 </li>
                 <li id="contact-who-wb" :class="hide.replace('hidden', '')">
-                    <Pressable class="text-sm sm:text-base md:text-lg"
+                    <Pressable
+                        class="text-sm sm:text-base md:text-lg"
                         :no-tense="true"
                         type="outer"
                         target="_blank"
@@ -260,7 +261,7 @@ li {
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
 }
-i.use-icon{
+i.use-icon {
     font-style: normal !important;
 }
 </style>
