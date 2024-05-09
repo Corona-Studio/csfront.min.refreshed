@@ -20,7 +20,7 @@ interface ResultBuildInfo {
     name: string;
 }
 
-const lastUpdate = ref(1710209344927);
+// const lastUpdate = ref(1710209344927);
 const buildId = ref(20240311);
 const isLoading = ref(true);
 const downloads = ref<ResultBuildInfo[]>([]);
@@ -219,6 +219,10 @@ onMounted(async () => {
                                         ">
                                         {{ down.name }}
                                     </Pressable>
+                                    <p class="col-span-full text-xs opacity-35"
+                                    style="font-size: 0.6rem">
+                                        LastUpdate: {{ downloads ? downloads[0].date : '-' }}
+                                    </p>
                                 </div>
                                 <div v-else class="grid justify-items-center scale-95 justify-center items-center col-span-full">
                                     <div class="">
@@ -228,7 +232,7 @@ onMounted(async () => {
                                         <span class="inline-block mx-auto -translate-y-2.5 text-sm">{{t('base.loading')}}</span>
                                     </div>
                                 </div>                                
-                                <p
+                                <!-- <p
                                     class="col-span-full text-xs opacity-35"
                                     style="font-size: 0.6rem">
                                     Last update:
@@ -237,7 +241,7 @@ onMounted(async () => {
                                             lastUpdate,
                                         ).toLocaleDateString()
                                     }}
-                                </p>
+                                </p> -->
                                 <!-- download sample -->
                                 <p
                                     class="col-span-full text-center mb-2 mt-6 font-bold">

@@ -1,21 +1,21 @@
 <template>
     <div class="loading">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div class="bg-zinc-800 dark:bg-zinc-100"></div>
+        <div class="bg-zinc-800 dark:bg-zinc-100"></div>
+        <div class="bg-zinc-800 dark:bg-zinc-100"></div>
+        <div class="bg-zinc-800 dark:bg-zinc-100"></div>
+        <div class="bg-zinc-800 dark:bg-zinc-100"></div>
+        <div class="bg-zinc-800 dark:bg-zinc-100"></div>
+        <div class="bg-zinc-800 dark:bg-zinc-100"></div>
+        <div class="bg-zinc-800 dark:bg-zinc-100"></div>
+        <div class="bg-zinc-800 dark:bg-zinc-100"></div>
+        <div class="bg-zinc-800 dark:bg-zinc-100"></div>
+        <div class="bg-zinc-800 dark:bg-zinc-100"></div>
+        <div class="bg-zinc-800 dark:bg-zinc-100"></div>
+        <div class="bg-zinc-800 dark:bg-zinc-100"></div>
+        <div class="bg-zinc-800 dark:bg-zinc-100"></div>
+        <div class="bg-zinc-800 dark:bg-zinc-100"></div>
+        <div class="bg-zinc-800 dark:bg-zinc-100"></div>
     </div>
 </template>
 
@@ -29,12 +29,7 @@
 .loading {
     display: block;
     margin: 30px;
-    color: #000;
     font-size: 0;
-}
-
-.loading.la-dark {
-    color: #333;
 }
 
 .loading > div {
