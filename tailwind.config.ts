@@ -4,6 +4,7 @@ export default {
     content: [
         './src/*.vue',
         './src/components/*.vue',
+        './src/components/Navbar.vue',
         // './src/components/**/*.vue',
         './src/components/Feature/*.vue',
         './src/components/Fragments/*.vue',

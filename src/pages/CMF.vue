@@ -5,6 +5,7 @@
   import PageTitle from '../components/Feature/PageTitle.vue';
   import Paper from '../components/Fragments/Paper.vue';
   import HelpBlock from '../components/HelpBlock.vue';
+  import LoadingRing from '../components/LoadingRing.vue';
   import ServerItem from '../components/ServerItem.vue';
   import {baseInvokeHeightFix} from "../utils/viewport.ts";
   import {doScroll} from "../utils/scroll.ts";
@@ -29,7 +30,9 @@
       if(ref.readyState != 4) return;
       got = ref.responseText;
       try {
-        serverList.value = (JSON.parse(got) as ServerInfo).contentList;
+        setTimeout(() => {
+            serverList.value = (JSON.parse(got) as ServerInfo).contentList;
+        }, 2345);
       } catch (ex) {
         serverList.value = null;
       }
@@ -71,8 +74,15 @@
 
         </p>
         <div class="w-full mx-auto bg-zinc-500 bg-opacity-5 mt-3 rounded-lg transition p-1.5 lg:p-3 xl:p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5 xl:gap-2.5" id="CMFS">
-            <h6 v-if="!serverList" class="col-span-full text-center text-xl p-3 m-1" >LOADING...</h6>
-            <ServerItem v-for="item of serverList" :key="item.name" :server="item" class="m-1" />
+            <h6 v-if="!serverList" class="grid justify-items-center justify-center items-center col-span-full text-center text-xl p-3 m-1" >
+              <div class="">
+                    <LoadingRing
+                        class="text-xl w-fit inline-block "
+                        ></LoadingRing>
+                    <span class="inline-block mx-auto -translate-y-2.5 text-sm">{{t('base.loading')}}</span>
+              </div>
+            </h6>
+            <ServerItem v-for="item of serverList" :key="item.name" :server="item" class="m-1 fade-in" />
         </div>
         <div>
             <h2 class="text-2xl font-semibold text-yellow-500 mt-5 text-center mb-1.5">{{ t('cmf.cmfl') }}</h2>

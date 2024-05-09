@@ -197,7 +197,7 @@ onMounted(async () => {
                                         </span>
                                     </span>
                                 </p>
-                                <div class="grid grid-cols-3 gap-0 col-span-full" v-if="!isLoading">
+                                <div class="grid grid-cols-3 gap-0 col-span-full fade-in" v-if="!isLoading">
                                     <Pressable
                                         :hide-matched-icon="true"
                                         :no-start-icon="true"
@@ -214,10 +214,13 @@ onMounted(async () => {
                                         {{ down.name }}
                                     </Pressable>
                                 </div>
-                                <div v-else class="">
-                                    <LoadingRing
-                                        class="text-xl w-full -translate-y-3"
-                                        ></LoadingRing>
+                                <div v-else class="grid justify-items-center scale-95 justify-center items-center col-span-full">
+                                    <div class="">
+                                        <LoadingRing
+                                            class="text-xl w-fit inline-block "
+                                            ></LoadingRing>
+                                        <span class="inline-block mx-auto -translate-y-2.5 text-sm">{{t('base.loading')}}</span>
+                                    </div>
                                 </div>                                
                                 <p
                                     class="col-span-full text-xs opacity-35"

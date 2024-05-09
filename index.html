@@ -24,9 +24,9 @@
         <link rel="stylesheet" href="/output.css" type="text/css" />
         <!-- <script src="https://cdn.tailwindcss.com"></script> -->
         <script>
-            tailwind.config = {
-                darkmode: 'class',
-            };
+            // tailwind.config = {
+            //     darkmode: 'class',
+            // };
         </script>
         <title>无法加载请刷新</title>
         <script>
@@ -127,6 +127,9 @@
             .tense > * {
                 display: inline-block;
                 vertical-align: bottom !important;
+            }
+            .tense > i.hidden{
+                display: none;
             }
             .hide-text {
                 transition-duration: 150ms;
@@ -276,7 +279,7 @@
         <!-- POPUP TOAST -->
         <div id="popup-container fixed taz select-none">
             <div
-                class="PopUpToastArea transition fixed w-full m-2 text-center bottom-0 pb-3"
+                class="PopUpToastArea transition fixed w-full m-2 text-center bottom-0 pb-3 "
                 id="pa">
                 <!-- -->
             </div>
@@ -299,9 +302,7 @@
                     ) !important;
                 }
 
-                .hidden {
-                    /* display: none; */
-                }
+          
 
                 input {
                     outline: 0;

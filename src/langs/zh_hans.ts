@@ -45,6 +45,7 @@ export const zhHans = {
         modalBugTips: 'Safari用户: 如果无法关闭 请刷新',
         heightFix: '修复高度',
         kb: '知识库',
+        loading: '正在获取',
     },
 
     tips: {

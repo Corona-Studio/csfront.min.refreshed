@@ -247,7 +247,5 @@ i.use-icon {
 span {
     height: min-content !important;
 }
-.hidden{
-    display: none
-}
+
 </style>

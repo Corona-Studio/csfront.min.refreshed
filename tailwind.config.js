@@ -1,10 +1,11 @@
 /** @type {import('tailwindcss').Config} */
-const inherit = require('tailwindcss/colors');
+// const inherit = require('tailwindcss/colors');
 
 module.exports = {
     content: [
         './src/*.vue',
         './src/components/*.vue',
+        './src/components/Navbar.vue',
         // './src/components/**/*.vue',
         './src/components/Feature/*.vue',
         './src/components/Fragments/*.vue',

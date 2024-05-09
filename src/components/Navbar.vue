@@ -86,7 +86,7 @@ function changeLang(lang: string) {
 
 <template>
     <div
-        class="fixed flex gap-1.5 top-0 w-screen p-2 bg-zinc-200 dark:bg-zinc-800 lg:pr-5 px-1 backdrop-blur-sm rounded-lg rounded-b shadow-md hover:shadow-lg active:shadow rounded-t-none bg-opacity-90 hover:bg-opacity-95 active:bg-opacity-100 z-30 dark:bg-opacity-80 dark:hover:bg-opacity-90 dark:active:bg-opacity-95 transition"
+        :class="'fixed flex gap-1.5 top-0 w-screen p-2 bg-zinc-200 dark:bg-zinc-800 lg:pr-5 px-1 backdrop-blur-sm rounded-lg rounded-b shadow-md hover:shadow-lg active:shadow rounded-t-none bg-opacity-90 hover:bg-opacity-95 active:bg-opacity-100 z-30 dark:bg-opacity-80 dark:hover:bg-opacity-90 dark:active:bg-opacity-95 transition'"
         id="Navbar"
         style="/* max-height: 54px !important;  */">
         <div
@@ -101,7 +101,7 @@ function changeLang(lang: string) {
             :hideMatchedIcon="true"
             v-for="one of navLinks"
             :key="one.name"
-            class="hidden lg:inline-block"
+            :class="'   hidden lg:inline-block   '"
             init-shadow="false"
             :link="one.link"
             :type="one.outer ? 'outer' : '_'">
@@ -111,7 +111,7 @@ function changeLang(lang: string) {
         </Pressable>
         <!-- 示范：循环中的翻译插入 -->
 
-        <div class="ml-auto" id="navbar-separator"></div>
+        <div class="ml-auto opacity-0 bg-green-950" id="navbar-separator"></div>
 
         <Pressable
             :no-start-icon="true"
@@ -119,10 +119,10 @@ function changeLang(lang: string) {
             :isFuncButton="true"
             :isOnlyIcon="true"
             @click.native="switchDark()"
-            class="rounded-full use-icon "
+            :class="'rounded-full use-icon '"
             :initOpacity="0"
             overstyle=" box-shadow: unset !important">
-            <span class="m-auto w-4 h-4 inline-block navonly">{{ dicon }}</span>
+            <span :class="'m-auto w-4 h-4 inline-block navonly'">{{ dicon }}</span>
         </Pressable>
         <!-- DARK -->
         <Pressable
@@ -131,10 +131,10 @@ function changeLang(lang: string) {
             :isFuncButton="true"
             :isOnlyIcon="true"
             @click.native="invokeChooseLang()"
-            class="rounded-full "
+            :class="'rounded-full '"
             :initOpacity="0"
             overstyle=" box-shadow: unset !important">
-            <span class="m-auto w-4 h-4 inline-block navonly">&#xe909;</span>
+            <span :class="'m-auto w-4 h-4 inline-block navonly'">&#xe909;</span>
         </Pressable>
         <!-- I18N -->
         <Pressable
@@ -143,10 +143,10 @@ function changeLang(lang: string) {
             :isFuncButton="true"
             :isOnlyIcon="true"
             @click.native="switchDrawer()"
-            class="rounded-full inline-block lg:hidden "
+            :class="'rounded-full inline-block lg:hidden '"
             :initOpacity="0"
             overstyle=" box-shadow: unset !important">
-            <span class="m-auto w-4 h-4 inline-block navonly">&#xe700;</span>
+            <span :class="'m-auto w-4 h-4 inline-block navonly'">&#xe700;</span>
         </Pressable>
         <!-- DRAWER -->
 
@@ -163,18 +163,19 @@ function changeLang(lang: string) {
             type="outer"
             :initOpacity="50"
             :hideMatchedIcon="true"
-            class="bg-cosloto dark:bg-cosloto-dark animate-pulse hover:animate-none active:animate-none hidden lg:inline-block">
+            :overclass="'bg-'"
+            :class="'bg-cosloto dark:bg-cosloto-dark animate-pulse hover:animate-none active:animate-none hidden lg:inline-block'">
             <span class="">MAIN</span>
         </Pressable>
 
-        <Modal position="right" ref="drawerModal" class="top-0" :shut-by-ground="true">
+        <Modal position="right" ref="drawerModal" :class="'top-0'" :shut-by-ground="true">
             <div
-                class="p-3 rounded-lg bg-zinc-200 top-0 dark:bg-zinc-800 shadow right-0 min-h-screen bg-opacity-85 dark:bg-opacity-85 backdrop-blur-md"
-                style="min-width: 300px">
-                <p class="clear-both p-5 text-xl">
+                :class="'p-3 rounded-lg bg-zinc-200 top-0 dark:bg-zinc-800 shadow right-0 min-h-screen bg-opacity-85 dark:bg-opacity-85 backdrop-blur-md'"
+                style="min-width: 300px'">
+                <p :class="'clear-both p-5 text-xl'">
                     <span class="">{{ t('Navbar.navi') }}</span>
                     <span
-                        class="-translate-y-0.5 rotate-0 hover:rotate-12 active:rotate-45 transition float-right"
+                        :class="'-translate-y-0.5 rotate-0 hover:rotate-12 active:rotate-45 transition float-right'"
                         @click="closeDrawer()">
                         &times;
                     </span>
@@ -182,12 +183,12 @@ function changeLang(lang: string) {
                 <ul class="w-full">
                     <li class="my-2" v-for="one of navLinks" :key="one.name">
                         <Pressable
-                            class="block text-lg px-2"
+                            :class="'block text-lg px-2'"
                             @click.native="closeDrawer()"
                             :link="one.link"
                             :type="one.outer ? 'outer' : '_'"
                             :initOpacity="25">
-                            <span class="m-1.5 use-icon align-baseline">
+                            <span :class="'m-1.5 use-icon align-baseline'">
                                 {{
                                     one.name.includes('@')
                                         ? `${t(one.name.replace('@', ''))}`
@@ -204,10 +205,11 @@ function changeLang(lang: string) {
                             type="outer"
                             :initOpacity="50"
                             :no-start-icon="true"
-                            class="bg-cosloto dark:bg-cosloto-dark animate-pulse hover:animate-none  l active:animate-none  mt-auto bottom-0">
+                            :overclass="'bg-'"
+                            :class="'bg-cosloto dark:bg-cosloto-dark animate-pulse hover:animate-none  l active:animate-none  mt-auto bottom-0'">
                             <span class="">
                                 MAIN
-                                <i class="hidden mt-auto bottom-0"></i>
+                                <i :class="'hidden mt-auto bottom-0'"></i>
                             </span>
                         </Pressable>
                     </li>
@@ -222,19 +224,19 @@ function changeLang(lang: string) {
                         position: absolute;
                         width: 97%;
                     ">
-                    <span class="m-1 p-1">{{ t('base.modalBugTips') }}</span>
+                    <span :class="'m-1 p-1'">{{ t('base.modalBugTips') }}</span>
                 </p>
             </div>
         </Modal>
 
         <Modal ref="langModal" :shut-by-ground="true">
             <div
-                class="p-3 rounded-lg bg-zinc-200 dark:bg-zinc-800 shadow hover:shadow-lg mx-auto">
-                <h4 class="px-3 mb-2 use-icon text-base lg:text-xl">
+                :class="'p-3 rounded-lg bg-zinc-200 dark:bg-zinc-800 shadow hover:shadow-lg mx-auto'">
+                <h4 :class="'px-3 mb-2 use-icon text-base lg:text-xl'">
                     &#xf2b7; &nbsp;Choose Language
                 </h4>
-                <ul class="w-full">
-                    <li class="my-1.5" v-for="item of langs" :key="item.name">
+                <ul :class="'w-full'">
+                    <li :class="'my-1.5'" v-for="item of langs" :key="item.name">
                         <ListItemPressablePreset
                             :showComputedIcon="false"
                             :isFuncButton="true"
@@ -248,12 +250,12 @@ function changeLang(lang: string) {
         </Modal>
 
         <span
-            class="hidden bg-yellow-500 dark:bg-yellow-600 animate-pulse hover:animate-none active:animate-none bg-opacity-50 dark:bg-opacity-50">
+            :class="'hidden bg-yellow-500 dark:bg-yellow-600 animate-pulse hover:animate-none active:animate-none bg-opacity-50 dark:bg-opacity-50'">
             <span
-                class="lg:inline-block rounded-full bg-opacity-0 dark:bg-opacity-0"></span>
+                :class="'lg:inline-block rounded-full bg-opacity-0 dark:bg-opacity-0'"></span>
             <span
-                class="bg-opacity-10 dark:bg-opacity-10 ml-1 lg:hidden lg:text-lg"></span>
-            <span class="bg-opacity-25 dark:bg-opacity-25 ml-2.5 px-2"></span>
+                :class="'bg-opacity-10 dark:bg-opacity-10 ml-1 lg:hidden lg:text-lg'"></span>
+            <span :class="'bg-opacity-25 dark:bg-opacity-25 ml-2.5 px-2'"></span>
         </span>
     </div>
 </template>

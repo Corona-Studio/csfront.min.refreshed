@@ -47,6 +47,7 @@ export const roRus = {
             'Потребитель Safari: обновите стр. если не можете выкл. модал.',
         heightFix: '修复高度',
         kb: 'КБCS',
+        loading: '正在获取',
     },
 
     tips: {

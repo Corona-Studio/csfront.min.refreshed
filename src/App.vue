@@ -9,6 +9,8 @@ import Pressable from '../src/components/Fragments/Pressable.vue';
 import Navbar from '../src/components/Navbar.vue';
 import Modal from './components/Fragments/Modal.vue';
 
+// import '/output.css?url';
+
 const { t, locale } = useI18n({ useScope: 'global' });
 
 const needWarnCookie = ref(false);

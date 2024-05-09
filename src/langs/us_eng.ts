@@ -46,6 +46,7 @@ export const usEng = {
             'Safari Users: Refresh the page if you cannot close modal.',
         heightFix: 'Fix Height',
         kb: 'CSKB',
+        loading: '正在获取',
     },
 
     tips: {
