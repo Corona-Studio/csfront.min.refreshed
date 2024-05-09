@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 
-const cardit = ref<HTMLElement | undefined>();
+const cardit = ref<HTMLElement | null>();
 const formed = ref(
     'p-9 px-11 pb-5 justify-items-center items-center gap-0 grid',
 );

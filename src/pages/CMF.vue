@@ -10,6 +10,7 @@
   import {baseInvokeHeightFix} from "../utils/viewport.ts";
   import {doScroll} from "../utils/scroll.ts";
   import {ContentList, ServerInfo} from "../models/server.ts";
+  import axios from 'axios';
 
   function toCmfs() {
     doScroll('CMFS')
@@ -22,24 +23,19 @@
 
   const serverList = ref<ContentList[] | null>();
 
-  onMounted(() => {
-    let ref = new XMLHttpRequest(),
-        got = '';
-    ref.open('get', '/provide/cmfs.json');
-    ref.onreadystatechange = () => {
-      if(ref.readyState != 4) return;
-      got = ref.responseText;
-      try {
-        setTimeout(() => {
-            serverList.value = (JSON.parse(got) as ServerInfo).contentList;
-        }, 2345);
-      } catch (ex) {
-        serverList.value = null;
+  onMounted(async () => {
+      const serverInfo = await axios.get<ServerInfo>('/provide/cmfs.json');
+
+      if (serverInfo.status !== 200 ||
+          !serverInfo.data ||
+          serverInfo.data.contentList.length === 0){
+          serverList.value = null;
+          baseInvokeHeightFix();
+          return;
       }
+
+      serverList.value = serverInfo.data.contentList;
       baseInvokeHeightFix();
-    }
-    ref.send(null);
-    baseInvokeHeightFix();
   });
 
   watch(serverList, _ => {
