@@ -8,52 +8,22 @@ import PageTitle from '../components/Feature/PageTitle.vue';
 import Paper from '../components/Fragments/Paper.vue';
 import Pressable from '../components/Fragments/Pressable.vue';
 import { doScroll } from '../utils/scroll.ts';
+import LoadingRing from '../components/LoadingRing.vue';
+import { csBackend, csBackendUrl } from '../axiosClient.ts';
 
 const { t } = useI18n();
 
+interface ResultBuildInfo {
+    build: string;
+    date: string;
+    link: string;
+    name: string;
+}
+
 const lastUpdate = ref(1710209344927);
 const buildId = ref(20240311);
-const downloads = ref([
-    {
-        build: 'win-x64',
-        date: '2024/3/11',
-        link: `/products/lx/LauncherX_%build%_net8.0-windows_win-x64.zip`,
-        name: 'Windows x64',
-    },
-    // {build: 'mac-x64', date: '2024/3/11', link: `/products/lx/LauncherX_%build%_net8.0-osx_osx-x64.zip`, name: 'macOS-Intel'},
-    {
-        build: 'mac-x64',
-        date: '2024/3/11',
-        link: `/products/lx/LauncherX_%build%_net8.0-osx_osx-x64.dmg`,
-        name: 'macOS Intel',
-    },
-    {
-        build: 'lin-x64',
-        date: '2024/3/11',
-        link: `/products/lx/LauncherX_%build%_net8.0-linux_linux-x64.zip`,
-        name: 'Linux amd64',
-    },
-
-    {
-        build: 'win-arm',
-        date: '2024/3/11',
-        link: `/products/lx/LauncherX_%build%_net8.0-windows_win-arm64.zip`,
-        name: 'Windows ARM',
-    },
-    // {build: 'mac-arm', date: '2024/3/11', link: `/products/lx/LauncherX_%build%_net8.0-osx_osx-arm64.zip`, name: 'macOS-Apple'},
-    {
-        build: 'mac-arm',
-        date: '2024/3/11',
-        link: `/products/lx/LauncherX_%build%_net8.0-osx_osx-arm64.dmg`,
-        name: 'macOS Apple',
-    },
-    {
-        build: 'lin-arm',
-        date: '2024/3/11',
-        link: `/products/lx/LauncherX_%build%_net8.0-linux_linux-arm64.zip`,
-        name: 'Linux Aarch',
-    },
-]);
+const isLoading = ref(true);
+const downloads = ref<ResultBuildInfo[]>([]);
 const links = ref([
     {
         title: `${t('LauncherX.cskbButton')}`,
@@ -66,8 +36,89 @@ const links = ref([
     { title: `${t('LauncherX.advert')}`, link: t('LauncherX.advertLink') }, //link: 'https://www.mcbbs.net/forum.php?mod=viewthread&tid=1475741'}
 ]);
 
-onMounted(() => {
+interface LauncherBuildInfo {
+    name: string;
+    framework: string;
+    runtime: string;
+}
+
+interface LauncherRawBuildModel {
+    id: string;
+    branch: string;
+    channel: number;
+    releaseDate: string;
+    releaseNote: string;
+    fileHash: string;
+
+    isHotFix: boolean;
+    isApproved: boolean;
+    isReviewed: boolean;
+    isR2R: boolean;
+
+    framework: string;
+    runtime: string;
+}
+
+const allBuilds: LauncherBuildInfo[] = [
+    {
+        name: 'Windows X64',
+        framework: 'net8.0-windows',
+        runtime: 'win-x64',
+    },
+    {
+        name: 'Windows Arm',
+        framework: 'net8.0-windows',
+        runtime: 'win-arm64',
+    },
+
+    {
+        name: 'macOS Intel',
+        framework: 'net8.0-osx',
+        runtime: 'osx-x64',
+    },
+    {
+        name: 'macOS Apple',
+        framework: 'net8.0-osx',
+        runtime: 'osx-arm64',
+    },
+
+    {
+        name: 'Linux X64',
+        framework: 'net8.0-linux',
+        runtime: 'linux-x64',
+    },
+    {
+        name: 'Linux Arm',
+        framework: 'net8.0-linux',
+        runtime: 'linux-arm64',
+    },
+];
+
+async function fetchBuilds(): Promise<void> {
+    for (const build of allBuilds) {
+        const endPoint = `/Build/get/${build.framework}/${build.runtime}/latest/stable`;
+        const builds = await csBackend.get<LauncherRawBuildModel[]>(endPoint);
+
+        if (builds.status !== 200) continue;
+        if (!builds.data || builds.data.length === 0) continue;
+
+        const latestBuild = builds.data[0];
+        const displayModel: ResultBuildInfo = {
+            build: build.runtime,
+            date: latestBuild.releaseDate,
+            link: `${csBackendUrl}/Build/get/${latestBuild.id}/1`,
+            name: build.name,
+        };
+
+        downloads.value.push(displayModel);
+    }
+
+    isLoading.value = false;
+}
+
+onMounted(async () => {
     doScroll('lxb', false);
+    await fetchBuilds();
 });
 </script>
 
@@ -114,7 +165,9 @@ onMounted(() => {
                         </p>
                     </span>
 
-                    <span class="text-xl w-full -translate-y-3">
+                    <span
+                        class="text-xl w-full -translate-y-3"
+                        v-if="!isLoading">
                         <div class="mt-3.5 w-full container">
                             <div class="grid grid-cols-3 gap-0">
                                 <p class="col-span-full text-center mb-2">
@@ -194,6 +247,9 @@ onMounted(() => {
                             </div>
                         </div>
                     </span>
+                    <LoadingRing
+                        class="text-xl w-full -translate-y-3"
+                        v-else></LoadingRing>
                     <i
                         class="hidden my-1 text-xs sm:text-sm md:text-base lg:text-base xl:text-base "></i>
                 </p>
