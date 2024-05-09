@@ -1,5 +1,14 @@
 <script setup lang="ts">
-import { VNodeRef, createVNode, onBeforeUnmount, onMounted, onUpdated, ref, render, watch } from 'vue';
+import {
+    VNodeRef,
+    createVNode,
+    onBeforeUnmount,
+    onMounted,
+    onUpdated,
+    ref,
+    render,
+    watch,
+} from 'vue';
 
 import { doScroll } from '../../utils/scroll.ts';
 import Footer from '../Footer.vue';
@@ -73,15 +82,19 @@ watch(screenHeight, (val) => {
 
 
 /// Agent DEPRECATED
-function AgentHandle(html: string){
-    let created = createVNode("div", {components: { Modal, Pressable }}, html),
+function AgentHandle(html: string) {
+    let created = createVNode(
+            'div',
+            { components: { Modal, Pressable } },
+            html,
+        ),
         puppet = document.createElement('div');
     puppet.classList.add('fixed');
     render(created, puppet);
     Agent.value.appendChild(puppet);
 }
 
-function AgentClear(){
+function AgentClear() {
     Agent.value.innerHTML = '';
 }
 
@@ -92,15 +105,15 @@ defineExpose({
     AgentHandle,
     AgentClear,
     PublicModalOn,
-    PublicModalOff
+    PublicModalOff,
 });
 
-function PublicModalOn(content: string){
+function PublicModalOn(content: string) {
     messageModal.value = content;
     GeneralModal.value.open();
     // GeneralModal.value.
 }
-function PublicModalOff(){
+function PublicModalOff() {
     GeneralModal.value.kill();
     messageModal.value = '';
 }
@@ -112,6 +125,7 @@ function PublicModalOff(){
         :class="`home w-full  min-w-full paper             
         ${presetMargin ?? false ? ' mx-1.5 ' : ' mx-0 '}`"
         style="pointer-events: none">
+<!-- Agent was here -->
         <div
             id="PMC"
             ref="PMC"
@@ -135,9 +149,7 @@ function PublicModalOff(){
         <Footer />
     </div>
 </template>
-<script lang="ts">
-
-</script>
+<script lang="ts"></script>
 
 <style>
 .backoff {

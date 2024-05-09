@@ -79,7 +79,6 @@ defineExpose({
         id="HugeModalGround"
         style="pointer-events: fill"
         ref="modalground"
-        
         :class="`bg-opacity-35 bg-zinc-950 min-w-full min-h-screen fixed   
         ${openStatus ? 'xxx' : 'fade-au'} ${isKilled ? 'hidden' : 'fade-in'}
            grid ${mount('ground')}
@@ -103,8 +102,8 @@ defineExpose({
 
 <style scoped>
 #HugeModalGround {
-    z-index: 888;
     position: fixed;
+    z-index: 888;
     transition-duration: 1.14ms;
     transition-property: all;
     transition-timing-function: cubic-bezier(0.3, 0, 0.1, 1);

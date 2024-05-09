@@ -41,21 +41,17 @@ function preClickCheck() {
     // 他妈的Modal得想办法彻底脱离文档流, 否则这个模态窗就卡在那里
 }
 
-const emits = defineEmits(["AgentHandle", "AgentClear", "PublicModalOn", "PublicModalOff"]);
+const emits = defineEmits([
+    'AgentHandle',
+    'AgentClear',
+    'PublicModalOn',
+    'PublicModalOff',
+]);
 </script>
 
 <template>
     <div
-        class="
-            bg-zinc-200 dark:bg-zinc-800 rounded-lg transition p-3.5 m-1    
-            bg-opacity-55 
-            shadow-md hover:shadow dark:hover:shadow dark:shadow-md dark:active:shadow-sm  active:shadow-sm 
-            dark:bg-opacity-55 
-            hover:bg-opacity-65  
-            dark:hover:bg-opacity-65  
-            active:bg-opacity-60
-            dark:active:bg-opacity-60
-        ">
+        class="bg-zinc-200 dark:bg-zinc-800 rounded-lg transition p-3.5 m-1 bg-opacity-55 shadow-md hover:shadow dark:hover:shadow dark:shadow-md dark:active:shadow-sm active:shadow-sm dark:bg-opacity-55 hover:bg-opacity-65 dark:hover:bg-opacity-65 active:bg-opacity-60 dark:active:bg-opacity-60">
         <div class="titleblock">
             <h3 class="text-2xl text-yellow-500 opacity-90">
                 {{ t('helpblock.titleblock') }}
@@ -79,25 +75,23 @@ const emits = defineEmits(["AgentHandle", "AgentClear", "PublicModalOn", "Public
                     :show-computed-icon="false"
                     :isVerified="true"
                     :link="props.main"
-                    @click.native="preClickCheck()"
-                    >
-                    {{ t('helpblock.toMainTitle')}}
+                    @click.native="preClickCheck()">
+                    {{ t('helpblock.toMainTitle') }}
                 </ListItemPressablePreset>
             </h6>
         </div>
         <!-- contact  -->
         <ContactInfo
-            
             title-class="text-xl px-0 py-0 mt-1.5 opacity-80"
             :titled="'⟩' + t('helpblock.contactTitle')"
-            head="show" 
+            head="show"
             sub="hide"
             only="@showmoreplats@onlymoreplats"
             style="padding: 0; --tw-bg-opacity: 0; margin: 0"
             :no-shadow="true" />
         <i class="hidden p-0 px-0 py-0"></i>
 
-        <Modal ref="notset" :shut-by-ground="true" class=" fixed z-30">
+        <Modal class="fixed z-30" ref="notset" :shut-by-ground="true">
             <div
                 class="p-3 rounded-lg bg-zinc-200 dark:bg-zinc-800 shadow hover:shadow-lg mx-auto grid">
                 <h4 class="text-xl text-center p-3">

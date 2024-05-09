@@ -26,7 +26,8 @@ const preIcon = computed(() => {
 </script>
 
 <template>
-    <Pressable class="text-sm sm:text-base md:text-lg"
+    <Pressable
+        class="text-sm sm:text-base md:text-lg"
         :no-tense="true"
         :type="type"
         :hide-protocol="true"

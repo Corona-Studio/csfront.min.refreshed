@@ -6,7 +6,7 @@ import ListItemPressablePreset from './Feature/ListItemPressablePreset.vue';
 import Modal from './Fragments/Modal.vue';
 import Pressable from './Fragments/Pressable.vue';
 
-const { t, locale } = useI18n({useScope: 'global'});
+const { t, locale } = useI18n({ useScope: 'global' });
 
 interface NavLink {
     name: string;
@@ -88,16 +88,15 @@ function changeLang(lang: string) {
     <div
         class="fixed flex gap-1.5 top-0 w-screen p-2 bg-zinc-200 dark:bg-zinc-800 lg:pr-5 px-1 backdrop-blur-sm rounded-lg rounded-b shadow-md hover:shadow-lg active:shadow rounded-t-none bg-opacity-90 hover:bg-opacity-95 active:bg-opacity-100 z-30 dark:bg-opacity-80 dark:hover:bg-opacity-90 dark:active:bg-opacity-95 transition"
         id="Navbar"
-        style="
-            /* max-height: 54px !important;  */
-        "
-        >
+        style="/* max-height: 54px !important;  */">
         <div
             id="logo"
             :style="`background-image: url('/logo.png')`"
             onclick="window.location.replace('/')"></div>
 
-        <Pressable :fin="true" :noTense="true"
+        <Pressable
+            :fin="true"
+            :noTense="true"
             :no-start-icon="true"
             :hideMatchedIcon="true"
             v-for="one of navLinks"
@@ -114,7 +113,7 @@ function changeLang(lang: string) {
 
         <div class="ml-auto" id="navbar-separator"></div>
 
-        <Pressable 
+        <Pressable
             :no-start-icon="true"
             :no-tense="true"
             :isFuncButton="true"
@@ -126,7 +125,7 @@ function changeLang(lang: string) {
             <span class="m-auto w-4 h-4 inline-block navonly">{{ dicon }}</span>
         </Pressable>
         <!-- DARK -->
-        <Pressable 
+        <Pressable
             :no-start-icon="true"
             :no-tense="true"
             :isFuncButton="true"
@@ -138,7 +137,7 @@ function changeLang(lang: string) {
             <span class="m-auto w-4 h-4 inline-block navonly">&#xe909;</span>
         </Pressable>
         <!-- I18N -->
-        <Pressable 
+        <Pressable
             :no-start-icon="true"
             :no-tense="true"
             :isFuncButton="true"
@@ -156,7 +155,8 @@ function changeLang(lang: string) {
             AND THOSE SHOULD BE PUT INSIDE THE DRAWER
             SOME OF THE FUNCTIONAL METHODS NEED TO BE PROVIDED AND INJECTED
         -->
-        <Pressable :fin="true"
+        <Pressable
+            :fin="true"
             :no-tense="true"
             :no-start-icon="true"
             link="https://corona.studio"

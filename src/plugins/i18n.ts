@@ -22,10 +22,20 @@ export const i18n = createI18n<
     },
 });
 
-export function Match(guess: string){
+export function Match(guess: string) {
     guess = guess.toLowerCase();
-    if(guess.includes('ro') || guess.includes('rus') || guess.includes('ru-ru')) return 'ro_rus';
-    if(guess.includes('zh-hans') || guess.includes('zh-') || guess.includes('taiwan')) return 'zh_hans';
+    if (
+        guess.includes('ro') ||
+        guess.includes('rus') ||
+        guess.includes('ru-ru')
+    )
+        return 'ro_rus';
+    if (
+        guess.includes('zh-hans') ||
+        guess.includes('zh-') ||
+        guess.includes('taiwan')
+    )
+        return 'zh_hans';
     // ...
     else return 'us_eng';
 }
