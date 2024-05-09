@@ -101,7 +101,7 @@ function changeLang(lang: string) {
             :hideMatchedIcon="true"
             v-for="one of navLinks"
             :key="one.name"
-            overclass="hidden lg:inline-block"
+            class="hidden lg:inline-block"
             init-shadow="false"
             :link="one.link"
             :type="one.outer ? 'outer' : '_'">
@@ -119,7 +119,7 @@ function changeLang(lang: string) {
             :isFuncButton="true"
             :isOnlyIcon="true"
             @click.native="switchDark()"
-            overclass="rounded-full use-icon "
+            class="rounded-full use-icon "
             :initOpacity="0"
             overstyle=" box-shadow: unset !important">
             <span class="m-auto w-4 h-4 inline-block navonly">{{ dicon }}</span>
@@ -131,7 +131,7 @@ function changeLang(lang: string) {
             :isFuncButton="true"
             :isOnlyIcon="true"
             @click.native="invokeChooseLang()"
-            overclass="rounded-full "
+            class="rounded-full "
             :initOpacity="0"
             overstyle=" box-shadow: unset !important">
             <span class="m-auto w-4 h-4 inline-block navonly">&#xe909;</span>
@@ -143,7 +143,7 @@ function changeLang(lang: string) {
             :isFuncButton="true"
             :isOnlyIcon="true"
             @click.native="switchDrawer()"
-            overclass="rounded-full inline-block lg:hidden "
+            class="rounded-full inline-block lg:hidden "
             :initOpacity="0"
             overstyle=" box-shadow: unset !important">
             <span class="m-auto w-4 h-4 inline-block navonly">&#xe700;</span>
@@ -163,7 +163,7 @@ function changeLang(lang: string) {
             type="outer"
             :initOpacity="50"
             :hideMatchedIcon="true"
-            overclass="bg-cosloto dark:bg-cosloto-dark animate-pulse hover:animate-none active:animate-none hidden lg:inline-block">
+            class="bg-cosloto dark:bg-cosloto-dark animate-pulse hover:animate-none active:animate-none hidden lg:inline-block">
             <span class="">MAIN</span>
         </Pressable>
 
@@ -182,7 +182,7 @@ function changeLang(lang: string) {
                 <ul class="w-full">
                     <li class="my-2" v-for="one of navLinks" :key="one.name">
                         <Pressable
-                            overclass="block text-lg px-2"
+                            class="block text-lg px-2"
                             @click.native="closeDrawer()"
                             :link="one.link"
                             :type="one.outer ? 'outer' : '_'"
@@ -204,7 +204,7 @@ function changeLang(lang: string) {
                             type="outer"
                             :initOpacity="50"
                             :no-start-icon="true"
-                            overclass="bg-cosloto dark:bg-cosloto-dark animate-pulse hover:animate-none  l active:animate-none  mt-auto bottom-0">
+                            class="bg-cosloto dark:bg-cosloto-dark animate-pulse hover:animate-none  l active:animate-none  mt-auto bottom-0">
                             <span class="">
                                 MAIN
                                 <i class="hidden mt-auto bottom-0"></i>

@@ -166,8 +166,7 @@ onMounted(async () => {
                     </span>
 
                     <span
-                        class="text-xl w-full -translate-y-3"
-                        v-if="!isLoading">
+                        class="text-xl w-full -translate-y-3">
                         <div class="mt-3.5 w-full container">
                             <div class="grid grid-cols-3 gap-0">
                                 <p class="col-span-full text-center mb-2">
@@ -190,7 +189,7 @@ onMounted(async () => {
                                             {{ t('LauncherX.downIntro2') }}
                                         </a>
                                         <span
-                                            v-html="
+                                            v-html=" 
                                                 t('LauncherX.downIntro3')
                                             "></span>
                                         <span class="font-semibold">
@@ -198,22 +197,28 @@ onMounted(async () => {
                                         </span>
                                     </span>
                                 </p>
-                                <Pressable
-                                    :hide-matched-icon="true"
-                                    :no-start-icon="true"
-                                    v-for="down of downloads"
-                                    :key="down.build"
-                                    :overclass="'py-2 my-1 '"
-                                    :type="`download:${down.link.replace('/products/lx/', '').replace('net8.0-', '').replace('%build%', buildId.toString())}`"
-                                    :link="
-                                        '%origin%' +
-                                        down.link.replace(
-                                            '%build%',
-                                            buildId.toString(),
-                                        )
-                                    ">
-                                    {{ down.name }}
-                                </Pressable>
+                                <div class="grid grid-cols-3 gap-0 col-span-full" v-if="!isLoading">
+                                    <Pressable
+                                        :hide-matched-icon="true"
+                                        :no-start-icon="true"
+                                        v-for="down of downloads"
+                                        :key="down.build"
+                                        :class="`py-2 my-1  `"
+                                        :type="`download:${down.link}`"
+                                        :link="
+                                            down.link.replace(
+                                                '%build%',
+                                                buildId.toString(),
+                                            )
+                                        ">
+                                        {{ down.name }}
+                                    </Pressable>
+                                </div>
+                                <div v-else class="">
+                                    <LoadingRing
+                                        class="text-xl w-full -translate-y-3"
+                                        ></LoadingRing>
+                                </div>                                
                                 <p
                                     class="col-span-full text-xs opacity-35"
                                     style="font-size: 0.6rem">
@@ -247,9 +252,7 @@ onMounted(async () => {
                             </div>
                         </div>
                     </span>
-                    <LoadingRing
-                        class="text-xl w-full -translate-y-3"
-                        v-else></LoadingRing>
+                    
                     <i
                         class="hidden my-1 text-xs sm:text-sm md:text-base lg:text-base xl:text-base "></i>
                 </p>

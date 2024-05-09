@@ -5,11 +5,11 @@ module.exports = {
     content: [
         './src/*.vue',
         './src/components/*.vue',
-        './src/components/**/*.vue',
+        // './src/components/**/*.vue',
         './src/components/Feature/*.vue',
         './src/components/Fragments/*.vue',
         './src/pages/*.vue',
-        './src/pages/**/*.vue',
+        // './src/pages/**/*.vue',
         './public/index.html',
         './index.html',
     ],
