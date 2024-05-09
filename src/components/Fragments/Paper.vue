@@ -16,7 +16,7 @@ import Modal from './Modal.vue';
 import Pressable from './Pressable.vue';
 
 const PMC = ref<HTMLElement | null>(null);
-const Agent = ref<HTMLElement | Element | null | VNodeRef>(null);
+const Agent = ref<HTMLElement | null>(null);
 const GeneralModal = ref<HTMLElement | null | VNodeRef>(null);
 const heightFix = ref(0);
 const timer = ref(false);
@@ -80,7 +80,6 @@ watch(screenHeight, (val) => {
     }
 });
 
-
 /// Agent DEPRECATED
 function AgentHandle(html: string) {
     let created = createVNode(
@@ -91,11 +90,11 @@ function AgentHandle(html: string) {
         puppet = document.createElement('div');
     puppet.classList.add('fixed');
     render(created, puppet);
-    Agent.value.appendChild(puppet);
+    Agent.value?.appendChild(puppet);
 }
 
 function AgentClear() {
-    Agent.value.innerHTML = '';
+    if (Agent.value) Agent.value.innerHTML = '';
 }
 
 /// !Agent
@@ -125,7 +124,7 @@ function PublicModalOff() {
         :class="`home w-full  min-w-full paper             
         ${presetMargin ?? false ? ' mx-1.5 ' : ' mx-0 '}`"
         style="pointer-events: none">
-<!-- Agent was here -->
+        <!-- Agent was here -->
         <div
             id="PMC"
             ref="PMC"

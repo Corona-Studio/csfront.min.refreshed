@@ -20,8 +20,8 @@ interface Language {
     code: 'zh_hans' | 'us_eng' | 'ro_rus';
 }
 
-const drawerModal = ref<typeof Modal | null>(null);
-const langModal = ref<typeof Modal | null>(null);
+const drawerModal = ref<InstanceType<typeof Modal> | null>(null);
+const langModal = ref<InstanceType<typeof Modal> | null>(null);
 const navLinks = ref<NavLink[]>([
     { name: 'LauncherX', link: '/launcherx', outer: false },
     { name: 'CMF', link: '/cmf', outer: false },
@@ -86,8 +86,8 @@ function changeLang(lang: string) {
 
 <template>
     <div
-        :class="'fixed flex gap-1.5 top-0 w-screen p-2 bg-zinc-200 dark:bg-zinc-800 lg:pr-5 px-1 backdrop-blur-sm rounded-lg rounded-b shadow-md hover:shadow-lg active:shadow rounded-t-none bg-opacity-90 hover:bg-opacity-95 active:bg-opacity-100 z-30 dark:bg-opacity-80 dark:hover:bg-opacity-90 dark:active:bg-opacity-95 transition'"
         id="Navbar"
+        :class="'fixed flex gap-1.5 top-0 w-screen p-2 bg-zinc-200 dark:bg-zinc-800 lg:pr-5 px-1 backdrop-blur-sm rounded-lg rounded-b shadow-md hover:shadow-lg active:shadow rounded-t-none bg-opacity-90 hover:bg-opacity-95 active:bg-opacity-100 z-30 dark:bg-opacity-80 dark:hover:bg-opacity-90 dark:active:bg-opacity-95 transition'"
         style="/* max-height: 54px !important;  */">
         <div
             id="logo"
@@ -122,7 +122,9 @@ function changeLang(lang: string) {
             :class="'rounded-full use-icon '"
             :initOpacity="0"
             overstyle=" box-shadow: unset !important">
-            <span :class="'m-auto w-4 h-4 inline-block navonly'">{{ dicon }}</span>
+            <span :class="'m-auto w-4 h-4 inline-block navonly'">
+                {{ dicon }}
+            </span>
         </Pressable>
         <!-- DARK -->
         <Pressable
@@ -168,7 +170,11 @@ function changeLang(lang: string) {
             <span class="">MAIN</span>
         </Pressable>
 
-        <Modal position="right" ref="drawerModal" :class="'top-0'" :shut-by-ground="true">
+        <Modal
+            position="right"
+            ref="drawerModal"
+            :class="'top-0'"
+            :shut-by-ground="true">
             <div
                 :class="'p-3 rounded-lg bg-zinc-200 top-0 dark:bg-zinc-800 shadow right-0 min-h-screen bg-opacity-85 dark:bg-opacity-85 backdrop-blur-md'"
                 style="min-width: 300px'">
@@ -236,7 +242,10 @@ function changeLang(lang: string) {
                     &#xf2b7; &nbsp;Choose Language
                 </h4>
                 <ul :class="'w-full'">
-                    <li :class="'my-1.5'" v-for="item of langs" :key="item.name">
+                    <li
+                        :class="'my-1.5'"
+                        v-for="item of langs"
+                        :key="item.name">
                         <ListItemPressablePreset
                             :showComputedIcon="false"
                             :isFuncButton="true"
@@ -255,7 +264,8 @@ function changeLang(lang: string) {
                 :class="'lg:inline-block rounded-full bg-opacity-0 dark:bg-opacity-0'"></span>
             <span
                 :class="'bg-opacity-10 dark:bg-opacity-10 ml-1 lg:hidden lg:text-lg'"></span>
-            <span :class="'bg-opacity-25 dark:bg-opacity-25 ml-2.5 px-2'"></span>
+            <span
+                :class="'bg-opacity-25 dark:bg-opacity-25 ml-2.5 px-2'"></span>
         </span>
     </div>
 </template>

@@ -14,7 +14,7 @@ import Modal from './components/Fragments/Modal.vue';
 const { t, locale } = useI18n({ useScope: 'global' });
 
 const needWarnCookie = ref(false);
-const cookieWarn = ref<typeof Modal | null>(null);
+const cookieWarn = ref<InstanceType<typeof Modal> | null>(null);
 
 const ShutCookieWarningBanner = () => {
     localStorage.readWarnBefore = true;
