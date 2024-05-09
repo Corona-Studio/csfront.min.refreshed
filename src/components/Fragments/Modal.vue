@@ -108,4 +108,7 @@ defineExpose({
     transition-property: all;
     transition-timing-function: cubic-bezier(0.3, 0, 0.1, 1);
 }
+#HugeModalGround.hidden{
+    display: none !important;
+}
 </style>
