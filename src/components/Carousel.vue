@@ -2,7 +2,6 @@
 import { onMounted, ref, watch } from 'vue';
 
 import Title from './Title.vue';
-import exp from 'constants';
 
 function play() {
     playing.value = true;
@@ -14,9 +13,13 @@ function stop() {
 
 const enableHomeCarousel = ref(false);
 const playing = ref(true);
-let playlist = ref([]);
+interface Playlist {
+    id: number;
+    path: string;
+}
+let playlist = ref<Playlist[]>([]);
 let current = ref(0);
-let carouselInterval = ref(Number)
+// let carouselInterval = ref(Number)
 
 const props = defineProps<{
     isHomeCarousel?: boolean;
@@ -72,7 +75,7 @@ watch(
                 :key="img.id"
                 :style="`background-image: url(${img.path}) !important; background-color: darkgray`"></div>
         </div>
-        <Title :hidden="isHomeCarousel" />
+        <Title :hidden="isHomeCarousel ?? false" />
     </div>
 </template>
 <script lang="ts">

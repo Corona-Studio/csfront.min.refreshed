@@ -2,7 +2,6 @@
 import { computed, getCurrentInstance, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-import { i18n } from '../plugins/i18n.ts';
 import ListItemPressablePreset from './Feature/ListItemPressablePreset.vue';
 import Modal from './Fragments/Modal.vue';
 import Pressable from './Fragments/Pressable.vue';
@@ -34,9 +33,6 @@ const navLinks = ref<NavLink[]>([
     },
     // { name: '\ue903 Github', link: 'https://github.com/corona-studio', outer: true },
 ]);
-const navLinkSeparateIndex = ref(5);
-const isChoosingLang = ref(false);
-const isUsingDrawer = ref(false);
 const langs = ref<Language[]>([
     { name: '汉语', method: changeLang, code: 'zh_hans' },
     { name: 'English', method: changeLang, code: 'us_eng' },
@@ -72,8 +68,8 @@ function switchDark() {
         dicon.value = '\ue708';
     }
 
-    const { ctx: _this }: any = getCurrentInstance();
-    _this.$forceUpdate();
+    // const { ctx: _this }: any = getCurrentInstance();
+    // _this.$forceUpdate();
 }
 
 function invokeChooseLang() {

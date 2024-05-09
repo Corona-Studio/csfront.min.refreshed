@@ -6,7 +6,6 @@ import ContactInfo from './ContactInfo.vue';
 import ListItemPressablePreset from './Feature/ListItemPressablePreset.vue';
 import Modal from './Fragments/Modal.vue';
 import Pressable from './Fragments/Pressable.vue';
-import { emit } from 'process';
 
 const { t } = useI18n();
 
@@ -24,20 +23,20 @@ function killModal() {
 function preClickCheck() {
     if(props.main == undefined || props.main == null) setTimeout(() => {
         // notset.value!.open();
-        emits('PublicModalOn', `
-            <div
-                class="p-3 rounded-lg bg-zinc-200 dark:bg-zinc-800 shadow hover:shadow-lg mx-auto grid">
-                <h4 class="text-xl text-center p-3">
-                    {{ t('helpblock.unsetyet') }}
-                </h4>
-                <Pressable
-                    :is-func-button="true"
-                    @click.native="killModal()"
-                    overclass="mx-auto text-lg">
-                    {{ t('base.okay') }}
-                </Pressable>
-            </div>
-            `);
+        // emits('PublicModalOn', `
+        //     <div
+        //         class="p-3 rounded-lg bg-zinc-200 dark:bg-zinc-800 shadow hover:shadow-lg mx-auto grid">
+        //         <h4 class="text-xl text-center p-3">
+        //             {{ t('helpblock.unsetyet') }}
+        //         </h4>
+        //         <Pressable
+        //             :is-func-button="true"
+        //             @click.native="killModal()"
+        //             overclass="mx-auto text-lg">
+        //             {{ t('base.okay') }}
+        //         </Pressable>
+        //     </div>
+        //     `);
     }, 123);
     // 他妈的Modal得想办法彻底脱离文档流, 否则这个模态窗就卡在那里
 }

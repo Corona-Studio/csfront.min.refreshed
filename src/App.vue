@@ -12,8 +12,6 @@ import Modal from './components/Fragments/Modal.vue';
 const { t, locale } = useI18n({useScope: 'global'});
 
 const needWarnCookie = ref(false);
-const DateRef = ref(new Date());
-const RENDERHEIGHT = ref(0);
 const cookieWarn = ref<typeof Modal | null>(null);
 
 const ShutCookieWarningBanner = () => {
