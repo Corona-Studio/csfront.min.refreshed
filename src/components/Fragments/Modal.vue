@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n();
 const modalground = ref<HTMLElement | null>(null);
 const openStatus = ref(false);
 const isKilled = ref(true);
@@ -82,13 +84,13 @@ defineExpose({
            grid ${mount('ground')}
            top-0 left-0 right-0 bottom-0  `">
         <div
-            :class="`${(position ?? 'center') == 'bottom' ? 'w-full' : 'w-auto'} h-auto inner-border fixed  top-1 bottom-1   
+            :class="`${(position ?? 'center') == 'bottom' ? 'w-full' : 'w-auto'} h-auto inner-border fixed   
             ${openStatus ? 'xxx' : 'fade-au'} ${isKilled ? 'hidden' : 'fade-in'}   ${mount('frame')}  fn  `">
             <slot></slot>
-            <p class="m-1" v-if="isSafari" style="text-align: center">
+            <p class="m-1" v-if="isSafari && props.position != 'right'" style="text-align: center">
                 <span
                     class="m-1 p-1 bg-zinc-100 dark:bg-zinc-800 rounded-lg opacity-80">
-                    {{ 'safari' }}
+                    {{ t('safari') }} 
                 </span>
             </p>
         </div>

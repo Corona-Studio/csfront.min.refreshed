@@ -68,8 +68,8 @@ function switchDark() {
         dicon.value = '\ue708';
     }
 
-    const { ctx: _this }: any = getCurrentInstance();
-    _this.$forceUpdate();
+    // const { ctx: _this }: any = getCurrentInstance();
+    // _this.$forceUpdate();
 }
 
 function invokeChooseLang() {
@@ -86,7 +86,7 @@ function changeLang(lang: string) {
 
 <template>
     <div
-        class="fixed flex gap-1.5 top-0 w-full p-2 bg-zinc-200 dark:bg-zinc-800 lg:pr-5 px-1 backdrop-blur-sm rounded-lg rounded-b shadow-md hover:shadow-lg active:shadow rounded-t-none bg-opacity-90 hover:bg-opacity-95 active:bg-opacity-100 z-30 dark:bg-opacity-80 dark:hover:bg-opacity-90 dark:active:bg-opacity-95 transition"
+        class="fixed flex gap-1.5 top-0 w-screen p-2 bg-zinc-200 dark:bg-zinc-800 lg:pr-5 px-1 backdrop-blur-sm rounded-lg rounded-b shadow-md hover:shadow-lg active:shadow rounded-t-none bg-opacity-90 hover:bg-opacity-95 active:bg-opacity-100 z-30 dark:bg-opacity-80 dark:hover:bg-opacity-90 dark:active:bg-opacity-95 transition"
         id="Navbar"
         style="/* max-height: 54px !important;  */">
         <div
@@ -167,9 +167,9 @@ function changeLang(lang: string) {
             <span class="">MAIN</span>
         </Pressable>
 
-        <Modal position="right" ref="drawerModal" :shut-by-ground="true">
+        <Modal position="right" ref="drawerModal" class="top-0" :shut-by-ground="true">
             <div
-                class="p-3 rounded-lg bg-zinc-200 dark:bg-zinc-800 shadow right-0 min-h-screen bg-opacity-85 dark:bg-opacity-85 backdrop-blur-md"
+                class="p-3 rounded-lg bg-zinc-200 top-0 dark:bg-zinc-800 shadow right-0 min-h-screen bg-opacity-85 dark:bg-opacity-85 backdrop-blur-md"
                 style="min-width: 300px">
                 <p class="clear-both p-5 text-xl">
                     <span class="">{{ t('Navbar.navi') }}</span>

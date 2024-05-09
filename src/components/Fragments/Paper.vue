@@ -80,7 +80,8 @@ watch(screenHeight, (val) => {
     }
 });
 
-/// Agent
+
+/// Agent DEPRECATED
 function AgentHandle(html: string) {
     let created = createVNode(
             'div',
@@ -124,8 +125,7 @@ function PublicModalOff() {
         :class="`home w-full  min-w-full paper             
         ${presetMargin ?? false ? ' mx-1.5 ' : ' mx-0 '}`"
         style="pointer-events: none">
-        <div class="fixed ?" ref="Agent"></div>
-        <Modal v-html="messageModal" :ref="GeneralModal"></Modal>
+<!-- Agent was here -->
         <div
             id="PMC"
             ref="PMC"

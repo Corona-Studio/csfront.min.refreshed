@@ -8,6 +8,7 @@ interface PlayList {
     path: string;
 }
 
+
 function play() {
     playing.value = true;
 }
@@ -18,8 +19,11 @@ function stop() {
 
 const enableHomeCarousel = ref(false);
 const playing = ref(true);
-let playlist = ref<PlayList[]>([]);
+
+let playlist = ref<Playlist[]>([]);
 let current = ref(0);
+// let carouselInterval = ref(Number)
+
 
 const props = defineProps<{
     isHomeCarousel?: boolean;

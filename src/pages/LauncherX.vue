@@ -184,7 +184,7 @@ onMounted(() => {
                                     :key="link.title"
                                     type="outer"
                                     :link="link.link"
-                                    :overclass="'text-xs sm:text-sm md:text-base lg:text-base xl:text-base max-xl:text-lg  py-2'">
+                                    :overclass="'text-xs sm:text-sm md:text-base lg:text-base xl:text-base   py-2'">
                                     {{ link.title }}
                                 </Pressable>
 
@@ -195,7 +195,7 @@ onMounted(() => {
                         </div>
                     </span>
                     <i
-                        class="hidden my-1 text-xs sm:text-sm md:text-base lg:text-base xl:text-base max-xl:text-lg"></i>
+                        class="hidden my-1 text-xs sm:text-sm md:text-base lg:text-base xl:text-base "></i>
                 </p>
             </h5>
             <br />

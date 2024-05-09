@@ -216,7 +216,7 @@ onBeforeUnmount(() => {
                     noLinkIcon ?? false
                         ? ' hidden '
                         : type === 'outer' || isVerified
-                          ? '  text-sm use-icon sm-icon inline-block translate-y-0.5'
+                          ? ' text-xs md:text-sm use-icon scale-90 md:scale-100 sm-icon inline-block translate-y-0.5'
                           : 'hidden'
                 "
                 style="--tw-translate-y: 0.059rem"
