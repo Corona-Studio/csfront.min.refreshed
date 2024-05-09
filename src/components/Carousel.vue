@@ -70,7 +70,7 @@ watch(
                 :class="` ${(img.id == current) ? 'fade-in' : 'fade-au'}      scale-x-110 max-h-screen carousels bg-center bg-no-repeat bg-cover bg-fill opacity-30 absolute top-0 bottom-0 left-0 right-0 `"
                 v-for="img of playlist"
                 :key="img.id"
-                :style="`background-image: url(${img.path}) !important; `"></div>
+                :style="`background-image: url(${img.path}) !important; background-color: darkgray`"></div>
         </div>
         <Title :hidden="isHomeCarousel" />
     </div>
