@@ -4,10 +4,13 @@ import { ref } from 'vue';
 import { onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { Match } from './plugins/i18n';
+import { inject } from '@vercel/analytics';
 
 import Pressable from '../src/components/Fragments/Pressable.vue';
 import Navbar from '../src/components/Navbar.vue';
 import Modal from './components/Fragments/Modal.vue';
+
+inject();
 
 // import '/output.css?url';
 
