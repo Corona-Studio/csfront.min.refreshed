@@ -42,7 +42,7 @@ export const zhHans = {
         force: '更新页面',
         tips: '注释',
         backview: '回溯',
-        modalBugTips: 'Safari用户: 如果无法关闭 请刷新',
+        safariModal: 'Safari用户: 如果无法关闭 请刷新',
         heightFix: '修复高度',
         kb: '知识库',
         loading: '正在获取',

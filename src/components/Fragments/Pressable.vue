@@ -37,6 +37,7 @@ const props = defineProps<{
     fin?: boolean;
     noPadding?: boolean;
     ignoreTextResp?: boolean;
+    iconPosFix?: boolean;
 }>();
 
 let ex = computed(() => {
@@ -73,7 +74,7 @@ function runClickEvent(to: string, ty: string) {
     if (ty == 'copy')
         if (props.copyContent) {
             if (props.copyContent === 'this.content') {
-                copy(slots.default!()[0].children as string);
+                copy((slots.default!()[0].children!) as unknown as string);
                 return;
             }
 
@@ -182,14 +183,15 @@ onBeforeUnmount(() => {
             dark:bg-opacity-${initOpacity ?? 30}
             hover:shadow-md hover:bg-opacity-70   active:shadow-sm active:bg-opacity-100
             dark:hover:bg-opacity-70 dark:hover:shadow-md   dark:shadow${(initShadow ?? '').replace('none', '-none')}  dark:active:shadow-sm dark:active:bg-opacity-100
-            px-2 ${props.fin ?? false ? (props.isOnlyIcon ?? false ? 'py-1' : 'py-1.5') : props.isOnlyIcon ?? false ? 'py-1' : 'py-2'} mx-1 select-none 
+            ${props.fin ?? false ? (props.isOnlyIcon ?? false ? 'py-1.5 px-1.5 rounded-full' : 'py-1.5 px-2') : props.isOnlyIcon ?? false ? 'py-1.5 px-2.5 rounded-full' : 'py-2 px-2'} mx-1 select-none 
             ${disable ?? false ? 'dis' : ''}
-            ${overclass}
+            ${overclass} group
  
+             justify-center? justify-items-center? items-center grid
         `"
         :style="`${overstyle} ; cursor: pointer; ${props.noPadding ?? false ? 'padding: 0 !important;' : ''}`"
         ref="pressableBase">
-        <span :class="noTense ?? false ? 'untense' : 'tense'">
+        <span :class="`${noTense ?? false ? 'untense' : 'tense'}  scale-100 group-hover:scale-105 transition  block `">
             <i :class="`${iconClass}    use-icon`"></i>
             <span
                 :class="`text-center my-auto mx-0 ml-0 ${isOnlyIcon ?? false ? ' use-icon ' : ' '}`">
@@ -202,8 +204,8 @@ onBeforeUnmount(() => {
                     "
                     style="--tw-translate-y: 0.17365rem"></span>
                 <span
-                    class="scale-90 px-0.5"
-                    style="--tw-scale-x: 0.79; --tw-scale-y: 0.79">
+                    :class="  `${((props.isOnlyIcon ?? false) && (props.iconPosFix ?? true)) ? 'translate-y-1' : ''} inline-block`"
+                    style=" --tw-translate-y: -0.12rem">
                     <slot></slot>
                 </span>
                 <span

@@ -129,7 +129,7 @@ function PublicModalOff() {
             id="PMC"
             ref="PMC"
             :class="
-                ` shadow-xl h-full w-full  ${noBackdrop ?? false ? 'forcenobg' : 'backoff'}   z-10 bg-zinc-100 dark:bg-zinc-700 bg-opacity-55 dark:bg-opacity-65
+                ` shadow-xl h-full w-full  ${noBackdrop ?? false ? 'forcenobg' : 'backoff'}   z-10 bg-zinc-100 dark:bg-zinc-700 ?bg-opacity-65 ?dark:bg-opacity-75
             ${noTopWrap ?? false ? ' mt-0 ' : ' mt-16 '}
             ${presetPadding ?? false ? ' px-1.5 ' : ' px-0 '}
             ${noHeightWrap ?? false ? '  ' : ' min-h-screen '} ` + overClass

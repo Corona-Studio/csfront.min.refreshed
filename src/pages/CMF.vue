@@ -34,7 +34,10 @@
           return;
       }
 
-      serverList.value = serverInfo.data.contentList;
+      setTimeout(() => {
+        serverList.value = serverInfo.data.contentList;
+        baseInvokeHeightFix();
+      }, 1234);
       baseInvokeHeightFix();
   });
 
@@ -69,7 +72,7 @@
             </h5>
 
         </p>
-        <div class="w-full mx-auto bg-zinc-500 bg-opacity-5 mt-3 rounded-lg transition p-1.5 lg:p-3 xl:p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5 xl:gap-2.5" id="CMFS">
+        <div class="w-full mx-auto bg-zinc-200 dark:bg-zinc-800 bg-opacity-80 dark:bg-opacity-80 mt-3 rounded-lg transition p-1.5 lg:p-3 xl:p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5 xl:gap-2.5" id="CMFS">
             <h6 v-if="!serverList" class="grid justify-items-center justify-center items-center col-span-full text-center text-xl p-3 m-1" >
               <div class="">
                     <LoadingRing

@@ -5,6 +5,7 @@ import { useI18n } from 'vue-i18n';
 import ListItemPressablePreset from './Feature/ListItemPressablePreset.vue';
 import Modal from './Fragments/Modal.vue';
 import Pressable from './Fragments/Pressable.vue';
+import { Match, Get } from '../plugins/i18n';
 
 const { t, locale } = useI18n({ useScope: 'global' });
 
@@ -118,6 +119,7 @@ function changeLang(lang: string) {
             :no-tense="true"
             :isFuncButton="true"
             :isOnlyIcon="true"
+            :iconPosFix="true"
             @click.native="switchDark()"
             :class="'rounded-full use-icon '"
             :initOpacity="0"
@@ -132,6 +134,7 @@ function changeLang(lang: string) {
             :no-tense="true"
             :isFuncButton="true"
             :isOnlyIcon="true"
+            :iconPosFix="true"
             @click.native="invokeChooseLang()"
             :class="'rounded-full '"
             :initOpacity="0"
@@ -144,6 +147,7 @@ function changeLang(lang: string) {
             :no-tense="true"
             :isFuncButton="true"
             :isOnlyIcon="true"
+            :iconPosFix="true"
             @click.native="switchDrawer()"
             :class="'rounded-full inline-block lg:hidden '"
             :initOpacity="0"
@@ -176,8 +180,8 @@ function changeLang(lang: string) {
             :class="'top-0'"
             :shut-by-ground="true">
             <div
-                :class="'p-3 rounded-lg bg-zinc-200 top-0 dark:bg-zinc-800 shadow right-0 min-h-screen bg-opacity-85 dark:bg-opacity-85 backdrop-blur-md'"
-                style="min-width: 300px'">
+                :class="'p-3 rounded-lg bg-zinc-200  top-0 dark:bg-zinc-800 shadow right-0 min-h-screen bg-opacity-85 dark:bg-opacity-85 backdrop-blur-md'"
+                style="min-width: 300px">
                 <p :class="'clear-both p-5 text-xl'">
                     <span class="">{{ t('Navbar.navi') }}</span>
                     <span
@@ -212,7 +216,7 @@ function changeLang(lang: string) {
                             :initOpacity="50"
                             :no-start-icon="true"
                             :overclass="'bg-'"
-                            :class="'bg-cosloto dark:bg-cosloto-dark animate-pulse hover:animate-none  l active:animate-none  mt-auto bottom-0'">
+                            :class="'bg-cosloto dark:bg-cosloto-dark animate-pulse hover:animate-none mt-8  l active:animate-none  bottom-0'">
                             <span class="">
                                 MAIN
                                 <i :class="'hidden mt-auto bottom-0'"></i>
@@ -225,12 +229,12 @@ function changeLang(lang: string) {
                     v-if="isSafari"
                     style="
                         text-align: center;
-                        bottom: 0;
+                        bottom: 3vh;
                         right: 0;
                         position: absolute;
                         width: 97%;
                     ">
-                    <span :class="'m-1 p-1'">{{ t('base.modalBugTips') }}</span>
+                    <span :class="'m-1 p-1'">{{ t('base.safariModal') }}</span>
                 </p>
             </div>
         </Modal>
@@ -238,8 +242,9 @@ function changeLang(lang: string) {
         <Modal ref="langModal" :shut-by-ground="true">
             <div
                 :class="'p-3 rounded-lg bg-zinc-200 dark:bg-zinc-800 shadow hover:shadow-lg mx-auto'">
-                <h4 :class="'px-3 mb-2 use-icon text-base lg:text-xl'">
-                    &#xf2b7; &nbsp;Choose Language
+                <h4 :class="'px-3 mb-2 use-icon text-base font-semibold lg:text-xl'">
+                    &#xf2b7; &nbsp;Choose Language<br>
+                    <span class="text-sm font-normal opacity-60">Not all content translated yet.</span>
                 </h4>
                 <ul :class="'w-full'">
                     <li
@@ -255,6 +260,7 @@ function changeLang(lang: string) {
                         </ListItemPressablePreset>
                     </li>
                 </ul>
+                <p class="text-xs text-center opacity-30">Match: {{ Match() }}:{{ Get() }}</p> 
             </div>
         </Modal>
 

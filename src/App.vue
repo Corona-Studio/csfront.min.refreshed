@@ -54,7 +54,7 @@ onMounted(() => {
             <!-- </transition> -->
         </div>
 
-        <Modal ref="cookieWarn" position="bottom" :shut-by-ground="false">
+        <Modal ref="cookieWarn" position="bottom" :ignoreSafari="true" :shut-by-ground="false">
             <div
                 id="cookie-warning"
                 :class="`transition ${needWarnCookie ? 'fixed' : 'hidden'} w-full bottom-0 border rounded-t shadow drop-shadow bg-zinc-100 dark:bg-zinc-700`">

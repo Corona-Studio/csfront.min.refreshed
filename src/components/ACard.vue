@@ -49,7 +49,7 @@ onMounted(() => {
 <template>
     <div
         ref="cardit"
-        :class="` ${formed} bg-zinc-200 dark:bg-zinc-700 transition  rounded-lg
+        :class="` ${formed} bg-zinc-200 dark:bg-zinc-600 transition  rounded-lg
     shadow hover:shadow-lg active:shadow-md mx-auto opacity-95
     dark:shadow dark:hover:shadow-lg dark:active:shadow-md
     dark:bg-opacity-60 dark:hover:bg-opacity-70 dark:active:bg-opacity-75

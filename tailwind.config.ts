@@ -9,6 +9,7 @@ export default {
         './src/components/Feature/*.vue',
         './src/components/Fragments/*.vue',
         './src/pages/*.vue',
+        './src/pages/About.vue',
         // './src/pages/**/*.vue',
         './public/index.html',
         './index.html',

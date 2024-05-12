@@ -22,10 +22,11 @@ export const i18n = createI18n<
     },
 });
 
-export function Match(guess: string) {
+export function Match(guess: string = navigator.language) {
     guess = guess.toLowerCase();
     if (
         guess.includes('ro') ||
+        guess.includes('ru') ||
         guess.includes('rus') ||
         guess.includes('ru-ru')
     )
@@ -38,4 +39,7 @@ export function Match(guess: string) {
         return 'zh_hans';
     // ...
     else return 'us_eng';
+}
+export function Get(){
+    return navigator.language;
 }

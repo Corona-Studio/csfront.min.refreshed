@@ -42,7 +42,7 @@ export const usEng = {
         force: 'Refr. Page',
         tips: 'Tips',
         backview: 'Backview',
-        modalBugTips:
+        safariModal:
             'Safari Users: Refresh the page if you cannot close modal.',
         heightFix: 'Fix Height',
         kb: 'CSKB',

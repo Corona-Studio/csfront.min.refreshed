@@ -10,6 +10,7 @@ const isKilled = ref(true);
 const props = defineProps<{
     position?: string;
     shutByGround?: boolean;
+    ignoreSafari?: boolean;
 }>();
 
 function mount(target: string) {
@@ -25,7 +26,8 @@ function mount(target: string) {
         switch (props.position ?? 'center') {
             case 'center':
             default:
-                return 'centr';
+                if(isSafari && !(props.ignoreSafari ?? false)) return 'centr-safari left-3.5 right-3.5 sm:left-6 sm:right-6 md:left-1/4 md:right-1/4 lg:left-1/3 lg:right-1/3';
+                else return 'centr';
             case 'right':
                 return 'right-0';
         }
@@ -44,7 +46,7 @@ function kill() {
 
     setTimeout(() => {
         isKilled.value = true;
-    }, 800);
+    }, 500);
 }
 
 const listener: EventListenerOrEventListenerObject = (e) => {
@@ -76,7 +78,6 @@ defineExpose({
 
 <template>
     <div
-        
         id="HugeModalGround"
         style="pointer-events: fill"
         ref="modalground"
@@ -85,13 +86,14 @@ defineExpose({
            grid ${mount('ground')}
            top-0 left-0 right-0 bottom-0  `">
         <div
-            :class="`${(position ?? 'center') == 'bottom' ? 'w-full' : 'w-auto'} h-auto inner-border fixed   
+            :class="`${(position ?? 'center') == 'bottom' ? 'w-full' : 'w-auto'} 
+                     h-auto inner-border fixed    
             ${openStatus ? 'xxx' : 'fade-au'} ${isKilled ? 'hidden' : 'fade-in'}   ${mount('frame')}  fn  `">
             <slot></slot>
             <p class="m-1" v-if="isSafari && props.position != 'right'" style="text-align: center">
                 <span
-                    class="m-1 p-1 bg-zinc-100 dark:bg-zinc-800 rounded-lg opacity-80">
-                    {{ t('safari') }} 
+                    class="m-1 p-1 bg-zinc-100 dark:bg-zinc-800 rounded-lg inline-block scale-90 mt-0  bg-opacity-90 dark:bg-opacity-90 shadow">
+                    {{ t('base.safariModal') }} 
                 </span>
             </p>
         </div>

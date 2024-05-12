@@ -48,6 +48,13 @@
                 left: auto !important;
                 margin: auto;
             }
+            .centr-safari{
+                top: 30vh !important;
+                /* right: 39vw !important; */
+                bottom: auto !important;
+                /* left: 39vw !important; */
+                margin: auto; 
+            }
             .use-icon {
                 font-family:
                     system-ui,
@@ -86,15 +93,15 @@
                 }
             }
             .fade-in {
-                animation: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1) forwards
+                animation: .5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards
                     fain;
-                -webkit-animation: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1)
+                -webkit-animation: .5s cubic-bezier(0.075, 0.82, 0.165, 1)
                     forwards fain !important;
             }
             .fade-au {
-                animation: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1) forwards
+                animation: .5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards
                     faou;
-                -webkit-animation: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1)
+                -webkit-animation: .5s cubic-bezier(0.075, 0.82, 0.165, 1)
                     forwards faou !important;
             }
             @keyframes fain {
@@ -118,6 +125,9 @@
                 margin-bottom: auto;
                 height: fit-content;
                 user-select: none;
+            }
+            .rounded-full {
+                border-radius: 100% !important;
             }
             .pressable > * {
                 margin-top: auto;
@@ -214,6 +224,9 @@
                 width: 3.69rem;
                 height: 0.59rem;
                 content: '';
+            }
+            .title-str-flur.title-str-reverse::after, .title-str-flur.title-str::before{
+                opacity: .7;
             }
         </style>
     </head>
@@ -512,6 +525,10 @@
         window.addEventListener('scroll', () => { BaseInvokeHeightFix() } );
         document.addEventListener('scroll', () => { BaseInvokeHeightFix() } );
 
+        setInterval(() => {
+            console.log('base planned fix height')
+            BaseInvokeHeightFix(false);
+        }, 10000);
 
         // window.onclick = (e) => {console.log(e)} // debug
     </script>

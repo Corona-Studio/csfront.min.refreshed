@@ -43,7 +43,7 @@ export const roRus = {
         force: 'обновить',
         tips: 'подсказки',
         backview: 'обратимые',
-        modalBugTips:
+        safariModal:
             'Потребитель Safari: обновите стр. если не можете выкл. модал.',
         heightFix: '修复高度',
         kb: 'КБCS',
