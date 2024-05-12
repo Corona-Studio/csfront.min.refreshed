@@ -3,7 +3,8 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n();
-const modalground = ref<HTMLElement | null>(null);
+const modalGround = ref<HTMLElement | null>(null);
+const modalBody = ref<HTMLElement | null>(null);
 const openStatus = ref(false);
 const isKilled = ref(true);
 
@@ -38,6 +39,28 @@ function open() {
     if (!isKilled.value) return;
     openStatus.value = true;
     isKilled.value = false;
+
+    setTimeout(() => {
+        checkAlive();
+    }, 1234);
+}
+
+function checkAlive(){
+    if(window.getComputedStyle(modalBody.value as Element).display != 'block' || parseInt(window.getComputedStyle(modalBody.value as Element).opacity) <= 0)
+        {
+            
+            alert(`请关闭广告拦截器(将本站加入白名单), 它影响到本站正常工作了. 
+            我们永远不会插入影响浏览的烦人广告. 在关闭拦截器后, 请刷新页面.
+            ---
+            Please turn your AD Blocker off(or add this site into whitelist) for this page since it prevents this page from functioning. 
+            We will never add annoying advertisements into this site. After you turned the blocker off, please refresh the page.
+            ---
+            Пожалуйста, выключите ваш Блокировщик рекламы, из-за того этот сайт не может работать прекрасны.
+            никогда мы не будем добавить досадные рекламы. 
+            И после выключили Блокировщик рекламы пожалуйста обновите этот сайт!`.replaceAll('    ', ''));
+            
+            kill();
+        }
 }
 
 function kill() {
@@ -63,11 +86,11 @@ const isSafari = computed(() => {
 });
 
 onMounted(() => {
-    (modalground.value as Element).addEventListener('click', listener);
+    (modalGround.value as Element).addEventListener('click', listener);
 });
 
 onBeforeUnmount(() => {
-    (modalground.value as Element).removeEventListener('click', listener);
+    (modalGround.value as Element).removeEventListener('click', listener);
 });
 
 defineExpose({
@@ -80,12 +103,12 @@ defineExpose({
     <div
         id="HugeModalGround"
         style="pointer-events: fill"
-        ref="modalground"
+        ref="modalGround"
         :class="`bg-opacity-35 bg-zinc-950 min-w-full min-h-screen fixed   
         ${openStatus ? 'xxx' : 'fade-au'} ${isKilled ? 'hidden' : 'fade-in'}
            grid ${mount('ground')}
            top-0 left-0 right-0 bottom-0  `">
-        <div
+        <div ref="modalBody"
             :class="`${(position ?? 'center') == 'bottom' ? 'w-full' : 'w-auto'} 
                      h-auto inner-border fixed    
             ${openStatus ? 'xxx' : 'fade-au'} ${isKilled ? 'hidden' : 'fade-in'}   ${mount('frame')}  fn  `">
