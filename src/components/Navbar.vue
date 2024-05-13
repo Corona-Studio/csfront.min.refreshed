@@ -89,7 +89,7 @@ function changeLang(lang: string) {
     <div
         id="Navbar"
         :class="'fixed flex gap-1.5 top-0 w-screen p-2 bg-zinc-200 dark:bg-zinc-800 lg:pr-5 px-1 backdrop-blur-sm rounded-lg rounded-b shadow-md hover:shadow-lg active:shadow rounded-t-none bg-opacity-90 hover:bg-opacity-95 active:bg-opacity-100 z-30 dark:bg-opacity-80 dark:hover:bg-opacity-90 dark:active:bg-opacity-95 transition'"
-        style="/* max-height: 54px !important;  */">
+        style="width: 100%;/* max-height: 54px !important;  */">
         <div
             id="logo"
             :style="`background-image: url('/logo.png')`"

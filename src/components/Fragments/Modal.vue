@@ -46,7 +46,7 @@ function open() {
 }
 
 function checkAlive(){
-    if(window.getComputedStyle(modalBody.value as Element).display != 'block' || parseInt(window.getComputedStyle(modalBody.value as Element).opacity) <= 0)
+    if(window.getComputedStyle(modalBody.value as unknown as Element).display != 'block' || parseInt(window.getComputedStyle(modalBody.value as unknown as Element).opacity) <= 0)
         {
             
             alert(`请关闭广告拦截器(将本站加入白名单), 它影响到本站正常工作了. 
@@ -86,11 +86,11 @@ const isSafari = computed(() => {
 });
 
 onMounted(() => {
-    (modalGround.value as Element).addEventListener('click', listener);
+    (modalGround.value as unknown as Element).addEventListener('click', listener);
 });
 
 onBeforeUnmount(() => {
-    (modalGround.value as Element).removeEventListener('click', listener);
+    (modalGround.value as unknown as Element).removeEventListener('click', listener);
 });
 
 defineExpose({
