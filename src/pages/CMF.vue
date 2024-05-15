@@ -94,8 +94,8 @@
             </p>
         </div>
         <h2 class="text-2xl font-semibold text-yellow-500 mt-6 text-center mb-0.5 ">...</h2>
-        <div class="grid grid-cols-1 md:grid-cols-5 lg:grid-cols-3 gap-1.5 mt-3.5 w-full ">
-            <div id="TipsCMFS" class="rounded-lg bg-zinc-500 bg-opacity-5 p-3  w-full  col-span-full md:col-span-3 lg:col-span-2">
+        <div class="grid grid-cols-1 md:grid-cols-5 lg:grid-cols-3 gap-2.5 mt-3.5 w-full " >
+            <div id="TipsCMFS" class="rounded-lg bg-zinc-500 bg-opacity-5 p-3 m-1  w-full shadow-lg col-span-full md:col-span-3 lg:col-span-2">
                 <h5 class="text-xl">Tips</h5>
                 <!-- <Corner /> -->
                 <h6 class="pl-3 mt-1">{{ t('base.status') }}</h6>
