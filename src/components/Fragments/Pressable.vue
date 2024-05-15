@@ -38,6 +38,7 @@ const props = defineProps<{
     noPadding?: boolean;
     ignoreTextResp?: boolean;
     iconPosFix?: boolean;
+    noScale?: boolean;
 }>();
 
 let ex = computed(() => {
@@ -191,7 +192,7 @@ onBeforeUnmount(() => {
         `"
         :style="`${overstyle} ; cursor: pointer; ${props.noPadding ?? false ? 'padding: 0 !important;' : ''}`"
         ref="pressableBase">
-        <span :class="`${noTense ?? false ? 'untense' : 'tense'}  scale-100 group-hover:scale-105 transition  block `">
+        <span :class="`${noTense ?? false ? 'untense' : 'tense'}  ${props.noScale ?? false ? 'scale-100' : 'scale-95'} group-hover:scale-100 transition  block `">
             <i :class="`${iconClass}    use-icon`"></i>
             <span
                 :class="`text-center my-auto mx-0 ml-0 ${isOnlyIcon ?? false ? ' use-icon ' : ' '}`">

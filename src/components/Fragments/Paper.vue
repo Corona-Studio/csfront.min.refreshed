@@ -121,15 +121,15 @@ function PublicModalOff() {
 <template>
     <div
         id="PAPERTOP"
-        :class="`home w-full  min-w-full paper             
+        :class="`home  paper             
         ${presetMargin ?? false ? ' mx-1.5 ' : ' mx-0 '}`"
-        style="pointer-events: none">
+        style="pointer-events: none;">
         <!-- Agent was here -->
         <div
             id="PMC"
             ref="PMC"
             :class="
-                ` shadow-xl h-full w-full  ${noBackdrop ?? false ? 'forcenobg' : 'backoff'}   z-10 bg-zinc-100 dark:bg-zinc-700 ?bg-opacity-65 ?dark:bg-opacity-75
+                ` shadow-xl h-full   ${noBackdrop ?? false ? 'forcenobg' : 'backoff'}   z-10 bg-zinc-100 dark:bg-zinc-700 ?bg-opacity-65 ?dark:bg-opacity-75
             ${noTopWrap ?? false ? ' mt-0 ' : ' mt-16 '}
             ${presetPadding ?? false ? ' px-1.5 ' : ' px-0 '}
             ${noHeightWrap ?? false ? '  ' : ' min-h-screen '} ` + overClass

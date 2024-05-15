@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n'
+import { pushToast } from '../../utils/toast';
 
 const { t } = useI18n();
 const modalGround = ref<HTMLElement | null>(null);
@@ -42,14 +43,24 @@ function open() {
 
     setTimeout(() => {
         checkAlive();
-    }, 1234);
+    }, 514);
+}
+
+function warning(x: string){
+    console.log(x);
+    pushToast(x.replaceAll('\n', '<br>'), 'bg-yellow-600 -translate-y-3 inline-block mx-auto bottom-12 alive-warning max-w-3/4 text-left',
+     19, 19810);
+    setTimeout(() => {
+        let warningIsAlive = document.getElementsByClassName('alive-warning').length != 0;
+        if(!warningIsAlive) alert(x);
+    }, 123);
 }
 
 function checkAlive(){
     if(window.getComputedStyle(modalBody.value as unknown as Element).display != 'block' || parseInt(window.getComputedStyle(modalBody.value as unknown as Element).opacity) <= 0)
         {
             
-            alert(`请关闭广告拦截器(将本站加入白名单), 它影响到本站正常工作了. 
+            warning(`请关闭广告拦截器(将本站加入白名单), 它影响到本站正常工作了. 
             我们永远不会插入影响浏览的烦人广告. 在关闭拦截器后, 请刷新页面.
             ---
             Please turn your AD Blocker off(or add this site into whitelist) for this page since it prevents this page from functioning. 
@@ -120,8 +131,8 @@ defineExpose({
                 </span>
             </p>
         </div>
-        <i class="hidden justify-items-end">
-            <div class="justify-items-start"></div>
+        <i class="hidden justify-items-end -translate-y-3 bg-yellow-600 bottom-12">
+            <div class="justify-items-start max-w-3/4 text-left"></div>
         </i>
     </div>
 </template>

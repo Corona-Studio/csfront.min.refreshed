@@ -78,7 +78,7 @@
                 <div class="pl-0 lg:pl-5  translate-y-2.5 ">
                     <span class="lg:mt-3 mt-2  font-semibold text-4xl  inline-block">
                         <div class="title-str title-str-reverse title-str-flur scale-105   : invert dark:text-zinc-900 text-zinc-100" >
-                            <span style="mix-blend-mode: ; filter: contrast(.9); ">Corona Studio</span>
+                            <span style="mix-blend-mode: unset; filter: contrast(.9); ">Corona Studio</span>
                             <span class="text-xl lg:text-3xl">:</span>
                         </div>
                     </span>
@@ -162,7 +162,7 @@
             <div class="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-1 md:gap-1.5 lg:gap-2 p-1">
                 <ACard v-for="m of members" :key="m.name" :title="m.name" class="bg-amber-200 group bg-opacity-50 scale-95 hover:scale-100" :avatar="m.avatar" :in-grid="true">
                     <i class="block w-0 h-0 opacity-0 mb-1.5"></i>
-                    <span v-for="i of m.desc.split('+')" :key="i" class="text-xs scale-95 transition group-hover:scale-105 block mx-auto text-center" style="line-height: .863rem !important;">
+                    <span v-for="i of m.desc.split('+')" :key="i" class="text-xs scale-95 transition group-hover:scale-100 group-hover:font-semibold block mx-auto text-center" style="line-height: .863rem !important;">
                         {{ i }}<Corner />
                     </span>
                     <Pressable overstyle="border-radius: 100%" :initOpacty="50" :isOnlyIcon="true" :no-link-icon="true" class="rounded-full " :iconPosFix="false" :no-start-icon="true" type="outer" :hide-matched-icon="true" :link="m.link" overclass="mx-auto w-fit mt-2.5 use-icon">&#xe903;</Pressable>

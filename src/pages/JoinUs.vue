@@ -50,7 +50,7 @@ function changeDisplay(inte: number) {
         :no-top-wrap="true"
         :no-height-wrap="true">
         <PageTitle>{{ t('joinUs.joinUs') }}</PageTitle>
-        <div class="container mx-auto px-2.5 py-3 pt-5 mt-3 min-h-screen">
+        <div class="container mx-auto px-2.5 py-3 pt-8 min-h-screen">
             <div class="mt-12">
                 <br />
             </div>

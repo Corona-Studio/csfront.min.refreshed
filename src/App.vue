@@ -41,12 +41,12 @@ onMounted(() => {
 <template>
     <SpeedInsights />
     <div
-        class="dark:text-zinc-50 text-zinc-950 bg-transparent transition container min-w-full"
+        class="dark:text-zinc-50 text-zinc-950 bg-transparent transition "
         id="app"
         style="pointer-events: none">
         <Navbar style="pointer-events: fill" />
         <div
-            class="w-screen overflow-x-hidden shadow-2xl"
+            class=" shadow-2xl mx-auto"
             id="RENDER"
             style="z-index: 5; pointer-events: none">
             <!-- <transition name="changing"> -->

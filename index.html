@@ -82,14 +82,68 @@
                 font-family: 'fluent-icon';
             }
 
+
+            .a {
+                    transition-duration: 150ms;
+                    transition-property: all;
+                    display: inline-block;
+                    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                    color: #f4c108dd;
+                    font-weight: 539;
+                    text-indent: 0%;
+                    padding: 1px;
+                    padding-bottom: 0;
+                }
+                .a:hover {
+                    color: #f7c921;
+                    text-decoration: underline;
+                    transform: scale(103%);
+                    position: relative;
+                }
+                .a:hover::after{
+                    content: '\e71b\0020\0020 链接';
+                    pointer-events: none;
+                    opacity: .6;
+                    position: absolute;
+                    font-size: smaller !important;
+                    font-weight: lighter;
+                    display: block;
+                    transform: scale(47%);
+                    width: fit-content;
+                    background-color: #000000a7;
+                    mix-blend-mode: difference;
+                    box-shadow: 1px 1px 1px rgb(35, 35, 35);
+                    top: -1.19rem;
+                    right: -1.98rem;
+                    padding: 3px 6px;
+                    border-radius: 15%;
+                    animation: .5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards fain;
+                    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, 'fluent-icon';
+                }
+                .a:active {
+                    color: #f5d666;
+                    transform: scale(97%);
+                }
+                .a:visited {
+                    color: #b28e0bd5;
+                    text-decoration: line-through;
+                    font-weight: lighter;
+                }
+
             @media (prefers-color-scheme: dark) {
                 .reduce-pic {
                     mix-blend-mode: difference;
+                }
+                .a:hover::after{
+                    background-color: #000000a7;
                 }
             }
             @media (prefers-color-scheme: light) {
                 .reduce-pic {
                     mix-blend-mode: normal;
+                }
+                .a:hover::after{
+                    background-color: #c0bebea7;
                 }
             }
             .fade-in {
@@ -292,7 +346,7 @@
         <!-- POPUP TOAST -->
         <div id="popup-container fixed taz select-none">
             <div
-                class="PopUpToastArea transition fixed w-full m-2 text-center bottom-0 pb-3 "
+                class="PopUpToastArea transition fixed w-full m-1 text-center bottom-0 pb-3 "
                 id="pa">
                 <!-- -->
             </div>
@@ -336,42 +390,28 @@
                 @keyframes popupAnimate {
                     0% {
                         transform: translateY(var(--toast-pos));
+                        opacity: .6;
                     }
                     100% {
                         transform: translateY(calc(-1 * var(--toast-pos)));
+                        opacity: 1;
                     }
                 }
 
                 @keyframes popupLeave {
                     0% {
                         transform: translateY(calc(-1 * var(--toast-pos)));
+                        opacity: 1;
                     }
                     100% {
                         transform: translateY(calc(var(--toast-pos) * 2));
+                        opacity: 0;
                     }
                 }
                 .lini {
-                    line-height: 0.88rem;
+                    line-height: 1.1rem;
                 }
 
-                .a {
-                    transition-duration: 150ms;
-                    transition-property: all;
-                    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-                    color: rgb(54, 161, 255);
-                    font-weight: 539;
-                }
-                .a:hover {
-                    color: rgba(49, 128, 255, 0.888);
-                    text-decoration: underline;
-                }
-                .a:active {
-                    color: rgb(23, 83, 195, 0.9);
-                }
-                .a:visited {
-                    color: rgb(66, 85, 233);
-                    text-decoration: line-through;
-                }
                 .force-baseline {
                     vertical-align: baseline !important;
                 }

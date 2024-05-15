@@ -140,7 +140,7 @@ onMounted(async () => {
         :preset-width="false">
         <PageTitle>LauncherX-CoronaStudio.min</PageTitle>
         <div
-            class="w-full flex min-h-screen justify-items-center justify-center items-center mt-9 sm:mt-6 md:mt-3 lg:mt-0.5"
+            class="w-full flex min-h-screen justify-items-center justify-center items-center pt-9 sm:pt-6 md:pt-3 lg:pt-0.5"
             id="lxb"
             :style="''">
             <!--`background: url('/img/lx-banner.png')`  -->

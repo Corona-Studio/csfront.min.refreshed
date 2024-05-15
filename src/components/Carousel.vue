@@ -73,7 +73,7 @@ watch(
     <div
         :class="`h-screen block  overflow-hidden overflow-x-hidden overflow-y-hidden ${frameClassList} transition bg-zinc-400 dark:bg-zinc-700 `">
         <div :title="`${isHomeCarousel}`"
-            class="w-full h-screen max-h-screen overflow-hidden overflow-x-hidden overflow-y-hidden">
+            class="w-full? h-screen max-h-screen overflow-hidden overflow-x-hidden overflow-y-hidden">
             <div
                 :class="` ${img.id == current ? 'fade-in' : 'fade-au'}      scale-x-110 max-h-screen carousels bg-center bg-no-repeat bg-cover bg-fill opacity-30 absolute top-0 bottom-0 left-0 right-0 `"
                 v-for="img of playlist"

@@ -27,7 +27,7 @@ const preIcon = computed(() => {
 
 <template>
     <Pressable
-        class="text-sm sm:text-base md:text-lg"
+        class="text-sm md:text-base xl:text-lg"
         :no-tense="true"
         :type="type"
         :hide-protocol="true"
@@ -36,7 +36,7 @@ const preIcon = computed(() => {
         :link="link ?? esuper"
         :disable="disable"
         :init-opacity="15"
-        overclass="use-icon">
+        overclass="use-icon text">
         {{ showComputedIcon ?? false ? preIcon : '' }}
         <slot></slot>
     </Pressable>

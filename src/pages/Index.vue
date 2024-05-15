@@ -28,9 +28,10 @@ const carousels = ref<string[]>([
         <PageTitle id="MAIN">{{ t('index.minTitle') }}</PageTitle>
         <!--- !--- !--- !--- !--->
         <div
-            class="flex h-screen relative items-center bg-zinc-400 dark:bg-zinc-700 bg-opacity-70">
+            class="flex h-screen relative overflow-x-hidden items-center bg-zinc-400 dark:bg-zinc-700 bg-opacity-70">
             <Carousel
-                FrameClassList="h-screen w-full"
+                class="overflow-x-hidden"
+                FrameClassList="h-screen w-full overflow-x-hidden"
                 :is-home-carousel="true"
                 :opacity="99"
                 :image-paths="carousels" />

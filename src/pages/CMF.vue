@@ -54,9 +54,9 @@
     <PageTitle>
         CMF-CoronaStudio
     </PageTitle>
-    <div id="CMFTOP" class="mt-3 container  mx-auto grid justify-center justify-items-center items-center p-1.5 lg:p-3 w-4/5 lg:w-8/12">
+    <div id="CMFTOP" class="? pt-3.5 container?  mx-auto grid justify-center justify-items-center items-center p-1.5 lg:p-3 w-11/12 sm:w-5/6 lg:w-9/12">
         <p>
-            <img src="/img/icons/cmflogo.webp" alt="" class="mx-auto w-1/3 mt-8" > <br>
+            <img src="/img/icons/cmflogo.webp" alt="" class="mx-auto w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6  mt-12 fade-in " > <br>
             <h1 class="text-3xl font-semibold text-yellow-500">{{ t('cmf.begin') }}</h1>
             <h5 class="text-lg">
                 {{ t('cmf.intro1') }}
@@ -72,18 +72,18 @@
             </h5>
 
         </p>
-        <div class="w-full mx-auto bg-zinc-200 dark:bg-zinc-800 bg-opacity-80 dark:bg-opacity-80 mt-3 rounded-lg transition p-1.5 lg:p-3 xl:p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5 xl:gap-2.5" id="CMFS">
+        <div class="w-judge mx-auto bg-zinc-200 dark:bg-zinc-800 bg-opacity-80 dark:bg-opacity-80 mt-3 rounded-lg transition p-1.5 lg:p-3 xl:p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 lg:gap-3.5 xl:gap-5" id="CMFS">
             <h6 v-if="!serverList" class="grid justify-items-center justify-center items-center col-span-full text-center text-xl p-3 m-1" >
               <div class="">
                     <LoadingRing
                         class="text-xl w-fit inline-block "
                         ></LoadingRing>
                     <span class="inline-block mx-auto -translate-y-2.5 text-sm">{{t('base.loading')}}</span>
-              </div>
+              </div> 
             </h6>
-            <ServerItem v-for="item of serverList" :key="item.name" :server="item" class="m-1 fade-in" />
+            <ServerItem v-for="item of serverList" :key="item.name" :server="item" class="m-1? fade-in" />
         </div>
-        <div>
+        <div class="">
             <h2 class="text-2xl font-semibold text-yellow-500 mt-5 text-center mb-1.5">{{ t('cmf.cmfl') }}</h2>
             <p class="text-lg mb-3">
                 {{ t('cmf.cmflDetail') }} 
@@ -93,9 +93,9 @@
                 </span>
             </p>
         </div>
-        <h2 class="text-2xl font-semibold text-yellow-500 mt-6 text-center mb-0.5">...</h2>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-1.5 mt-3.5 w-full">
-            <div id="TipsCMFS" class="rounded-lg bg-zinc-500 bg-opacity-5 p-3  w-full  col-span-full lg:col-span-2">
+        <h2 class="text-2xl font-semibold text-yellow-500 mt-6 text-center mb-0.5 ">...</h2>
+        <div class="grid grid-cols-1 md:grid-cols-5 lg:grid-cols-3 gap-1.5 mt-3.5 w-full ">
+            <div id="TipsCMFS" class="rounded-lg bg-zinc-500 bg-opacity-5 p-3  w-full  col-span-full md:col-span-3 lg:col-span-2">
                 <h5 class="text-xl">Tips</h5>
                 <!-- <Corner /> -->
                 <h6 class="pl-3 mt-1">{{ t('base.status') }}</h6>
@@ -115,7 +115,7 @@
                 </p>
             </div>
 
-            <HelpBlock main="https://corona.studio/cmf" />
+            <HelpBlock class="col-span-full md:col-span-2 lg:col-span-1" main="https://corona.studio/cmf" />
 
         </div>
     </div>
@@ -123,3 +123,6 @@
     <br>
 </Paper>
 </template>
+<style scoped>
+
+</style>

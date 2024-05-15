@@ -63,7 +63,7 @@ onMounted(() => {
 
 <template>
     <div
-        class="p-1.5 mx-auto bg-zinc-400 bg-opacity-10 dark:bg-opacity-10 hover:bg-opacity-20 dark:hover:bg-opacity-20 active:bg-opacity-15 dark:active:bg-opacity-15 w-full rounded-lg transition">
+        class="p-2.5 mx-auto bg-zinc-400 bg-opacity-10 dark:bg-opacity-10 hover:bg-opacity-20 dark:hover:bg-opacity-20 active:bg-opacity-15 dark:active:bg-opacity-15 w-full rounded-lg transition">
         <!--templ-->
         <h1 class="text-lg lg:servr-xl font-semibold">
             <span

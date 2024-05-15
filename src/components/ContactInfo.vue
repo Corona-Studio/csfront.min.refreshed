@@ -119,7 +119,7 @@ const qqGroups = ref([
         <ul class="list-none" id="contact-list" ref="clist">
             <li id="contact-bilibili" :class="hide">
                 <Pressable
-                    class="text-sm sm:text-base md:text-lg"
+                    class="text-sm md:text-base xl:text-lg"
                     :no-tense="true"
                     type="outer"
                     target="_blank"
@@ -130,7 +130,7 @@ const qqGroups = ref([
             </li>
             <li id="contact-minebbs" :class="hide">
                 <Pressable
-                    class="text-sm sm:text-base md:text-lg"
+                    class="text-sm md:text-base xl:text-lg"
                     :no-tense="true"
                     type="outer"
                     target="_blank"
@@ -141,7 +141,7 @@ const qqGroups = ref([
             </li>
             <li id="contact-kook" :class="hide">
                 <Pressable
-                    class="text-sm sm:text-base md:text-lg"
+                    class="text-sm md:text-base xl:text-lg"
                     :no-tense="true"
                     type="outer"
                     target="_blank"
@@ -152,7 +152,7 @@ const qqGroups = ref([
             </li>
             <li id="contact-ca" :class="hide">
                 <Pressable
-                    class="text-sm sm:text-base md:text-lg"
+                    class="text-sm md:text-base xl:text-lg"
                     :no-tense="true"
                     type="outer"
                     target="_blank"
@@ -163,7 +163,7 @@ const qqGroups = ref([
             </li>
             <li id="contact-coopqqgroup" :class="hide">
                 <Pressable
-                    class="text-sm sm:text-base md:text-lg"
+                    class="text-sm md:text-base xl:text-lg"
                     :no-tense="true"
                     type="outer"
                     target="_blank"
@@ -193,7 +193,7 @@ const qqGroups = ref([
                     id="contact-feiron-mail"
                     :class="hide.replace('hidden', '')">
                     <Pressable
-                        class="text-sm sm:text-base md:text-lg"
+                        class="text-sm md:text-base xl:text-lg"
                         :no-tense="true"
                         title="Feiron Iguista's Working Mail"
                         type="outer"
@@ -209,7 +209,7 @@ const qqGroups = ref([
                 </li>
                 <li id="contact-lx-vk" :class="hide.replace('hidden', '')">
                     <Pressable
-                        class="text-sm sm:text-base md:text-lg"
+                        class="text-sm md:text-base xl:text-lg"
                         :no-tense="true"
                         type="outer"
                         target="_blank"
@@ -224,7 +224,7 @@ const qqGroups = ref([
                 </li>
                 <li id="contact-who-x" :class="hide.replace('hidden', '')">
                     <Pressable
-                        class="text-sm sm:text-base md:text-lg"
+                        class="text-sm md:text-base xl:text-lg"
                         :no-tense="true"
                         type="outer"
                         target="_blank"
@@ -240,7 +240,7 @@ const qqGroups = ref([
                 </li>
                 <li id="contact-who-wb" :class="hide.replace('hidden', '')">
                     <Pressable
-                        class="text-sm sm:text-base md:text-lg"
+                        class="text-sm md:text-base xl:text-lg"
                         :no-tense="true"
                         type="outer"
                         target="_blank"
