@@ -47,6 +47,10 @@ export const usEng = {
         heightFix: 'Fix Height',
         kb: 'CSKB',
         loading: '正在获取',
+        failed: '',
+        retry: '',
+        adblocker: `Please turn your AD Blocker off(or add this site into whitelist) for this page since it prevents this page from functioning. 
+        We will never add annoying advertisements into this site. After you turned the blocker off, please refresh the page.`,
     },
 
     tips: {

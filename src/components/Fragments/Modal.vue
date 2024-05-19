@@ -57,19 +57,9 @@ function warning(x: string){
 }
 
 function checkAlive(){
-    if(window.getComputedStyle(modalBody.value as unknown as Element).display != 'block' || parseInt(window.getComputedStyle(modalBody.value as unknown as Element).opacity) <= 0)
+    if(window.getComputedStyle(modalBody.value as unknown as Element).display != 'block' || parseFloat(window.getComputedStyle(modalBody.value as unknown as Element).opacity) <= 0)
         {
-            
-            warning(`请关闭广告拦截器(将本站加入白名单), 它影响到本站正常工作了. 
-            我们永远不会插入影响浏览的烦人广告. 在关闭拦截器后, 请刷新页面.
-            ---
-            Please turn your AD Blocker off(or add this site into whitelist) for this page since it prevents this page from functioning. 
-            We will never add annoying advertisements into this site. After you turned the blocker off, please refresh the page.
-            ---
-            Пожалуйста, выключите ваш Блокировщик рекламы, из-за того этот сайт не может работать прекрасны.
-            никогда мы не будем добавить досадные рекламы. 
-            И после выключили Блокировщик рекламы пожалуйста обновите этот сайт!`.replaceAll('    ', ''));
-            
+            warning(t('base.adblocker').replaceAll('    ', '').trim());
             kill();
         }
 }

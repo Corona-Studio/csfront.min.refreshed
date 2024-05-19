@@ -5,11 +5,13 @@ import { useI18n } from 'vue-i18n';
 import ContactInfo from '../components/ContactInfo.vue';
 import Corner from '../components/Feature/Corner.vue';
 import PageTitle from '../components/Feature/PageTitle.vue';
+import FailureComponent from '../components/FailureComponent.vue'
 import Paper from '../components/Fragments/Paper.vue';
 import Pressable from '../components/Fragments/Pressable.vue';
 import { doScroll } from '../utils/scroll.ts';
 import LoadingRing from '../components/LoadingRing.vue';
 import { csBackend, csBackendUrl } from '../axiosClient.ts';
+import { AxiosResponse } from 'axios';
 
 const { t } = useI18n();
 
@@ -23,6 +25,7 @@ interface ResultBuildInfo {
 // const lastUpdate = ref(1710209344927);
 const buildId = ref(20240311);
 const isLoading = ref(true);
+const isFailed = ref(false);
 const downloads = ref<ResultBuildInfo[]>([]);
 const links = ref([
     {
@@ -93,26 +96,62 @@ const allBuilds: LauncherBuildInfo[] = [
     },
 ];
 
+function announceFailedToLoad(){
+    console.log('failed');
+    isLoading.value = false;
+    isFailed.value = true;
+}
+
+let retries = 0;
+async function retry(caller: string){
+    if(isFailed.value){
+        // console.log('failed, then return');
+        return;
+    }
+    console.log(`retry called by: ${caller}`);
+    if(retries >= 6) {
+        announceFailedToLoad();
+        return;
+    }
+    // builds = null;
+    await fetchBuilds();
+    retries ++;
+}
+
+let builds = ref<void | AxiosResponse<LauncherRawBuildModel[], any> | null>();
 async function fetchBuilds(): Promise<void> {
+    if (isLoading)
     for (const build of allBuilds) {
         const endPoint = `/Build/get/${build.framework}/${build.runtime}/latest/stable`;
-        const builds = await csBackend.get<LauncherRawBuildModel[]>(endPoint);
+        builds.value = await csBackend.get<LauncherRawBuildModel[]>(endPoint)
+        .catch(ex => {
+            console.log(ex);
+            retry('get-await');
+        });
+        try {
+            console.log(builds.value);
+            if ((builds.value as AxiosResponse<LauncherRawBuildModel[]>).status !== 200) continue;
+            if (!(builds.value as AxiosResponse<LauncherRawBuildModel[]>).data || 
+            (builds.value as AxiosResponse<LauncherRawBuildModel[]>).data.length === 0) continue;
 
-        if (builds.status !== 200) continue;
-        if (!builds.data || builds.data.length === 0) continue;
+            const latestBuild = (builds.value as AxiosResponse<LauncherRawBuildModel[]>).data[0];
+            const displayModel: ResultBuildInfo = {
+                build: build.runtime,
+                date: latestBuild.releaseDate,
+                link: `${csBackendUrl}/Build/get/${latestBuild.id}/1`,
+                name: build.name,
+            };
 
-        const latestBuild = builds.data[0];
-        const displayModel: ResultBuildInfo = {
-            build: build.runtime,
-            date: latestBuild.releaseDate,
-            link: `${csBackendUrl}/Build/get/${latestBuild.id}/1`,
-            name: build.name,
-        };
+            downloads.value.push(displayModel);
+        } catch (ex) {
+            // console.log('ex happened while trying to get sth');
+            retry('after-processor');
+        }
 
-        downloads.value.push(displayModel);
     }
 
-    isLoading.value = false;
+    if(downloads.value.length == 6 && isLoading.value == true) isLoading.value = false;
+    else retry('final-not-enough');
 }
 
 function runLinkFilter(link: string, custom?: string){
@@ -127,7 +166,7 @@ function runLinkFilter(link: string, custom?: string){
 
 onMounted(async () => {
     doScroll('lxb', false);
-    await fetchBuilds();
+    await fetchBuilds().catch(ex => { console.log(ex); retry('mount') });
 });
 </script>
 
@@ -206,7 +245,7 @@ onMounted(async () => {
                                         </span>
                                     </span>
                                 </p>
-                                <div class="grid grid-rows-2 grid-cols-3 gap-0 col-span-full fade-in" v-if="!isLoading">
+                                <div class="grid grid-rows-2 grid-cols-3 gap-0 col-span-full fade-in" v-if="!isLoading && !isFailed">
                                     <Pressable
                                         :hide-matched-icon="true"
                                         :no-start-icon="true"
@@ -224,14 +263,15 @@ onMounted(async () => {
                                         LastUpdate: {{ downloads ? downloads[0].date : '-' }}
                                     </p>
                                 </div>
-                                <div v-else class="grid justify-items-center scale-95 justify-center items-center col-span-full">
+                                <div v-if="isLoading && !isFailed" class="grid justify-items-center scale-95 justify-center items-center col-span-full">
                                     <div class="">
                                         <LoadingRing
                                             class="text-xl w-fit inline-block "
                                             ></LoadingRing>
                                         <span class="inline-block mx-auto -translate-y-2.5 text-sm">{{t('base.loading')}}</span>
                                     </div>
-                                </div>                                
+                                </div>                              
+                                <FailureComponent v-if="isFailed" class="col-span-full scale-95" />  
                                 <!-- <p
                                     class="col-span-full text-xs opacity-35"
                                     style="font-size: 0.6rem">

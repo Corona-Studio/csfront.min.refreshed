@@ -46,6 +46,10 @@ export const zhHans = {
         heightFix: '修复高度',
         kb: '知识库',
         loading: '正在获取',
+        failed: '失败了!',
+        retry: '重试',
+        adblocker: `请关闭广告拦截器(将本站加入白名单), 它影响到本站正常工作了. 
+        我们永远不会插入影响浏览的烦人广告. 在关闭拦截器后, 请刷新页面.`,
     },
 
     tips: {
