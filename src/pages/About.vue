@@ -181,7 +181,7 @@
             </div>
         </div>
         <i class="hidden backdrop-blur-md scale-75 indent-0"></i>
-        <div class="w-full text-center opacity-15 dark:opacity-10 text-sm use-icon font-light pb-6">
+        <div class="w-full text-center opacity-15 dark:opacity-10 text-sm use-icon force-icomoon-only font-light pb-6">
             &#xe905; Most-Lang of CS: &#xe901; &#xe902; | This page works with: &#xe900; &#xe908; + (vercel) (icomoon) (segoe fluent icon) | made with ♡ by feiron_iguista &#xea10; 
         </div>
     </Paper>

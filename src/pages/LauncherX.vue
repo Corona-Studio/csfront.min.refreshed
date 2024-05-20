@@ -223,7 +223,7 @@ onMounted(async () => {
                                     </span>
                                     <br />
                                     <span
-                                        class="-translate-y-1.5 use-icon text-xs font-thin opacity-60">
+                                        class="-translate-y-1.5 use-icon force-icomoon-only text-xs font-thin opacity-60">
                                         &#xeac2; &nbsp; &#xeabf; &nbsp; &#xeabd;
                                     </span>
                                     <br />
