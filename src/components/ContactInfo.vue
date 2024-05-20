@@ -99,13 +99,17 @@ const qqGroups = ref([
 <template>
     <div
         :class="`bg-zinc-200 dark:bg-zinc-800 rounded-lg transition p-3.5 m-1    ROOT_OF_CONTACT_INFO
-    bg-opacity-55 
+    
     ${noShadow ?? false ? '' : 'shadow-md hover:shadow dark:hover:shadow dark:shadow-md dark:active:shadow-sm  active:shadow-sm '}
+    
+    bg-opacity-55 
     dark:bg-opacity-55 
     hover:bg-opacity-65  
     dark:hover:bg-opacity-65  
     active:bg-opacity-60
-    dark:active:bg-opacity-60 `">
+    dark:active:bg-opacity-60 
+    
+    `">
         <div :class="(head ?? 'show') === 'show' ? '' : 'hidden'">
             <h2
                 :class="`${titleClass ?? 'font-semibold text-3xl'}  text-yellow-500 p-2`">

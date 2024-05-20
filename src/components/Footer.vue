@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 import { updateCache } from '../utils/cache.ts';
@@ -21,6 +21,11 @@ const footerWrapIndex = ref<FooterWrapIndex[]>([
     { index: 0, name: 'Height Controler' },
     { index: 1, name: `${new Date().getFullYear()}` },
 ]);
+
+let isRetiehe = false;
+onMounted(()=>{
+    if(window.location.href.includes('csmin.kami.su')) isRetiehe = true;
+})
 </script>
 
 <template>
@@ -55,10 +60,11 @@ const footerWrapIndex = ref<FooterWrapIndex[]>([
                             </span>
                         </p>
                         <i>
-                            <a
+                            <a 
                                 class="dark:text-zinc-50 text-zinc-900 opacity-75 hover:opacity-80 active:opacity-95"
                                 href="#">
-                                {{ t('footer.icp1') }}
+                                <span v-if="!isRetiehe">{{ t('footer.icp1') }}</span>
+                                <span v-else>Not Registered</span>
                             </a>
                         </i>
                         <span class="mx-1">|</span>
@@ -66,7 +72,8 @@ const footerWrapIndex = ref<FooterWrapIndex[]>([
                             <a
                                 class="dark:text-zinc-50 text-zinc-900 opacity-75 hover:opacity-80 active:opacity-95"
                                 href="#">
-                                {{ t('footer.icp2') }}
+                                <span v-if="!isRetiehe">{{ t('footer.icp2') }}</span>
+                                <span v-else> _Preserved</span>
                             </a>
                         </i>
                         <br />

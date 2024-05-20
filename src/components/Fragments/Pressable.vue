@@ -177,11 +177,13 @@ onBeforeUnmount(() => {
 <template>
     <div
         :title="title ?? link"
-        :class="`pressable transition ${unspaced <= 1 || (overclass ?? 'x').includes('text-') ? '' : 'text-sm'} ${(overclass ?? '').includes('bg-') ? '' : 'bg-stone-300 dark:bg-stone-700'}
-          text-stone-950  dark:text-stone-50 shadow${(initShadow ?? '').replace('none', '-none')}
+        :class="`pressable transition ${unspaced <= 1 || (overclass ?? 'x').includes('text-') ? '' : 'text-sm'} 
+        ${(overclass ?? '').includes('bg-') ? '' : 'bg-stone-300 dark:bg-stone-800'}
+          text-stone-950  dark:text-stone-50 
+          shadow${(initShadow ?? '').replace('none', '-none')}
             ${(overclass ?? '').includes('rounded') ? '' : 'rounded-lg'}
             bg-opacity-${initOpacity ?? 30}
-            dark:bg-opacity-${initOpacity ?? 30}
+            dark:bg-opacity-${initOpacity ?? 40}
             hover:shadow-md hover:bg-opacity-70   active:shadow-sm active:bg-opacity-100
             dark:hover:bg-opacity-70 dark:hover:shadow-md   dark:shadow${(initShadow ?? '').replace('none', '-none')}  dark:active:shadow-sm dark:active:bg-opacity-100
             ${props.fin ?? false ? (props.isOnlyIcon ?? false ? 'py-1.5 px-1.5 rounded-full' : 'py-1.5 px-2') : props.isOnlyIcon ?? false ? 'py-1.5 px-2.5 rounded-full' : 'py-2 px-2'} mx-1 select-none 

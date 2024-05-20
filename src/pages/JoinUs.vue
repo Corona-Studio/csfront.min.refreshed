@@ -55,16 +55,16 @@ function changeDisplay(inte: number) {
                 <br />
             </div>
             <div class="grid grid-cols-3 gap-3.5 md:gap-5">
-                <div class="doc col-span-full lg:col-span-2">
+                <div class="doc col-span-full lg:col-span-2 p-1">
                     <div
-                        class="w-full p-2.5 md:p-3.5 lg:p-5 bg-zinc-200 bg-opacity-50 dark:bg-zinc-800 dark:bg-opacity-50 rounded-lg m-1 mb-3.5 shadow-lg">
+                        class="w-full p-2.5 md:p-3.5 lg:p-5 bg-zinc-200 bg-opacity-50 dark:bg-zinc-800 dark:bg-opacity-50 rounded-lg mb-3.5 shadow-lg">
                         <h1
                             class="text-lg font-semibold title-str md:text-2xl lg:text-4xl xl:text-5xl indent-4 opacity-95">
                             {{ t('joinUs.joindoc') }}
                         </h1>
                     </div>
                     <div
-                        class="w-full p-2.5 md:p-3 lg:p-3.5 bg-zinc-200 bg-opacity-50 text-sm md:text-base xl:text-lg dark:bg-zinc-800 dark:bg-opacity-50 rounded-lg m-1 grid grid-cols-2 xl:grid-cols-4 gap-0.5 md:gap-1.5 lg:gap-2.5 xl:gap-3 shadow-lg">
+                        class="w-full p-2.5 md:p-3 lg:p-3.5 bg-zinc-200 bg-opacity-50 text-sm md:text-base xl:text-lg dark:bg-zinc-800 dark:bg-opacity-50 rounded-lg grid grid-cols-2 xl:grid-cols-4 gap-0.5 md:gap-1.5 lg:gap-2.5 xl:gap-3 shadow-lg">
                         <Pressable
                             class="h-full text-center inline-grid justify-center justify-items-center items-center"
                             v-for="v of conts"
