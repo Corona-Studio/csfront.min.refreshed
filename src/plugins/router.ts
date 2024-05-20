@@ -60,4 +60,17 @@ const router = createRouter({
     routes,
 });
 
+router.beforeEach(() => {
+    document.getElementById('loading-bar-top')!.classList.remove('fade-out');
+    document.getElementById('loading-bar-top')!.classList.remove('hidden');
+});
+router.afterEach(() => {
+    setTimeout(() => {
+        document.getElementById('loading-bar-top')!.classList.add('fade-out');
+    }, 1000);
+    setTimeout(() => {
+        document.getElementById('loading-bar-top')!.classList.add('hidden');
+    }, 1234);
+});
+
 export default router;

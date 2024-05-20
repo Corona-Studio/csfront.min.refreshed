@@ -37,9 +37,46 @@ onMounted(() => {
     }
 });
 </script>
+<style scoped>
+#loading-bar-top > div.seed{
+    animation: 1.9s ease-in-out infinite lbt;
 
+}
+@keyframes lbt {
+    0% {
+        transform: translateX(-50%);
+        opacity: .5;
+    }
+    40% {
+        transform: translateX(400%);
+        opacity: .5;
+    }
+
+    49%{
+        transform: translateX(400%);
+        opacity: 0;
+    }
+    51%{
+        transform: translateX(-75%);
+        opacity: 0;
+    }
+
+    60% {
+        transform: translateX(-50%);
+        opacity: .5;
+    }
+    100% {
+        transform: translateX(400%);
+        opacity: .5;
+    }
+    /* -- -- -- -- -- */
+}
+</style>
 <template>
     <SpeedInsights />
+    <div id="loading-bar-top" class="hidden fade-in top-0 left-0 right-0 fixed bg-zinc-200 shadow transition opacity-50" style="z-index: 9999;">
+        <div class="seed transition-all w-1/4 bg-zinc-400 rounded-lg h-1.5"></div>
+    </div>
     <div
         class="dark:text-zinc-50 text-zinc-950 bg-transparent transition "
         id="app"
