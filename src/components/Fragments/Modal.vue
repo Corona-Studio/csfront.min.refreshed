@@ -43,7 +43,7 @@ function open() {
 
     setTimeout(() => {
         checkAlive();
-    }, 514);
+    }, 514 * 2);
 }
 
 function warning(x: string){
@@ -60,7 +60,7 @@ function checkAlive(){
     if(window.getComputedStyle(modalBody.value as unknown as Element).display != 'block' || parseFloat(window.getComputedStyle(modalBody.value as unknown as Element).opacity) <= 0)
         {
             warning(t('base.adblocker').replaceAll('    ', '').trim());
-            kill();
+            // kill();
         }
 }
 

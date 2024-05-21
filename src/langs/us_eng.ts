@@ -50,7 +50,8 @@ export const usEng = {
         failed: '',
         retry: '',
         adblocker: `Please turn your AD Blocker off(or add this site into whitelist) for this page since it prevents this page from functioning. 
-        We will never add annoying advertisements into this site. After you turned the blocker off, please refresh the page.`,
+        We will never add annoying advertisements into this site. After you turned the blocker off, please refresh the page.
+        But if your browser is quite laggy, you may ignore this warning.`,
     },
 
     tips: {
