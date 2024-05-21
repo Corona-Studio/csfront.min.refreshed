@@ -59,7 +59,7 @@ function warning(x: string){
 function checkAlive(){
     if(window.getComputedStyle(modalBody.value as unknown as Element).display != 'block' || parseFloat(window.getComputedStyle(modalBody.value as unknown as Element).opacity) <= 0)
         {
-            if(!isKilled) warning(t('base.adblocker').replaceAll('    ', '').trim());
+            if(!isKilled.value) warning(t('base.adblocker').replaceAll('    ', '').trim());
             // kill();
         }
 }
@@ -106,7 +106,7 @@ defineExpose({
         style="pointer-events: fill"
         ref="modalGround"
         :class="`bg-opacity-35 bg-zinc-950 min-w-full min-h-screen fixed   
-        ${openStatus ? 'xxx' : 'fade-au'} ${isKilled ? 'hidden' : 'fade-in'}
+        ${openStatus ? 'xxx' : 'fade-au'} ${isKilled ? 'hidden' : 'fade-in block'}
            grid ${mount('ground')}
            top-0 left-0 right-0 bottom-0  `">
         <div ref="modalBody"
