@@ -270,19 +270,11 @@ onMounted(async () => {
                                             ></LoadingRing>
                                         <span class="inline-block mx-auto -translate-y-2.5 text-sm">{{t('base.loading')}}</span>
                                     </div>
-                                </div>                              
-                                <FailureComponent v-if="isFailed" class="col-span-full scale-95" />  
-                                <!-- <p
-                                    class="col-span-full text-xs opacity-35"
-                                    style="font-size: 0.6rem">
-                                    Last update:
-                                    {{
-                                        new Date(
-                                            lastUpdate,
-                                        ).toLocaleDateString()
-                                    }}
-                                </p> -->
-                                <!-- download sample -->
+                                </div>         
+                                <div class="col-span-full scale-95" v-if="isFailed">
+                                    <FailureComponent  class="" />  
+                                    <p class="text-sm mt-1">获取失败了! <a href="/bin/lx/LauncherX.Avalonia.x64.exe" download="LauncherX.Avalonia.x64.exe" class="a">点击直接下载LauncherX</a><br>这个文件可能不会定期更新! 只是应急出现在了这里. <br>如果你急需其他构建的LauncherX, 请参考下方联系我们.</p>
+                                </div>                     
                                 <p
                                     class="col-span-full text-center mb-2 mt-6 font-bold">
                                     {{ t('LauncherX.knowLauncherX') }}
