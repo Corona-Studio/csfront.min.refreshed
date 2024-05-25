@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VNode, onMounted, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 import ContactInfo from '../components/ContactInfo.vue';
