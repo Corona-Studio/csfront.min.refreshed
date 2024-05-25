@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { VNode, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 import ContactInfo from '../components/ContactInfo.vue';
@@ -24,8 +24,10 @@ interface ResultBuildInfo {
 
 // const lastUpdate = ref(1710209344927);
 const buildId = ref(20240311);
+const loadingText = ref('');
 const isLoading = ref(true);
 const isFailed = ref(false);
+const isTrackingTimeout = ref(false);
 const downloads = ref<ResultBuildInfo[]>([]);
 const links = ref([
     {
@@ -102,37 +104,20 @@ function announceFailedToLoad(){
     isFailed.value = true;
 }
 
-let retries = 0;
-async function retry(caller: string){
-    if(isFailed.value){
-        // console.log('failed, then return');
-        return;
-    }
-    console.log(`retry called by: ${caller}`);
-    if(retries >= 6) {
-        announceFailedToLoad();
-        return;
-    }
-    // builds = null;
-    await fetchBuilds();
-    retries ++;
-}
-
-let builds = ref<void | AxiosResponse<LauncherRawBuildModel[], any> | null>();
-async function fetchBuilds(): Promise<void> {
-    if (isLoading)
-    for (const build of allBuilds) {
+async function singleFetch(build: LauncherBuildInfo) {
         const endPoint = `/Build/get/${build.framework}/${build.runtime}/latest/stable`;
+        let happenedEx = false;
+        console.log(endPoint);
         builds.value = await csBackend.get<LauncherRawBuildModel[]>(endPoint)
         .catch(ex => {
-            console.log(ex);
-            retry('get-await');
+            console.log(`${ex} xxx`);
+            happenedEx = true;
         });
+        if(happenedEx) return null;
         try {
-            console.log(builds.value);
-            if ((builds.value as AxiosResponse<LauncherRawBuildModel[]>).status !== 200) continue;
+            if ((builds.value as AxiosResponse<LauncherRawBuildModel[]>).status !== 200) return null; //continue;
             if (!(builds.value as AxiosResponse<LauncherRawBuildModel[]>).data || 
-            (builds.value as AxiosResponse<LauncherRawBuildModel[]>).data.length === 0) continue;
+            (builds.value as AxiosResponse<LauncherRawBuildModel[]>).data.length === 0) return null; // continue;
 
             const latestBuild = (builds.value as AxiosResponse<LauncherRawBuildModel[]>).data[0];
             const displayModel: ResultBuildInfo = {
@@ -142,16 +127,48 @@ async function fetchBuilds(): Promise<void> {
                 name: build.name,
             };
 
-            downloads.value.push(displayModel);
+            return displayModel;
         } catch (ex) {
-            // console.log('ex happened while trying to get sth');
-            retry('after-processor');
+            return null;
+        }
+    
+}
+
+let builds = ref<void | AxiosResponse<LauncherRawBuildModel[], any> | null>(),
+    tmp: any = [], check = 0;
+
+async function fetchBuilds(type: string = ''){
+    console.log('start fetch: ' + type);
+    if (isLoading.value){
+        tmp = [];
+        for (const build of allBuilds){
+            new Promise(async () => {tmp.push((await singleFetch(build)) ?? null!); checkTasks();})                
         }
 
     }
+}
 
-    if(downloads.value.length == 6 && isLoading.value == true) isLoading.value = false;
-    else retry('final-not-enough');
+function checkTasks(){
+    console.log(`check tasks: ${tmp}`)
+    if(tmp.length != 6) return;
+    let needRetry = false;
+
+    for(let sig of tmp){
+        if(sig == null) {
+            needRetry = true;
+            break;
+        }
+    }
+    if(needRetry){
+        console.log('going to retry in 15s')
+        setTimeout(() => {
+            new Promise(async () => { await fetchBuilds('promised need to retry'); });
+        }, 15000);
+    }
+    else {
+        downloads.value! = tmp;
+        isLoading.value = false;
+    }
 }
 
 function runLinkFilter(link: string, custom?: string){
@@ -165,8 +182,25 @@ function runLinkFilter(link: string, custom?: string){
 }
 
 onMounted(async () => {
+    console.clear();
     doScroll('lxb', false);
-    await fetchBuilds().catch(ex => { console.log(ex); retry('mount') });
+    new Promise((_) => {
+        loadingText.value = t('base.loading');
+        setTimeout(() => {
+            loadingText.value = t('base.stillLoading');
+        }, 18000);
+    });
+    new Promise((_) => {
+        if(!isTrackingTimeout.value){
+            isTrackingTimeout.value = true;
+            setTimeout(() => {
+                if(isLoading.value && !isFailed.value) announceFailedToLoad();
+            }, 39000);
+        }
+    });
+    await fetchBuilds();
+    // if(downloads.value.length == 6 && isLoading.value == true) isLoading.value = false;
+    // else retry('final-not-enough');
 });
 </script>
 
@@ -268,12 +302,14 @@ onMounted(async () => {
                                         <LoadingRing
                                             class="text-xl w-fit inline-block "
                                             ></LoadingRing>
-                                        <span class="inline-block mx-auto -translate-y-2.5 text-sm">{{t('base.loading')}}</span>
+                                        <span class="inline-block mx-auto -translate-y-2.5 text-sm">
+                                            {{ loadingText }}
+                                        </span>
                                     </div>
                                 </div>         
                                 <div class="col-span-full scale-95" v-if="isFailed">
                                     <FailureComponent  class="" />  
-                                    <p class="text-sm mt-1">获取失败了! <a href="/bin/lx/LauncherX.Avalonia.x64.exe" download="LauncherX.Avalonia.x64.exe" class="a">点击直接下载LauncherX</a><br>这个文件可能不会定期更新! 只是应急出现在了这里. <br>如果你急需其他构建的LauncherX, 请参考下方联系我们.</p>
+                                    <p class="text-sm mt-1">获取失败了! <a href="https://v2.csmin.kami.su/products/lx/LauncherX_20240311_net8.0-windows_win-x64.zip" download="LauncherX.Avalonia.x64.zip" class="a">点击直接下载LauncherX</a><br>这个文件可能不会定期更新! 只是应急出现在了这里. <br>如果你急需其他构建的LauncherX, 请参考下方联系我们.</p>
                                 </div>                     
                                 <p
                                     class="col-span-full text-center mb-2 mt-6 font-bold">
