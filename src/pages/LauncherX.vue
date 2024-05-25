@@ -135,7 +135,7 @@ async function singleFetch(build: LauncherBuildInfo) {
 }
 
 let builds = ref<void | AxiosResponse<LauncherRawBuildModel[], any> | null>(),
-    tmp: any = [], check = 0;
+    tmp: any = [];
 
 async function fetchBuilds(type: string = ''){
     console.log('start fetch: ' + type);
