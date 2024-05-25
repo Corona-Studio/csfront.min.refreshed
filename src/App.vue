@@ -75,7 +75,7 @@ onMounted(() => {
 <template>
     <SpeedInsights />
     <div id="loading-bar-top" class="hidden fade-in top-0 left-0 right-0 fixed bg-zinc-200 shadow transition bg-opacity-30 opacity-70" style="z-index: 9999;">
-        <div class="seed transition-all w-1/4 bg-slate-300 rounded-lg h-1.5"></div>
+        <div class="seed transition-all w-1/4 bg-slate-500 rounded-lg h-1.5"></div>
     </div>
     <div
         class="dark:text-zinc-50 text-zinc-950 bg-transparent transition "

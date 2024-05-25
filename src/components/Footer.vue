@@ -22,9 +22,10 @@ const footerWrapIndex = ref<FooterWrapIndex[]>([
     { index: 1, name: `${new Date().getFullYear()}` },
 ]);
 
-let isRetiehe = false;
+let isRetiehe = ref(false);
 onMounted(()=>{
-    if(window.location.href.includes('csmin.kami.su')) isRetiehe = true;
+    if(window.location.href.includes('csmin.kami.su')) isRetiehe.value = true;
+    console.log('isrth? ' + isRetiehe.value);
 })
 </script>
 
@@ -37,7 +38,12 @@ onMounted(()=>{
             :id="`Footer${i.index === 0 ? 'x' : ''}`"
             :style="`z-index: -1;  ${
                 i.index === 0
-                    ? 'opacity: 0.6 !important; max-width: fit-content; pointer-events: none !important; display: inline-block !important; transform: translateX(-1000rem)!important;'
+                    ? `opacity: 0 !important; 
+                       max-width: fit-content; 
+                       pointer-events: none !important; 
+                       display: inline-block !important; 
+                       transform: translateX(-1000%) !important;`
+
                     : 'position: fixed !important; pointer-events: visiblefill !important;'
             }`">
             <div class="h-1" v-if="i.index === 0"></div>
@@ -138,5 +144,8 @@ onMounted(()=>{
     position: relative;
     opacity: 0;
     width: 88vw;
+}
+#Footerx{
+    transform: translateX(-100%) !important;
 }
 </style>

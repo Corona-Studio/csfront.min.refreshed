@@ -219,17 +219,18 @@ onMounted(async () => {
             <!--`background: url('/img/lx-banner.png')`  -->
             <h5
                 class="text-5xl lg:text-7xl w-full h-max text-center flex justify-items-center items-center justify-center mt-5">
-                <p class="p-9">
+                <p class="p-3 sm:p-5 md:p-9">
                     <span class="w-full translate-y-3">
+                        <br>
                         <span
-                            class="font-semibold font-sans opacity-75 text-5xl lg:text-7xl text-black dark:text-zinc-50">
+                            class="font-semibold font-sans opacity-75 text-5xl lg:text-6xl text-black dark:text-zinc-50">
                             Launcher
                         </span>
                         <span
-                            class="font-extrabold x text-6xl lg:text-8xl mx-1 lg:mx-0.5 opacity-100 align-middle">
+                            class="font-extrabold scale-100 lg:scale-95 x text-5xl lg:text-7xl mx-0 sm:mx-1 lg:mx-0.5 opacity-100 ?align-middle">
                             X
                         </span>
-                        <span class="text-sm"><br /></span>
+                        <span class="text-sm mb-1"><br /></span>
                         <p class="text-lg closer">
                             <span v-html="t('LauncherX.intro')"></span>
                             <Corner />
@@ -330,6 +331,7 @@ onMounted(async () => {
                                 <div class="col-span-full mt-0.5">
                                     <ContactInfo only="!lx1" head="false" />
                                 </div>
+                                <br>
                             </div>
                         </div>
                     </span>

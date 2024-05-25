@@ -16,18 +16,10 @@
             name="description"
             content="Corona Studio is a third-party certain-game-related software service and development studio. Corona Studio（日冕工作室）是以特定游戏第三方服务为业务核心的、由专业人士和爱好者组成的团队" />
         <meta charset="utf-8" />
+        <link rel="stylesheet preload" href="/fonts/style.css"  fetchpriority="high"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-        <!-- <link rel="icon" href="<%= BASE_URL %>favicon.ico"> -->
-        <!-- <link rel="shortcut icon" href="<%= BASE_URL %>favicon.ico" type="image/x-icon"> -->
-        <link rel="stylesheet" href="/fonts/style.css" />
         <link rel="stylesheet" href="/output.css" type="text/css" />
-        <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-        <script>
-            // tailwind.config = {
-            //     darkmode: 'class',
-            // };
-        </script>
         <title>无法加载请刷新</title>
         <script>
             const CURRENT_VERSION = 109200;
@@ -353,7 +345,11 @@
                 <br />
             </div>
         </noscript>
-        <div id="app"></div>
+        <div id="app">
+            <div class="loading w-full h-screen bg-zinc-600 bg-opacity-30 p-3">
+
+            </div>
+        </div>
         <!-- built files will be auto injected -->
         <a class="hidden" id="ahandler"></a>
         <!-- POPUP TOAST -->
