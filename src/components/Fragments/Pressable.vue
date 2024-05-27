@@ -127,6 +127,7 @@ function runClickEvent(to: string, ty: string) {
         } catch (ex) {
             console.groupCollapsed('error occured');
             console.log(ex);
+            console.log(`input: ${ty} to: ${to}`)
             console.groupEnd();
         }
     }

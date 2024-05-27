@@ -1,14 +1,10 @@
 <script setup lang="ts">
 import { onBeforeMount, ref } from 'vue'
-import {useI18n} from "vue-i18n";
-import Pressable from '../Fragments/Pressable.vue';
 import ACard from "../ACard.vue";
 import LoadingRing from '../LoadingRing.vue';
-import axios, { Axios, AxiosResponse } from 'axios';
+import axios from 'axios';
 import { ProvidedInfo } from '../../models/server';
 // import Corner from "../Feature/Corner.vue";
-
-const { t } = useI18n();
 
 interface PartnerInfo{
     fav: string,

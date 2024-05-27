@@ -10,12 +10,13 @@ import Pressable from '../src/components/Fragments/Pressable.vue';
 import Navbar from '../src/components/Navbar.vue';
 import Modal from './components/Fragments/Modal.vue';
 
-inject();
+const useSpeedInsight = ref(window.location.host.includes('corona.studio'));
+
+if(useSpeedInsight.value) inject();
 
 // import '/output.css?url';
 
 const { t, locale } = useI18n({ useScope: 'global' });
-
 const needWarnCookie = ref(false);
 const cookieWarn = ref<InstanceType<typeof Modal> | null>(null);
 
@@ -73,7 +74,7 @@ onMounted(() => {
 }
 </style>
 <template>
-    <SpeedInsights />
+    <SpeedInsights v-if="useSpeedInsight" />
     <div id="loading-bar-top" class="hidden fade-in top-0 left-0 right-0 fixed bg-zinc-200 shadow transition bg-opacity-30 opacity-70" style="z-index: 9999;">
         <div class="seed transition-all w-1/4 bg-slate-500 rounded-lg h-1.5"></div>
     </div>
