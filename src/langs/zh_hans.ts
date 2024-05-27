@@ -129,6 +129,8 @@ export const zhHans = {
         (或通过<a class="a" href="https://afdian.net/order/create?user_id=072d1a9298c411e8976352540025c377">爱发电<span class="use-icon text-sm"></span></a>) 来为我们提供经济上的支持! 无论如何, 感谢您选择、欣赏和支持我们的劳动!`,
         partOfMembers: '部分成员',
         partOfMembersHint: '完整成员名单请移步',
+        partners: '合作伙伴',
+        partnersHint: '与我们达成合作或向我们提供大量支持的友情链接!',
 
         m: {
             llr: '组织者',

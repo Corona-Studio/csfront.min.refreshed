@@ -1,4 +1,4 @@
-export interface ServerInfo {
+export interface ProvidedInfo {
     fileInfo: string;
     updateTime: string;
     contentType: string;

@@ -9,7 +9,7 @@
   import ServerItem from '../components/ServerItem.vue';
   import {baseInvokeHeightFix} from "../utils/viewport.ts";
   import {doScroll} from "../utils/scroll.ts";
-  import {ContentList, ServerInfo} from "../models/server.ts";
+  import {ContentList, ProvidedInfo} from "../models/server.ts";
   import axios from 'axios';
 
   function toCmfs() {
@@ -24,7 +24,7 @@
   const serverList = ref<ContentList[] | null>();
 
   onMounted(async () => {
-      const serverInfo = await axios.get<ServerInfo>('/provide/cmfs.json');
+      const serverInfo = await axios.get<ProvidedInfo>(window.location.host.includes('corona.studio') ? '/provide/cmfs.json' : 'https://min.corona.studio/provide/cmfs.json');
 
       if (serverInfo.status !== 200 ||
           !serverInfo.data ||

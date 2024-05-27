@@ -2,11 +2,11 @@
 import { onMounted, ref } from 'vue';
 
 const cardit = ref<HTMLElement | null>();
-const formed = ref(
+let formed = ref(
     'p-9 px-11 pb-5 justify-items-center items-center gap-0 grid',
 );
 const adjusted = ref(false);
-const w = ref('w-min');
+let w = ref('w-min');
 
 const props = defineProps<{
     form?: 'top' | 'left' | 'right' | 'hide';
@@ -20,22 +20,16 @@ onMounted(() => {
     switch (props.form ?? 'top') {
         case 'top':
         default:
-            formed.value = ` ${props.inGrid ?? false ? 'pt-8 pb-3.5' : 'p-9 px-11 pb-5'} justify-items-center items-center gap-0 grid `;
+            formed.value = `default!   ${props.inGrid ?? false ? 'pt-8 pb-3.5' : 'p-9 px-11 pb-5'} justify-items-center items-center gap-0 grid `;
             w.value = ' w-min ';
             break;
         case 'left':
-            formed.value =
-                'flex  justify-start' + (props.inGrid ?? 'false') == 'true'
-                    ? ''
-                    : 'p-3';
+            formed.value = `left!    flex  justify-start   ${(props.inGrid ?? false) ? '' : 'p-3'}  `;     
             w.value = ' w-60 ';
             adjusted.value = true;
             break;
         case 'right':
-            formed.value =
-                'flex  justify-end' + (props.inGrid ?? 'false') == 'true'
-                    ? ''
-                    : 'p-3';
+            formed.value = `right!    flex  justify-end   ${(props.inGrid ?? false) ? '' : 'p-3'}  `;
             w.value = ' w-60 ';
             adjusted.value = true;
             break;
@@ -56,10 +50,10 @@ onMounted(() => {
     bg-opacity-60 hover:bg-opacity-70 active:bg-opacity-75 ${static ?? false ? w : 'w-full'}
     `">
         <div
-            :class="` centr avatar ${(form ?? 'top') == 'left' ? 'mx-1.5' : (form ?? 'top') == 'top' ? 'mx-auto translate-y-1' : 'hidden'} bg-zinc-600 border bg-opacity-10 rounded-full min-w-16 min-h-16 ? max-h-20 max-w-20 ? ${adjusted ? '' : 'mx-auto'} my-auto `"
+            :class="`  avatar ${(form ?? 'top') == 'left' ? 'mx-1.5' : (form ?? 'top') == 'top' ? 'mx-auto centr translate-y-1' : 'hidden'} bg-zinc-600 border bg-opacity-10 rounded-full min-w-16 min-h-16 ? max-h-20 max-w-20 ? ${adjusted ? '' : 'mx-auto'} my-auto `"
             :style="`background-image: url('${avatar ?? ''}')`"></div>
 
-        <div :class="` centr info p-2 `">
+        <div :class="` ${(form ?? 'top') == 'top' ? 'centr' : ''} info p-2 `">
             <h3
                 :class="`${form ?? 'top' == 'top' ? 'mt-1.5' : ''} text-lg text-center`">
                 {{ title ?? 'Title ' }}
@@ -71,7 +65,7 @@ onMounted(() => {
         </div>
 
         <div
-            :class="` centr avatar ${(form ?? 'top') == 'right' ? 'mx-1.5' : 'hidden'} bg-zinc-600 border bg-opacity-10 rounded-full min-w-16 min-h-16 ? max-h-20 max-w-20 ? ${adjusted ? '' : 'mx-auto'} my-auto `"
+            :class="`  ${(form ?? 'top') == 'top' ? 'centr' : ''} r avatar ${(form ?? 'top') == 'right' ? 'mx-1.5' : 'hidden'} bg-zinc-600 border bg-opacity-10 rounded-full min-w-16 min-h-16 ? max-h-20 max-w-20 ? ${adjusted ? '' : 'mx-auto'} my-auto `"
             :style="`background-image: url('${avatar ?? ''}')`"></div>
 
         <i

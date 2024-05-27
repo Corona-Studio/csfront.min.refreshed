@@ -10,6 +10,7 @@
   import ContactInfo from "../components/ContactInfo.vue";
   import HelpBlock from "../components/HelpBlock.vue";
   import TipBlock from "../components/Fragments/TipBlock.vue";
+  import PartnersList from '../components/Presets/PartnersList.vue'
 
   const {t} = useI18n();
 
@@ -168,7 +169,14 @@
                     <Pressable overstyle="border-radius: 100%" :initOpacty="50" :isOnlyIcon="true" :no-link-icon="true" class="rounded-full " :iconPosFix="false" :no-start-icon="true" type="outer" :hide-matched-icon="true" :link="m.link" overclass="mx-auto w-fit mt-2.5 use-icon">&#xe903;</Pressable>
                 </ACard>
             </div>
+            <br>
+            <h2 class="title-str ">{{ t('about.partners') }}</h2>
+            <p class="text-lg mt-1 opacity-80">
+                {{ t('about.partnersHint') }}
+            </p>
+            <PartnersList />
 
+            <br>
             <br>
             <div class="grid grid-cols-3 gap-3.5">
                 <ContactInfo class="col-span-full lg:col-span-2 " />
