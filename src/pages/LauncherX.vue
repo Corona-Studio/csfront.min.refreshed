@@ -20,14 +20,18 @@ interface ResultBuildInfo {
     date: string;
     link: string;
     name: string;
+    sort: number;
+    match: boolean;
 }
 
 // const lastUpdate = ref(1710209344927);
 const buildId = ref(20240311);
 const loadingText = ref('');
+const buildHint = ref('');
 const isLoading = ref(true);
 const isFailed = ref(false);
 const isTrackingTimeout = ref(false);
+const platform = ref('');
 const downloads = ref<ResultBuildInfo[]>([]);
 const links = ref([
     {
@@ -125,6 +129,8 @@ async function singleFetch(build: LauncherBuildInfo) {
                 date: latestBuild.releaseDate,
                 link: `${csBackendUrl}/Build/get/${latestBuild.id}/1`,
                 name: build.name,
+                sort: getSort(build.runtime),
+                match: isMatch(build.runtime),
             };
 
             return displayModel;
@@ -132,6 +138,37 @@ async function singleFetch(build: LauncherBuildInfo) {
             return null;
         }
     
+}
+
+function isMatch(x: string){
+    if(x == '') return false
+    else if( platform.value.includes('mac') && platform.value.includes('macapple') && x == 'osx-arm64') return true;
+    else if( platform.value.includes('mac') && platform.value.includes('intel') && x == 'osx-x64') return true;
+    else if( platform.value.includes('windows') && platform.value.includes('arm') && x == 'win-arm64') return true;
+    else if( platform.value.includes('win64') && platform.value.includes('x64') && x == 'win-x64') return true;
+    else if( platform.value.includes('linux') && platform.value.includes('arm') && x == 'linux-arm64') return true;
+    else if( platform.value.includes('linux') && (platform.value.includes('x64') || platform.value.includes('x86') || platform.value.includes('amd64')) && x == 'linux-x64') return true;
+    else return false;
+}
+
+function getSort(x: string){
+    switch(x.toLowerCase()){
+        case 'osx-x64':
+            return 1;
+        case 'osx-arm64':
+            return 4;
+        case 'linux-x64':
+            return 2;
+        case 'linux-arm64':
+            return 5;   
+        case 'win-x64':
+            return 0;
+        case 'win-arm64':
+            return 3;
+        default: 
+            console.log(`not found sorting: ${x}`);
+            return -1;
+    }
 }
 
 let builds = ref<void | AxiosResponse<LauncherRawBuildModel[], any> | null>(),
@@ -166,7 +203,13 @@ function checkTasks(){
         }, 15000);
     }
     else {
-        downloads.value! = tmp;
+        console.log('giving')
+        downloads.value! = tmp.sort((a:ResultBuildInfo, b: ResultBuildInfo) => {
+            // console.log(`s: ${a.sort}, ${b.sort}`)
+            if(a.sort > b.sort) return 1;
+            else if (a.sort < b.sort) return -1;
+            else return 0;
+        });
         isLoading.value = false;
     }
 }
@@ -182,6 +225,10 @@ function runLinkFilter(link: string, custom?: string){
 }
 
 onMounted(async () => {
+    platform.value = `${window.navigator.vendor}&&&${window.navigator.userAgent}&&&${window.navigator.platform}&&&${window.navigator.appVersion}`.toLowerCase();
+    if(platform.value.includes('windows')) buildHint.value = t('LauncherX.toWinUsers');
+    if(platform.value.includes('macintosh')) buildHint.value = t('LauncherX.toMacUsers');
+    if(platform.value.includes('linux')) buildHint.value = t('LauncherX.toLinuxUsers');
     console.clear();
     doScroll('lxb', false);
     new Promise((_) => {
@@ -199,8 +246,7 @@ onMounted(async () => {
         }
     });
     await fetchBuilds();
-    // if(downloads.value.length == 6 && isLoading.value == true) isLoading.value = false;
-    // else retry('final-not-enough');
+    console.log(platform.value);
 });
 </script>
 
@@ -278,7 +324,9 @@ onMounted(async () => {
                                         <span class="font-semibold">
                                             {{ t('LauncherX.downIntro5') }}
                                         </span>
+                                        <span class="text-sm font-semibold" v-html="t('LauncherX.buildTips')"></span>
                                     </span>
+                                    
                                 </p>
                                 <div class="grid grid-rows-2 grid-cols-3 gap-0 col-span-full fade-in" v-if="!isLoading && !isFailed">
                                     <Pressable
@@ -286,7 +334,7 @@ onMounted(async () => {
                                         :no-start-icon="true"
                                         v-for="down of downloads"
                                         :key="down.build"
-                                        :class="`py-2 my-1  `"
+                                        :class="`py-2 my-1  ${down.match ? 'shining-eternal' : ''}`"
                                         :type="`download:LauncherX-${down.build}@${down.build}.zip`"
                                         :link="
                                             runLinkFilter(down.link, `download:LauncherX-${down.build}@${down.build}.zip`)
@@ -297,6 +345,7 @@ onMounted(async () => {
                                     style="font-size: 0.6rem">
                                         LastUpdate: {{ downloads ? downloads[0].date : '-' }}
                                     </p>
+                                    <span class="text-sm block col-span-full mt-1 text-left opacity-80" v-html="buildHint"></span>
                                 </div>
                                 <div v-if="isLoading && !isFailed" class="grid justify-items-center scale-95 justify-center items-center col-span-full">
                                     <div class="">
