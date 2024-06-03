@@ -227,8 +227,8 @@ function runLinkFilter(link: string, custom?: string){
 onMounted(async () => {
     platform.value = `${window.navigator.vendor}&&&${window.navigator.userAgent}&&&${window.navigator.platform}&&&${window.navigator.appVersion}`.toLowerCase();
     if(platform.value.includes('windows')) buildHint.value = t('LauncherX.toWinUsers');
-    if(platform.value.includes('macintosh')) buildHint.value = t('LauncherX.toMacUsers');
-    if(platform.value.includes('linux')) buildHint.value = t('LauncherX.toLinuxUsers');
+    else if(platform.value.includes('macintosh')) buildHint.value = t('LauncherX.toMacUsers');
+    else buildHint.value = t('LauncherX.toLinuxUsers');
     console.clear();
     doScroll('lxb', false);
     new Promise((_) => {
