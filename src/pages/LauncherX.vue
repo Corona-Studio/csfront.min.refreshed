@@ -71,33 +71,33 @@ interface LauncherRawBuildModel {
 const allBuilds: LauncherBuildInfo[] = [
     {
         name: 'Windows X64',
-        framework: 'net8.0-windows',
+        framework: 'net9.0-windows',
         runtime: 'win-x64',
     },
     {
         name: 'macOS Intel',
-        framework: 'net8.0-osx',
+        framework: 'net9.0-osx',
         runtime: 'osx-x64',
     },
     {
         name: 'Linux X64',
-        framework: 'net8.0-linux',
+        framework: 'net9.0-linux',
         runtime: 'linux-x64',
     },
 
     {
         name: 'Windows Arm',
-        framework: 'net8.0-windows',
+        framework: 'net9.0-windows',
         runtime: 'win-arm64',
     },
     {
         name: 'macOS Apple',
-        framework: 'net8.0-osx',
+        framework: 'net9.0-osx',
         runtime: 'osx-arm64',
     },
     {
         name: 'Linux Arm',
-        framework: 'net8.0-linux',
+        framework: 'net9.0-linux',
         runtime: 'linux-arm64',
     },
 ];
