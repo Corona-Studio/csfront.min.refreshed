@@ -18,7 +18,7 @@ watch(
 );
 
 onMounted(() => {
-    if (!slots.default || slots.default.length > 0)
+    if ((slots.default ? slots.default() : []).length > 0)
         document.title = slots.default!()[0].children as string;
 });
 </script>
