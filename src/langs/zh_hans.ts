@@ -301,6 +301,9 @@ export const zhHans = {
     LauncherX: {
         intro: '强大、优雅、美观。使用开源核心',
         nowDownload: '立即下载',
+        failedHint1: "获取失败了! ",
+        failedHint2: "点击直接下载LauncherX",
+        failedHint3: "<br>这个文件可能不会定期更新! 只是应急出现在了这里. <br>如果你急需其他构建的LauncherX, 请参考下方联系我们.",
         downIntro1: '文件可能不会随着构建管线及时更新。',
         downIntro2: '前往主站',
         downIntro3: '获取最新版本，或者下载后使用',

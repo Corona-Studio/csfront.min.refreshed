@@ -55,7 +55,7 @@
         CMF-CoronaStudio
     </PageTitle>
     <div id="CMFTOP" class="? pt-3.5 container?  mx-auto grid justify-center justify-items-center items-center p-1.5 lg:p-3 w-11/12 sm:w-5/6 lg:w-9/12">
-        <p>
+        <div>
             <img src="/img/icons/cmflogo.webp" alt="" class="mx-auto w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6  mt-12 fade-in " > <br>
             <h1 class="text-3xl font-semibold text-yellow-500">{{ t('cmf.begin') }}</h1>
             <h5 class="text-lg">
@@ -71,7 +71,7 @@
                 {{ t('cmf.linkIntro1') }} &#xe8c8; {{ t('cmf.linkIntro2') }} &#xe71b; {{ t('cmf.linkIntro3') }} <span class=" font-semibold font-sans">?</span> {{ t('cmf.linkIntro4') }}
             </h5>
 
-        </p>
+        </div>
         <div class="w-judge mx-auto bg-zinc-200 dark:bg-zinc-800 bg-opacity-80 dark:bg-opacity-80 mt-3 rounded-lg transition p-1.5 lg:p-3 xl:p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 lg:gap-3.5 xl:gap-5" id="CMFS">
             <h6 v-if="!serverList" class="grid justify-items-center justify-center items-center col-span-full text-center text-xl p-3 m-1" >
               <div class="">

@@ -334,7 +334,7 @@ onMounted(async () => {
                                         :no-start-icon="true"
                                         v-for="down of downloads"
                                         :key="down.build"
-                                        :class="`py-2 my-1  ${down.match ? 'shining-eternal' : ''}`"
+                                        :class="`py-2 my-1 text-sm  ${down.match ? 'shining-eternal' : ''}`"
                                         :type="`download:LauncherX-${down.build}@${down.build}.zip`"
                                         :link="
                                             runLinkFilter(down.link, `download:LauncherX-${down.build}@${down.build}.zip`)
@@ -359,7 +359,14 @@ onMounted(async () => {
                                 </div>         
                                 <div class="col-span-full scale-95" v-if="isFailed">
                                     <FailureComponent  class="" />  
-                                    <p class="text-sm mt-1">获取失败了! <a href="https://v2.csmin.kami.su/products/lx/LauncherX_20240311_net8.0-windows_win-x64.zip" download="LauncherX.Avalonia.x64.zip" class="a">点击直接下载LauncherX</a><br>这个文件可能不会定期更新! 只是应急出现在了这里. <br>如果你急需其他构建的LauncherX, 请参考下方联系我们.</p>
+                                    <p class="text-sm mt-1">
+                                        {{ t("LauncherX.failedHint1") }}
+                                        <a href="https://v2.csmin.kami.su/products/lx/LauncherX_20240311_net8.0-windows_win-x64.zip" download="LauncherX.Avalonia.x64.zip" class="a">
+                                            <span v-html="t('LauncherX.failedHint2')"></span>
+                                        </a>
+                                        <span v-html="t('LauncherX.failedHint3')"></span>
+                                        
+                                    </p>
                                 </div>                     
                                 <p
                                     class="col-span-full text-center mb-2 mt-6 font-bold">

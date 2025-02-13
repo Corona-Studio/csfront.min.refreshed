@@ -18,10 +18,10 @@ function refresh(){
 <template>
     <div class="w-full fade-in p-2 rounded-lg bg-zinc-200 bg-opacity-70 dark:bg-opacity-10 scale-90 hover:scale-95 group transition shadow grid justify-items-center items-center">
         <div class="grid gap-2">
-            <p class="text-center group-hover:scale-105 scale-100 transition">
+            <div class="text-center group-hover:scale-105 scale-100 transition">
                 {{ t('base.failed') }}
                 <p :class="props.message == undefined ? 'hidden' : ''">{{ props.message ?? '' }}</p>
-            </p>
+            </div>
             <div>
                 <Pressable :isFuncButton="true" :noStartIcon="true" @click.native="refresh()">
                     {{ t('base.retry') }}
