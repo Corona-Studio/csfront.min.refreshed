@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { onMounted, useSlots, watch } from 'vue';
+import {onMounted, VNode, watch} from 'vue';
 
 const props = defineProps<{
     update?: string;
     id?: string;
 }>();
 
-const slots = useSlots();
+const slots = defineSlots<{
+  default(): VNode[]
+}>();
 
 watch(
     () => props.update,
@@ -16,7 +18,7 @@ watch(
 );
 
 onMounted(() => {
-    if ((slots.default ? slots.default() : []).length > 0)
+    if (!slots.default || slots.default.length > 0)
         document.title = slots.default!()[0].children as string;
 });
 </script>

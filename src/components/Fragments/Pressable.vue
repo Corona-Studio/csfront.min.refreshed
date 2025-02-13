@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, useSlots } from 'vue';
+import {computed, onBeforeUnmount, onMounted, ref, VNode} from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 
@@ -12,7 +12,6 @@ const endIconRef = ref<HTMLElement | null>(null);
 const pressableBase = ref<HTMLElement | null>(null);
 const unspaced = ref(0);
 
-const slots = useSlots();
 const router = useRouter();
 
 const props = defineProps<{
@@ -39,6 +38,10 @@ const props = defineProps<{
     ignoreTextResp?: boolean;
     iconPosFix?: boolean;
     noScale?: boolean;
+}>();
+
+const slots = defineSlots<{
+  default(): VNode[]
 }>();
 
 let ex = computed(() => {
@@ -83,7 +86,7 @@ function runClickEvent(to: string, ty: string) {
             return;
         }
     if (ty == 'outer' || ty == 'outer-link') {
-        if (!props.link || props.link == undefined) {
+        if (!props.link) {
             pushToast(t('base.nolink'), 'blur');
             return;
         }
