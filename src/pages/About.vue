@@ -75,7 +75,7 @@
                 {{ t('about.morePage2') }}<a class="text-blue-400 mx-0.5 hover:text-blue-500 active:text-blue-700 transition no-underline hover:underline active:underline" href="https://corona.studio">https://corona.studio</a>{{ t('about.morePage3') }}
             </p>
             <h2 class="title-str pt-1 translate-y-1.5">{{ t('about.aboutUs') }}</h2>
-            <p class="text-xl  break">
+            <div class="text-xl  break">
                 <div class="pl-0 lg:pl-5  translate-y-2.5 ">
                     <span class="lg:mt-3 mt-2  font-semibold text-4xl  inline-block">
                         <div class="title-str title-str-reverse title-str-flur scale-105   : invert dark:text-zinc-900 text-zinc-100" >
@@ -110,7 +110,7 @@
                     ...
                 </span>
                 
-            </p>
+            </div>
             <h2 class="title-str pt-1">{{ t('about.intro8') }}</h2>
             <div class="bg-zinc-100 dark:bg-zinc-800 bg-opacity-70 p-1.5 m-0.5 my-2 mb-0 translate-y-1 rounded-xl">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-1.5 justify-center rounded-lg px-1 mb-3">
