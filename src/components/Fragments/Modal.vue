@@ -57,9 +57,18 @@ function warning(x: string){
 }
 
 function checkAlive(){
-    if(window.getComputedStyle(modalBody.value as unknown as Element).display != 'block' || parseFloat(window.getComputedStyle(modalBody.value as unknown as Element).opacity) <= 0)
+    const test = ((modalBody.value) as unknown) as Element;
+    let testFirst = window.getComputedStyle(test as Element),
+        testSecond = window.getComputedStyle(test.firstElementChild as Element);
+
+    let resultFirst = (testFirst.display === 'none' || parseFloat(testFirst.opacity) <= 0), // testFirst.display != 'block' || ？
+        resultSecond = (testSecond.display === 'none' || parseFloat(testSecond.opacity) <= 0)
+    if(resultFirst || resultSecond)
         {
-            if(!isKilled.value) warning(t('base.adblocker').replaceAll('    ', '').trim());
+            if(!isKilled.value) {
+                warning(t('base.adblocker').replaceAll('    ', '').trim());
+                if(resultSecond) kill();
+            }
             // kill();
         }
 }

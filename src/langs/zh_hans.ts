@@ -313,7 +313,7 @@ export const zhHans = {
         advertLink: 'https://www.minebbs.com/resources/launcherx.7182',
         buildTips: '<br>网站的构建下载提示仅供参考, 请自行确认并下载合适的构建.',
         toWinUsers: 'Windows用户: <br>LauncherX不支持Windows7以下的系统和任意32位系统.',
-        toLinuxUsers: 'Linux用户: <br>下载并解压后的LauncherX是一个二进制文件, <br>请在无法双击启动的情况下为LauncherX创建一个启动脚本或快捷方式.',
+        toLinuxUsers: 'Linux用户: <br>下载并解压后的LauncherX是一个二进制可执行文件, <br>请在无法双击启动的情况下为LauncherX创建一个启动脚本或快捷方式. ',
         toMacUsers: 'macOS用户: <br>请查看 <a href="https://kb.corona.studio/zhCN/lxguide/startup/perOsSetup/macOS" target="_blank" class="a">提示「软件已损坏」等无法打开的问题解决方法</a>',
     },
 
